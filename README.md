@@ -1,1 +1,1 @@
-# thing-exchange
+# think-exchange
