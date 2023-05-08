@@ -39,6 +39,7 @@
 table {
     border-collapse: collapse;
     font-family: 'main' !important;
+    text-align: center;
 }
 
 th , td {

@@ -42,7 +42,6 @@ export const LatestCurrencyStatusStyle = styled.div(props => ({
     ' & .swiper-slide': {
         width: '28%',
         backgroundColor: props.theme.colors.gray,
-        boxShadow: ' rgba(0, 0, 0, 0.16) 0px 1px 4px',
         borderRadius: '28px'
     }
 }));

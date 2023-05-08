@@ -12,7 +12,7 @@ export const TableTemplateStyles = styled.div(props => ({
         minWidth: 'auto',
 
         tr: {
-            '&:nth-of-type(2n)': {
+            '&:nth-of-type(2n-1)': {
                 background: props.theme.colors.gray
             }
         },
@@ -39,6 +39,9 @@ export const TableTemplateStyles = styled.div(props => ({
             padding: '0px 17px'
         },
 
+        '& .css-11pdr18 ': {
+            textAlign: 'center'
+        },
         '& .css-17o6ocu': {
             textAlign: 'center'
         }

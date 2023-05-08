@@ -9,6 +9,6 @@ export const getDesignTokens = mode => ({
         black: '#262626',
         white: '#fff'
     },
-    boxShadow: 'rgba(0, 0, 0, 0.05) 0px 0px 0px 1px',
+    boxShadow: '0px 8px 24px rgba(112, 144, 176, 0.08)',
     garadient: 'linear-gradient(45deg, rgba(205,13,49,1) 0%, rgba(55,27,193,1) 100%)'
 });
