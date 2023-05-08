@@ -1,19 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
 
+@font-face {
+    font-family: 'main';
+    src: url('../fonts/IRANSans\(FaNum\).ttf');
+}
+
+@font-face {
+    font-family: 'black';
+    src: url('../fonts/IRANSans\(FaNum\)_Black.ttf');
+}
+
+@font-face {
+    font-family: 'bold';
+    src: url('../fonts/IRANSans\(FaNum\)_Bold.ttf');
+}
+
+@font-face {
+    font-family: 'light';
+    src: url('../fonts/IRANSans\(FaNum\)_Light.ttf');
+}
+
+@font-face {
+    font-family: 'medium';
+    src: url('../fonts/IRANSans\(FaNum\)_Medium.ttf');
+}
+
+@font-face {
+    font-family: 'ultraLight';
+    src: url('../fonts/IRANSans\(FaNum\)_UltraLight.ttf');
+}
 
 table {
     border-collapse: collapse;
+    font-family: 'main' !important;
+}
+
+th , td {
+    font-family: 'main' !important;
 }
 
 body,
 html {
-    font-family: 'main';
-    background-color: #F9F9F9;
-    display: rtl;
+    font-family: 'main'  !important;
+    background-color: #F3F4F5;
 }
 
 body {
