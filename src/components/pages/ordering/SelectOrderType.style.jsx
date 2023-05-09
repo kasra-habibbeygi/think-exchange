@@ -4,17 +4,16 @@ import styled from '@emotion/styled';
 
 export const SelectOrderTypeStyle = styled.div(props => ({
     width: '49%',
-    minHeight: '180px',
     background: props.theme.colors.white,
     boxShadow: props.theme.boxShadow,
     borderRadius: '28px',
-    padding: '20px 30px',
+    padding: '20px 30px 40px',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
 
     h2: {
-        fontSize: '1.2rem'
+        fontSize: '1.2rem',
+        marginBottom: '40px'
     },
 
     '& .css-h2fkwh': {

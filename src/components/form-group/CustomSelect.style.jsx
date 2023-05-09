@@ -6,10 +6,14 @@ export const CustomSelectStyle = styled.div(props => ({
     width: '49%',
     textAlign: 'right',
 
+    label: {
+        right: '25px',
+        top: '-5px',
+        width: 'max-content'
+    },
+
     input: {
         minHeight: '20px !important'
-        // textAlign: 'right',
-        // direction: 'rtl'
     },
 
     '& .MuiInputBase-root': {
@@ -19,10 +23,33 @@ export const CustomSelectStyle = styled.div(props => ({
 
     '& .Mui-focused': {
         color: props.theme.colors.blue,
-        fontFamily: 'main !important'
+        fontFamily: 'main !important',
+        label: {
+            padding: '0px 20px 0px 10px',
+            margin: '0px',
+            right: '10px'
+        }
     },
 
-    '& .MuiPopper-root': {
+    '& .MuiAutocomplete-endAdornment': {
+        right: 'unset !important',
+        left: '9px'
+    },
+
+    '& .MuiOutlinedInput-root': {
+        padding: '5px 15px !important'
+    },
+
+    '& .MuiFormLabel-filled': {
+        padding: '0px 10px !important',
+        right: '10px'
+    },
+
+    legend: {
+        display: 'none'
+    },
+
+    li: {
         fontFamily: 'main !important'
     }
 }));
