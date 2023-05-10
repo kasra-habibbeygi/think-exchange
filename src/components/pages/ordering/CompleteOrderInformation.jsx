@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 //style
 import { CompleteOrderInformationStyle } from './CompleteOrderInformation.style';
@@ -7,26 +7,39 @@ import { CompleteOrderInformationStyle } from './CompleteOrderInformation.style'
 import CustomInput from '../../form-group/CustomInput.jsx';
 import TextaAria from '../../form-group/TextaAria';
 import CustomButton from '../../form-group/CustomButton';
+import SuccessOrdering from './SuccessOrdering';
 
 const CompleteOrderInformation = () => {
+    const [SuccessOrderingState, setSuccessOrderingState] = useState(false);
     return (
-        <CompleteOrderInformationStyle>
-            <h2>تکمیل اطلاعات سفارش</h2>
-            <div className='formBox'>
-                <CustomInput label='نام' type='text' />
-                <CustomInput label='نام خانوادگی' type='text' />
-            </div>
-            <div className='formBox'>
-                <CustomInput label='ایمیل' type='email' />
-                <CustomInput label='لینک سایت' type='text' />
-            </div>
-            <div className='formBox'>
-                <CustomInput label='نام کاربری شما در سایت' type='text' />
-                <CustomInput label='کلمه عبور شما در سایت' type='password' />
-            </div>
-            <TextaAria label='توضیحات' type='text' rows={4} />
-            <CustomButton className='btn' text='ثبت سفارش' variant='text' background='garadient' radius='normal' fontcolor='white' />
-        </CompleteOrderInformationStyle>
+        <>
+            <CompleteOrderInformationStyle>
+                <h2>تکمیل اطلاعات سفارش</h2>
+                <div className='formBox'>
+                    <CustomInput label='نام' type='text' id='outlined-basic' />
+                    <CustomInput label='نام خانوادگی' type='text' id='outlined-basic' />
+                </div>
+                <div className='formBox'>
+                    <CustomInput label='ایمیل' type='email' id='outlined-basic' />
+                    <CustomInput label='لینک سایت' type='text' id='outlined-basic' />
+                </div>
+                <div className='formBox'>
+                    <CustomInput label='نام کاربری شما در سایت' type='text' id='outlined-basic' />
+                    <CustomInput label='کلمه عبور شما در سایت' type='password' id='outlined-basic' />
+                </div>
+                <TextaAria label='توضیحات' type='text' rows={4} />
+                <CustomButton
+                    clickHandeler={() => setSuccessOrderingState(true)}
+                    className='btn'
+                    text='ثبت سفارش'
+                    variant='text'
+                    background='garadient'
+                    radius='normal'
+                    fontcolor='white'
+                />
+            </CompleteOrderInformationStyle>
+            <SuccessOrdering state={SuccessOrderingState} setState={setSuccessOrderingState} />
+        </>
     );
 };
 

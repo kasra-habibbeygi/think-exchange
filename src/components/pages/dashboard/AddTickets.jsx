@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import TableTemplate from '../../template/TableTemplate';
 import CustomButton from '../../form-group/CustomButton';
 import AddNewTicketsModal from './AddNewTicketsModal';
+import SeeAnsewr from './SeeAnsewr';
 
 //styles
 import { AddTicketsStyle } from './AddTickets.style';
@@ -41,7 +42,8 @@ const row = [
 ];
 
 const AddTickets = () => {
-    const [AddNewTicketsModalState, setAddNewTicketsModalState] = useState(true);
+    const [AddNewTicketsModalState, setAddNewTicketsModalState] = useState(false);
+    const [SeeAnsewrState, setSeeAnsewrState] = useState(false);
     return (
         <>
             <AddTicketsStyle>
@@ -64,7 +66,14 @@ const AddTickets = () => {
                                 {row.status !== 'مشاهده پاسخ' ? (
                                     <CustomButton text={row.status} variant='text' background='error' radius='normal' fontcolor='white' />
                                 ) : (
-                                    <CustomButton text={row.status} variant='text' background='noColor' radius='normal' fontcolor='error' />
+                                    <CustomButton
+                                        clickHandeler={() => setSeeAnsewrState(true)}
+                                        text={row.status}
+                                        variant='text'
+                                        background='noColor'
+                                        radius='normal'
+                                        fontcolor='error'
+                                    />
                                 )}
                             </TableCell>
                         </TableRow>
@@ -77,10 +86,11 @@ const AddTickets = () => {
                     background='garadient'
                     radius='normal'
                     fontcolor='white'
-                    onClick={() => setAddNewTicketsModalState(true)}
+                    clickHandeler={() => setAddNewTicketsModalState(true)}
                 />
             </AddTicketsStyle>
             <AddNewTicketsModal state={AddNewTicketsModalState} setState={setAddNewTicketsModalState} />
+            <SeeAnsewr state={SeeAnsewrState} setState={setSeeAnsewrState} />
         </>
     );
 };

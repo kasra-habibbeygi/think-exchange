@@ -13,16 +13,16 @@ const PersonalInformation = () => {
         <PersonalInformationStyle>
             <h2>تکمیل اطلاعات سفارش</h2>
             <div className='formBox'>
-                <CustomInput label='نام' type='text' />
-                <CustomInput label='نام خانوادگی' type='text' />
+                <CustomInput label='نام' type='text' id='outlined-basic' />
+                <CustomInput label='نام خانوادگی' type='text' id='outlined-basic' />
             </div>
-            <CustomInput label='ایمیل' type='email' />
+            <CustomInput label='ایمیل' type='email' id='outlined-basic' />
 
             <div className='formBox'>
-                <CustomInput label='شماره همراه فعال در فضای مجازی' type='text' />
-                <CustomInput label='شماره ثابت' type='text' />
+                <CustomInput label='شماره همراه فعال در فضای مجازی' type='text' id='outlined-basic' />
+                <CustomInput label='شماره ثابت' type='text' id='outlined-basic' />
             </div>
-            <CustomInput label='شماره ملی' type='text' />
+            <CustomInput label='شماره ملی' type='text' id='outlined-basic' />
             <TextaAria label='توضیحات' type='text' rows={4} />
             <CustomButton className='btn' text='ویرایش اطلاعات' variant='text' background='garadient' radius='normal' fontcolor='white' />
         </PersonalInformationStyle>

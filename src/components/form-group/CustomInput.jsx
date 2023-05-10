@@ -8,11 +8,11 @@ import { CustomInputStyle } from './CustomInput.style';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-const CustomInput = ({ label, type }) => {
+const CustomInput = ({ label, type, id }) => {
     return (
         <CustomInputStyle>
             <Box component='form' noValidate autoComplete='on'>
-                <TextField id='outlined-basic' label={label} variant='outlined' type={type} />
+                <TextField label={label} variant='outlined' type={type} id={id} />
             </Box>{' '}
         </CustomInputStyle>
     );

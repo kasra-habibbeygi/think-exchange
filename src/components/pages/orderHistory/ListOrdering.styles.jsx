@@ -16,20 +16,13 @@ export const ListOrderingStyle = styled.div(props => ({
         marginBottom: '40px'
     },
 
-    '& .css-1130i26': {
+    a: {
         button: {
             padding: '8px 40px',
             marginTop: '50px',
             '&:hover': {
                 color: props.theme.colors.white
             }
-        }
-    },
-
-    '& .css-1xqr8o6': {
-        button: {
-            border: '1px solid black',
-            padding: '5px 12px'
         }
     }
 }));

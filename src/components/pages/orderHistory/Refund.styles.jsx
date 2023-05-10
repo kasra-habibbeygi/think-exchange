@@ -6,7 +6,7 @@ export const RefundStyles = styled.div(props => ({
     background: props.theme.colors.white,
     boxShadow: props.theme.boxShadow,
     borderRadius: '28px',
-    padding: '20px 30px',
+    padding: '20px 30px 40px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
