@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 export const CustomButtonStyle = styled.div(props => ({
     textAlign: 'left',
     button: {
+        borderColor: props.variant === 'outlined' && '#bdbdbd',
         background:
             props.background === 'error'
                 ? `${props.theme.colors.error}`
@@ -29,7 +30,8 @@ export const CustomButtonStyle = styled.div(props => ({
         padding: '10px 30px',
 
         '&:hover': {
-            color: props.theme.colors.black
+            color: props.background === 'garadient' ? props.theme.colors.white : props.theme.colors.black,
+            borderColor: props.variant === 'outlined' && '#bdbdbd'
         }
     }
 }));

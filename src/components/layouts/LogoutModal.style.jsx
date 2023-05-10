@@ -26,7 +26,7 @@ export const LogoutModalStyle = styled.div(props => ({
                 marginLeft: '20px'
             },
 
-            '&:last-child': {
+            '&:last-of-type': {
                 background: props.theme.colors.error
             }
         }

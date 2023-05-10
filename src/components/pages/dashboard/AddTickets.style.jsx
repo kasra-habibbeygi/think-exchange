@@ -28,6 +28,7 @@ export const AddTicketsStyle = styled.div(props => ({
     '& .circleBox': {
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'center',
         '& .circle': {
             borderRadius: '50%',
             width: '10px',

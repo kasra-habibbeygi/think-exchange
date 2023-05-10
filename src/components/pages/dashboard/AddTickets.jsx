@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 //components
 import TableTemplate from '../../template/TableTemplate';
 import CustomButton from '../../form-group/CustomButton';
+import AddNewTicketsModal from './AddNewTicketsModal';
 
 //styles
 import { AddTicketsStyle } from './AddTickets.style';
@@ -40,35 +41,47 @@ const row = [
 ];
 
 const AddTickets = () => {
+    const [AddNewTicketsModalState, setAddNewTicketsModalState] = useState(true);
     return (
-        <AddTicketsStyle>
-            <h2>ثبت تیکت</h2>
-            <TableTemplate TableHeader={TableHeader}>
-                {row.map(row => (
-                    <TableRow key={row.id}>
-                        <TableCell scope='row'>
-                            {row.status === 'مشاهده پاسخ' ? (
-                                <div className='circleBox'>
-                                    <span className='circle'></span>
-                                    <span>{row.name}</span>
-                                </div>
-                            ) : (
-                                `${row.name}`
-                            )}
-                        </TableCell>
-                        <TableCell>{row.date}</TableCell>
-                        <TableCell>
-                            {row.status !== 'مشاهده پاسخ' ? (
-                                <CustomButton text={row.status} variant='text' background='error' radius='normal' fontcolor='white' />
-                            ) : (
-                                <CustomButton text={row.status} variant='text' background='noColor' radius='normal' fontcolor='error' />
-                            )}
-                        </TableCell>
-                    </TableRow>
-                ))}
-            </TableTemplate>
-            <CustomButton className='btn' text='ثبت تیکت' variant='text' background='garadient' radius='normal' fontcolor='white' />
-        </AddTicketsStyle>
+        <>
+            <AddTicketsStyle>
+                <h2>ثبت تیکت</h2>
+                <TableTemplate TableHeader={TableHeader}>
+                    {row.map(row => (
+                        <TableRow key={row.id}>
+                            <TableCell scope='row'>
+                                {row.status === 'مشاهده پاسخ' ? (
+                                    <div className='circleBox'>
+                                        <span className='circle'></span>
+                                        <span>{row.name}</span>
+                                    </div>
+                                ) : (
+                                    `${row.name}`
+                                )}
+                            </TableCell>
+                            <TableCell>{row.date}</TableCell>
+                            <TableCell>
+                                {row.status !== 'مشاهده پاسخ' ? (
+                                    <CustomButton text={row.status} variant='text' background='error' radius='normal' fontcolor='white' />
+                                ) : (
+                                    <CustomButton text={row.status} variant='text' background='noColor' radius='normal' fontcolor='error' />
+                                )}
+                            </TableCell>
+                        </TableRow>
+                    ))}
+                </TableTemplate>
+                <CustomButton
+                    className='btn'
+                    text='ثبت تیکت'
+                    variant='text'
+                    background='garadient'
+                    radius='normal'
+                    fontcolor='white'
+                    onClick={() => setAddNewTicketsModalState(true)}
+                />
+            </AddTicketsStyle>
+            <AddNewTicketsModal state={AddNewTicketsModalState} setState={setAddNewTicketsModalState} />
+        </>
     );
 };
 

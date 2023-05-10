@@ -21,5 +21,11 @@ export const CompleteOrderInformationStyle = styled.div(props => ({
         width: '100%',
         display: 'flex',
         gap: '20px'
+    },
+
+    button: {
+        '&:hover': {
+            color: props.theme.colors.white
+        }
     }
 }));

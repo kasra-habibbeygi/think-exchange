@@ -8,11 +8,11 @@ import { CustomInputStyle } from './CustomInput.style';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-const TextaAria = ({ label }) => {
+const TextaAria = ({ label, rows }) => {
     return (
         <CustomInputStyle>
             <Box component='form' noValidate autoComplete='on'>
-                <TextField id='outlined-multiline-static' label={label} multiline rows={4} />
+                <TextField id='outlined-multiline-static' label={label} multiline rows={rows} />
             </Box>
         </CustomInputStyle>
     );

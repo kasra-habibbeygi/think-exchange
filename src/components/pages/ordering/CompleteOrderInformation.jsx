@@ -24,7 +24,7 @@ const CompleteOrderInformation = () => {
                 <CustomInput label='نام کاربری شما در سایت' type='text' />
                 <CustomInput label='کلمه عبور شما در سایت' type='password' />
             </div>
-            <TextaAria label='توضیحات' type='text' />
+            <TextaAria label='توضیحات' type='text' rows={4} />
             <CustomButton className='btn' text='ثبت سفارش' variant='text' background='garadient' radius='normal' fontcolor='white' />
         </CompleteOrderInformationStyle>
     );

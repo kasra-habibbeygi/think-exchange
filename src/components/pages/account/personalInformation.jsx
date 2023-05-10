@@ -23,7 +23,7 @@ const PersonalInformation = () => {
                 <CustomInput label='شماره ثابت' type='text' />
             </div>
             <CustomInput label='شماره ملی' type='text' />
-            <TextaAria label='توضیحات' type='text' />
+            <TextaAria label='توضیحات' type='text' rows={4} />
             <CustomButton className='btn' text='ویرایش اطلاعات' variant='text' background='garadient' radius='normal' fontcolor='white' />
         </PersonalInformationStyle>
     );
