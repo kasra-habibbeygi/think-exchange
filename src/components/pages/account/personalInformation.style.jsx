@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import styled from '@emotion/styled';
 
-export const CompleteOrderInformationStyle = styled.div(props => ({
+export const PersonalInformationStyle = styled.div(props => ({
     width: '73%',
     minHeight: '400px',
     background: props.theme.colors.white,

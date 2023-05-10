@@ -2,9 +2,8 @@
 /* eslint-disable no-unused-vars */
 import styled from '@emotion/styled';
 
-export const CompleteOrderInformationStyle = styled.div(props => ({
-    width: '73%',
-    minHeight: '400px',
+export const ChangePasswordStyle = styled.div(props => ({
+    width: '100%',
     background: props.theme.colors.white,
     boxShadow: props.theme.boxShadow,
     borderRadius: '28px',
@@ -15,6 +14,10 @@ export const CompleteOrderInformationStyle = styled.div(props => ({
     h2: {
         fontSize: '1.2rem',
         marginBottom: '40px'
+    },
+
+    button: {
+        width: '100%'
     },
 
     '& .formBox': {

@@ -3,8 +3,14 @@
 import styled from '@emotion/styled';
 
 export const CustomInputStyle = styled.div(props => ({
+    width: '100%',
     '& .MuiInputBase-root': {
         borderRadius: '20px'
+    },
+
+    '& .MuiFormControl-root': {
+        width: '100%',
+        marginBottom: '30px'
     },
 
     label: {
