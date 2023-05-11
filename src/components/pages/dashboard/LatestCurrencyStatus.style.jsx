@@ -61,9 +61,49 @@ export const LatestCurrencyStatusStyle = styled.div(props => ({
             }
         }
     },
-    '@media screen and (max-width: 1000px)': {
+    '@media screen and (max-width: 1200px)': {
         ' & .swiper-slide': {
             width: '45%',
+            marginRight: 'unset'
+        }
+    },
+    '@media screen and (max-width: 992px)': {
+        ' & .swiper-slide': {
+            width: '40%',
+            marginRight: '20px'
+        }
+    },
+    '@media screen and (max-width: 730px)': {
+        ' & .swiper-slide': {
+            width: '45%',
+            marginRight: 'unset'
+        }
+    },
+    '@media screen and (max-width: 620px)': {
+        ' & .swiper-slide': {
+            width: '70%',
+            marginRight: '20px'
+        }
+    },
+    '@media screen and (max-width: 450px)': {
+        h2: {
+            fontSize: '1rem'
+        },
+        padding: '20px 20px',
+        fontSize: '.8rem',
+        height: '250px',
+
+        '& .mySwiper': {
+            margin: '20px 0px'
+        },
+        ' & .swiper-slide': {
+            width: '80%',
+            marginRight: 'unset'
+        }
+    },
+    '@media screen and (max-width: 350px)': {
+        ' & .swiper-slide': {
+            width: '90%',
             marginRight: 'unset'
         }
     }

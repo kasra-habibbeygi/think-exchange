@@ -31,6 +31,35 @@ export const ListOrderingStyle = styled.div(props => ({
     },
 
     '@media screen and (max-width: 1210px)': {
-        width: '100%'
+        width: '100%',
+        minHeight: 'auto'
+    },
+    '@media screen and (max-width: 450px)': {
+        padding: '20px 20px',
+
+        h2: {
+            fontSize: '1rem'
+        },
+
+        th: {
+            fontSize: '.8rem'
+        },
+
+        td: {
+            fontSize: '.8rem',
+            button: {
+                padding: '0px 12px',
+                fontSize: '.8rem'
+            }
+        },
+
+        a: {
+            marginTop: '20px',
+            button: {
+                padding: '5px 20px',
+                fontSize: '.8rem',
+                marginTop: '0px'
+            }
+        }
     }
 }));

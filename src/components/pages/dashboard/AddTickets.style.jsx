@@ -45,6 +45,43 @@ export const AddTicketsStyle = styled.div(props => ({
 
     '@media screen and (max-width: 1210px)': {
         width: '100%',
-        marginBottom: '20px'
+        marginBottom: '20px',
+        minHeight: 'auto'
+    },
+    '@media screen and (max-width: 450px)': {
+        padding: '20px 20px',
+
+        h2: {
+            fontSize: '1rem'
+        },
+
+        th: {
+            fontSize: '.8rem'
+        },
+
+        td: {
+            fontSize: '.8rem',
+            button: {
+                padding: '0px 12px',
+                fontSize: '.8rem'
+            }
+        },
+
+        '& .circleBox': {
+            '& .circle': {
+                width: '5px',
+                height: '5px',
+                marginLeft: '3px'
+            }
+        },
+
+        '& .btn': {
+            marginTop: '20px',
+            button: {
+                padding: '5px 20px',
+                fontSize: '.8rem',
+                marginTop: '0px'
+            }
+        }
     }
 }));

@@ -18,11 +18,17 @@ import LogoutModal from './LogoutModal';
 
 const SideBar = () => {
     const [logoutModalState, setLogoutModalState] = useState(false);
+    const [menuState, setmenuState] = useState(false);
+
+    const clickHandeler = () => {
+        setmenuState(true);
+    };
 
     return (
         <>
-            <SideBarStyle>
-                <button type='button' className='hambergureMenu'>
+            <SideBarStyle menu={menuState}>
+                <div className='container'></div>
+                <button type='button' className='hambergureMenu' onClick={clickHandeler}>
                     <img alt='menu' src={menu} className='icon' />
                 </button>
                 <div className='SideBar'>
@@ -67,10 +73,12 @@ const SideBar = () => {
                         </div>
                     </div>
 
-                    <Button variant='text' onClick={() => setLogoutModalState(true)}>
-                        <img alt='user' src={exit} />
-                        خروج از حساب
-                    </Button>
+                    <div className='btn'>
+                        <Button variant='text' onClick={() => setLogoutModalState(true)}>
+                            <img alt='user' src={exit} />
+                            خروج از حساب
+                        </Button>
+                    </div>
                 </div>
             </SideBarStyle>
             <LogoutModal state={logoutModalState} setState={setLogoutModalState} />

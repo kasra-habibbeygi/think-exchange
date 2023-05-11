@@ -31,9 +31,14 @@ export const LayoutProdiverStyle = styled.div(props => ({
 
     '@media screen and (max-width: 992px)': {
         '& .content': {
-            width: 'calc(100% - 70px)',
-            marginRight: '70px',
-            direction: 'rtl'
+            width: 'calc(100% )',
+            marginRight: '0px',
+            marginTop: '70px'
+        }
+    },
+    '@media screen and (max-width: 450px)': {
+        '& .content': {
+            marginTop: '40px'
         }
     }
 }));

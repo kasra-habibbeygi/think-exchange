@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
 
 export const SideBarStyle = styled.aside(props => ({
-    position: 'fixed',
-    top: '50px',
+    position: 'relative',
     '& .SideBar': {
+        position: 'fixed',
+        top: '50px',
         width: '300px',
         display: 'flex',
         flexDirection: 'column',
@@ -14,7 +15,20 @@ export const SideBarStyle = styled.aside(props => ({
         boxShadow: props.theme.boxShadow,
         padding: '40px 40px 40px 20px',
         fontSize: '.9rem',
-        height: 'calc(100vh - 100px)'
+        height: 'calc(100vh - 100px)',
+        zIndex: '100'
+    },
+
+    '& .container': {
+        background: 'rgb(0 0 0 / 50%)',
+        width: '100vw',
+        height: '100vh',
+        position: 'absolute',
+        top: '-20px',
+        right: '-20px',
+        zIndex: '99',
+        overflow: 'hidden',
+        display: 'none'
     },
 
     '& .hambergureMenu': {
@@ -24,11 +38,8 @@ export const SideBarStyle = styled.aside(props => ({
         right: '0px',
         textAlign: 'center',
         padding: '0px',
-        background: props.theme.colors.white,
-        boxShadow: props.theme.boxShadow,
+        background: 'transparent',
         lineHeight: '0px',
-        width: '52px',
-        height: '50px',
         borderRadius: '50%',
         '& .icon': {
             width: '30px',
@@ -96,15 +107,21 @@ export const SideBarStyle = styled.aside(props => ({
             marginLeft: '20px'
         }
     },
+
+    '& .btn': {
+        position: 'absolute',
+        bottom: '30px'
+    },
+
     '@media screen and (max-width: 1350px)': {
-        top: '20px',
         '& .SideBar': {
-            height: 'calc(100vh - 40px)'
+            height: 'calc(100vh - 40px)',
+            top: '20px'
         }
     },
     '@media screen and (max-width: 1200px)': {
-        top: '20px',
         '& .SideBar': {
+            top: '20px',
             height: 'calc(100vh - 40px)',
             width: '280px',
             padding: '30px 20px 30px 20px'
@@ -117,7 +134,24 @@ export const SideBarStyle = styled.aside(props => ({
         },
 
         '& .SideBar': {
-            display: 'none'
+            display: props.menu ? 'block' : 'none',
+            position: 'fixed',
+            borderRadius: '20px 0px 0px 20px',
+            height: '100vh',
+            top: '0px',
+            right: '0px'
+        },
+
+        '& .container': {
+            display: props.menu ? 'block' : 'none'
+        }
+    },
+    '@media screen and (max-width: 450px)': {
+        '& .hambergureMenu': {
+            '& .icon': {
+                width: '25px',
+                height: '25px'
+            }
         }
     }
 }));

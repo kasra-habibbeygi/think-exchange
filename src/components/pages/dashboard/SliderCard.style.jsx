@@ -53,5 +53,29 @@ export const SliderCardStyle = styled.div(props => ({
                 marginRight: '5px'
             }
         }
+    },
+
+    '@media screen and (max-width: 450px)': {
+        height: '150px',
+
+        '& .nameBox': {
+            fontSize: '.9rem'
+        },
+        h3: {
+            fontSize: '1.5rem !important'
+        },
+
+        '& .percentage': {
+            fontSize: '.9rem',
+            img: {
+                width: '6px !important'
+            }
+        },
+        '& .price': {
+            button: {
+                fontSize: '.9rem',
+                padding: '7px 20px'
+            }
+        }
     }
 }));
