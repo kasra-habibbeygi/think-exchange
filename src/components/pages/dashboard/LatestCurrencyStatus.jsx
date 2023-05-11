@@ -17,7 +17,7 @@ const LatestCurrencyStatus = () => {
             <h2>آخرین وضعیت ارزها</h2>
             <Swiper
                 slidesPerView={'auto'}
-                spaceBetween={20}
+                spaceBetween={10}
                 pagination={{
                     clickable: true
                 }}

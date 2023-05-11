@@ -16,12 +16,21 @@ export const ListOrderingStyle = styled.div(props => ({
         fontSize: '1.2rem'
     },
 
-    '& .css-1130i26': {
+    a: {
         button: {
+            marginTop: '30px',
             padding: '8px 40px',
             '&:hover': {
                 color: props.theme.colors.white
             }
         }
+    },
+
+    '@media screen and (max-width: 1350px)': {
+        width: '49%'
+    },
+
+    '@media screen and (max-width: 1210px)': {
+        width: '100%'
     }
 }));

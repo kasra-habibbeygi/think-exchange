@@ -12,17 +12,14 @@ export const AddTicketsStyle = styled.div(props => ({
     flexDirection: 'column',
     justifyContent: 'space-between',
 
-    h2: {
-        fontSize: '1.2rem'
+    td: {
+        div: {
+            textAlign: 'center'
+        }
     },
 
-    '& .css-1130i26': {
-        button: {
-            padding: '8px 40px',
-            '&:hover': {
-                color: props.theme.colors.white
-            }
-        }
+    h2: {
+        fontSize: '1.2rem'
     },
 
     '& .circleBox': {
@@ -38,7 +35,16 @@ export const AddTicketsStyle = styled.div(props => ({
         }
     },
 
-    '& .css-18738z5': {
-        textAlign: 'center'
+    '& .btn': {
+        marginTop: '30px'
+    },
+
+    '@media screen and (max-width: 1350px)': {
+        width: '49%'
+    },
+
+    '@media screen and (max-width: 1210px)': {
+        width: '100%',
+        marginBottom: '20px'
     }
 }));

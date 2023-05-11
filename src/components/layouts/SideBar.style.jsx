@@ -1,19 +1,41 @@
 import styled from '@emotion/styled';
 
 export const SideBarStyle = styled.aside(props => ({
-    width: '300px',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    direction: 'rtl',
-    background: props.theme.colors.white,
-    borderRadius: '28px',
-    boxShadow: props.theme.boxShadow,
-    padding: '40px 40px 40px 20px',
-    fontSize: '.9rem',
     position: 'fixed',
     top: '50px',
-    height: 'calc(100vh - 100px)',
+    '& .SideBar': {
+        width: '300px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        direction: 'rtl',
+        background: props.theme.colors.white,
+        borderRadius: '28px',
+        boxShadow: props.theme.boxShadow,
+        padding: '40px 40px 40px 20px',
+        fontSize: '.9rem',
+        height: 'calc(100vh - 100px)'
+    },
+
+    '& .hambergureMenu': {
+        display: 'none',
+        position: 'absolute',
+        top: '0px',
+        right: '0px',
+        textAlign: 'center',
+        padding: '0px',
+        background: props.theme.colors.white,
+        boxShadow: props.theme.boxShadow,
+        lineHeight: '0px',
+        width: '52px',
+        height: '50px',
+        borderRadius: '50%',
+        '& .icon': {
+            width: '30px',
+            height: '30px',
+            marginLeft: 'unset'
+        }
+    },
 
     '& .menu': {
         listStyleType: 'none',
@@ -72,6 +94,30 @@ export const SideBarStyle = styled.aside(props => ({
         },
         img: {
             marginLeft: '20px'
+        }
+    },
+    '@media screen and (max-width: 1350px)': {
+        top: '20px',
+        '& .SideBar': {
+            height: 'calc(100vh - 40px)'
+        }
+    },
+    '@media screen and (max-width: 1200px)': {
+        top: '20px',
+        '& .SideBar': {
+            height: 'calc(100vh - 40px)',
+            width: '280px',
+            padding: '30px 20px 30px 20px'
+        }
+    },
+
+    '@media screen and (max-width: 992px)': {
+        '& .hambergureMenu': {
+            display: 'block'
+        },
+
+        '& .SideBar': {
+            display: 'none'
         }
     }
 }));

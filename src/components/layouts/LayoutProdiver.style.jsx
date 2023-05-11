@@ -11,5 +11,29 @@ export const LayoutProdiverStyle = styled.div(props => ({
         width: 'calc(100% - 360px)',
         marginRight: '360px',
         direction: 'rtl'
+    },
+
+    '@media screen and (max-width: 1350px)': {
+        width: '95%',
+        padding: '20px 0px',
+        '& .content': {
+            width: 'calc(100% - 320px)',
+            marginRight: '320px'
+        }
+    },
+
+    '@media screen and (max-width: 1200px)': {
+        '& .content': {
+            width: 'calc(100% - 300px)',
+            marginRight: '300px'
+        }
+    },
+
+    '@media screen and (max-width: 992px)': {
+        '& .content': {
+            width: 'calc(100% - 70px)',
+            marginRight: '70px',
+            direction: 'rtl'
+        }
     }
 }));

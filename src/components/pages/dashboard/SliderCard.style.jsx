@@ -7,7 +7,7 @@ export const SliderCardStyle = styled.div(props => ({
     justifyContent: 'space-between',
     flexDirection: 'column',
     width: '100%',
-    height: '180px',
+    height: '170px',
     padding: '20px',
 
     '& .currencyName': {
@@ -34,7 +34,7 @@ export const SliderCardStyle = styled.div(props => ({
 
         button: {
             marginBottom: '5px',
-            padding: '10px 40px'
+            padding: '10px 35px'
         },
 
         '& .priceBox': {
@@ -42,7 +42,7 @@ export const SliderCardStyle = styled.div(props => ({
         },
 
         h3: {
-            fontSize: '2rem'
+            fontSize: '1.8rem'
         },
 
         '& .percentage': {

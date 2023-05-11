@@ -79,15 +79,17 @@ const AddTickets = () => {
                         </TableRow>
                     ))}
                 </TableTemplate>
-                <CustomButton
-                    className='btn'
-                    text='ثبت تیکت'
-                    variant='text'
-                    background='garadient'
-                    radius='normal'
-                    fontcolor='white'
-                    clickHandeler={() => setAddNewTicketsModalState(true)}
-                />
+                <div className='btn'>
+                    <CustomButton
+                        className='btn'
+                        text='ثبت تیکت'
+                        variant='text'
+                        background='garadient'
+                        radius='normal'
+                        fontcolor='white'
+                        clickHandeler={() => setAddNewTicketsModalState(true)}
+                    />
+                </div>
             </AddTicketsStyle>
             <AddNewTicketsModal state={AddNewTicketsModalState} setState={setAddNewTicketsModalState} />
             <SeeAnsewr state={SeeAnsewrState} setState={setSeeAnsewrState} />

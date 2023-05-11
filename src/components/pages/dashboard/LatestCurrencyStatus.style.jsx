@@ -40,8 +40,31 @@ export const LatestCurrencyStatusStyle = styled.div(props => ({
     },
 
     ' & .swiper-slide': {
-        width: '28%',
+        width: '30%',
         backgroundColor: props.theme.colors.gray,
         borderRadius: '28px'
+    },
+
+    '@media screen and (max-width: 1350px)': {
+        ' & .swiper-slide': {
+            width: '40%',
+            marginRight: '20px',
+            ':first-of-type': {
+                marginRight: '0px'
+            }
+        },
+
+        '& .currencyName': {
+            img: {
+                width: '40px',
+                height: '40px'
+            }
+        }
+    },
+    '@media screen and (max-width: 1000px)': {
+        ' & .swiper-slide': {
+            width: '45%',
+            marginRight: 'unset'
+        }
     }
 }));
