@@ -24,10 +24,14 @@ const SideBar = () => {
         setmenuState(true);
     };
 
+    const containerHandeler = () => {
+        setmenuState(false);
+    };
+
     return (
         <>
             <SideBarStyle menu={menuState}>
-                <div className='container'></div>
+                <div className='container' onClick={containerHandeler}></div>
                 <button type='button' className='hambergureMenu' onClick={clickHandeler}>
                     <img alt='menu' src={menu} className='icon' />
                 </button>

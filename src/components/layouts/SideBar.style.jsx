@@ -22,10 +22,10 @@ export const SideBarStyle = styled.aside(props => ({
     '& .container': {
         background: 'rgb(0 0 0 / 50%)',
         width: '100vw',
-        height: '100vh',
+        height: 'calc(100% + 40px)',
         position: 'absolute',
         top: '-20px',
-        right: '-20px',
+        right: '-12px',
         zIndex: '99',
         overflow: 'hidden',
         display: 'none'
@@ -133,6 +133,14 @@ export const SideBarStyle = styled.aside(props => ({
             display: 'block'
         },
 
+        '& .container': {
+            display: props.menu ? 'block' : 'none',
+            width: '100vw',
+            height: 'calc(100% + 40px)',
+            top: '-20px',
+            right: '-24px'
+        },
+
         '& .SideBar': {
             display: props.menu ? 'block' : 'none',
             position: 'fixed',
@@ -140,10 +148,6 @@ export const SideBarStyle = styled.aside(props => ({
             height: '100vh',
             top: '0px',
             right: '0px'
-        },
-
-        '& .container': {
-            display: props.menu ? 'block' : 'none'
         }
     },
     '@media screen and (max-width: 450px)': {
