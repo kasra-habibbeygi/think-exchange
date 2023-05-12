@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 export const SeeAnsewrStyle = styled.div(props => ({
     '& .MuiPaper-root': {
         borderRadius: '20px',
-        minWidth: '500px'
+        maxWidth: '700px'
     },
 
     '& .formBox': {
@@ -27,6 +27,7 @@ export const SeeAnsewrStyle = styled.div(props => ({
             }
         }
     },
+
     '& .btnBox': {
         width: '100%'
     },
@@ -42,13 +43,50 @@ export const SeeAnsewrStyle = styled.div(props => ({
         justifyContent: 'center',
         flexDirection: 'column',
         alignItems: 'center',
-        color: 'props.theme.colors.black',
+        color: props.theme.colors.black,
 
         button: {
             textAlign: 'center',
             justifyContent: 'center',
             borderRadius: '10px',
             width: '100%'
+        }
+    },
+
+    '@media screen and (max-width: 992px)': {
+        '& .MuiPaper-root': {
+            maxWidth: '600px'
+        }
+    },
+    '@media screen and (max-width: 730px)': {
+        '& .MuiPaper-root': {
+            maxWidth: '500px'
+        },
+        '& .modalBox': {
+            padding: '20px'
+        }
+    },
+    '@media screen and (max-width: 550px)': {
+        '& .MuiPaper-root': {
+            margin: '10px'
+        }
+    },
+    '@media screen and (max-width: 450px)': {
+        fontSize: '.8re',
+        h2: {
+            fontSize: '1rem',
+            marginBottom: '20px'
+        },
+        '& .modalBox': {
+            fontSize: '0.8rem'
+        },
+        button: {
+            fontSize: '.8rem'
+        },
+        '& .formBox': {
+            p: {
+                marginBottom: '20px'
+            }
         }
     }
 }));

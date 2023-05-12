@@ -7,7 +7,7 @@ import { CompleteOrderInformationStyle } from './CompleteOrderInformation.style'
 import CustomInput from '../../form-group/CustomInput.jsx';
 import TextaAria from '../../form-group/TextaAria';
 import CustomButton from '../../form-group/CustomButton';
-import SuccessOrdering from './SuccessOrdering';
+import SuccessAlert from '../../template/SuccessAlert';
 
 const CompleteOrderInformation = () => {
     const [SuccessOrderingState, setSuccessOrderingState] = useState(false);
@@ -38,7 +38,12 @@ const CompleteOrderInformation = () => {
                     fontcolor='white'
                 />
             </CompleteOrderInformationStyle>
-            <SuccessOrdering state={SuccessOrderingState} setState={setSuccessOrderingState} />
+            <SuccessAlert
+                state={SuccessOrderingState}
+                setState={setSuccessOrderingState}
+                text='    سفارش شما با موفقیت ثبت شد همکاران ما اطلاعات پرداختی را تا ۲۴ ساعت آینده برای شما ارسال خواهند کردلطفا از آنلاین
+                        بودن خود در واتساپ مطمئن باشید .'
+            />
         </>
     );
 };

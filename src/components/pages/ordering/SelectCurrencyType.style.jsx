@@ -11,5 +11,8 @@ export const SelectCurrencyTypeStyle = styled.div(props => ({
     padding: '20px 30px',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    '@media screen and (max-width: 1210px)': {
+        width: '100%'
+    }
 }));

@@ -33,5 +33,11 @@ export const CustomButtonStyle = styled.div(props => ({
             color: props.background === 'garadient' ? props.theme.colors.white : props.theme.colors.black,
             borderColor: props.variant === 'outlined' && '#bdbdbd'
         }
+    },
+    '@media screen and (max-width: 450px)': {
+        button: {
+            padding: props.background === 'garadient' && '5px 20px !important',
+            fontSize: '.8rem'
+        }
     }
 }));

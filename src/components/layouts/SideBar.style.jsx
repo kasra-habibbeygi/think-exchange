@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 
 export const SideBarStyle = styled.aside(props => ({
-    position: 'relative',
     '& .SideBar': {
         position: 'fixed',
         top: '50px',
@@ -20,22 +19,21 @@ export const SideBarStyle = styled.aside(props => ({
     },
 
     '& .container': {
-        background: 'rgb(0 0 0 / 50%)',
         width: '100vw',
-        height: 'calc(100% + 40px)',
-        position: 'absolute',
-        top: '-20px',
-        right: '-12px',
+        height: '100vh',
+        position: 'fixed',
+        background: 'rgba(0,0,0,0.5)',
         zIndex: '99',
-        overflow: 'hidden',
+        top: '0px',
+        left: '0px',
         display: 'none'
     },
 
     '& .hambergureMenu': {
         display: 'none',
         position: 'absolute',
-        top: '0px',
-        right: '0px',
+        top: '30px',
+        right: '30px',
         textAlign: 'center',
         padding: '0px',
         background: 'transparent',
@@ -133,14 +131,6 @@ export const SideBarStyle = styled.aside(props => ({
             display: 'block'
         },
 
-        '& .container': {
-            display: props.menu ? 'block' : 'none',
-            width: '100vw',
-            height: 'calc(100% + 40px)',
-            top: '-20px',
-            right: '-24px'
-        },
-
         '& .SideBar': {
             display: props.menu ? 'block' : 'none',
             position: 'fixed',
@@ -148,13 +138,30 @@ export const SideBarStyle = styled.aside(props => ({
             height: '100vh',
             top: '0px',
             right: '0px'
+        },
+        '& .container': {
+            display: props.menu ? 'block' : 'none'
         }
     },
     '@media screen and (max-width: 450px)': {
         '& .hambergureMenu': {
+            top: '20px',
+            right: '15px',
+
             '& .icon': {
                 width: '25px',
                 height: '25px'
+            }
+        },
+        '& .SideBar': {
+            fontSize: '.8rem',
+            width: '260px',
+            padding: '20px 20px 0px 10px',
+            '& .menu': {
+                marginTop: '30px'
+            },
+            '& .callBox': {
+                marginTop: '10px'
             }
         }
     }

@@ -10,19 +10,34 @@ export const SelectOrderTypeStyle = styled.div(props => ({
     padding: '20px 30px 40px',
     display: 'flex',
     flexDirection: 'column',
+    marginTop: '0px',
 
     h2: {
         fontSize: '1.2rem',
         marginBottom: '40px'
     },
 
-    '& .css-h2fkwh': {
-        width: '49%',
-        textAlign: 'right'
-    },
-
     '& .container': {
         display: 'flex',
-        justifyContent: 'space-between'
+
+        gap: '20px'
+    },
+
+    '@media screen and (max-width: 1210px)': {
+        width: '100%',
+        marginBottom: '20px'
+    },
+    '@media screen and (max-width: 620px)': {
+        '& .container': {
+            flexDirection: 'column',
+            gap: '40px'
+        }
+    },
+    '@media screen and (max-width: 450px)': {
+        fontSize: '.8re',
+        h2: {
+            fontSize: '1rem',
+            marginBottom: '20px'
+        }
     }
 }));

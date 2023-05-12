@@ -3,7 +3,7 @@
 import styled from '@emotion/styled';
 
 export const CompleteOrderInformationStyle = styled.div(props => ({
-    width: '73%',
+    width: '68%',
     minHeight: '400px',
     background: props.theme.colors.white,
     boxShadow: props.theme.boxShadow,
@@ -23,9 +23,26 @@ export const CompleteOrderInformationStyle = styled.div(props => ({
         gap: '20px'
     },
 
-    button: {
-        '&:hover': {
-            color: props.theme.colors.white
+    '@media screen and (max-width: 1350px)': {
+        width: '63%'
+    },
+    '@media screen and (max-width: 1210px)': {
+        width: '100%',
+        marginBottom: '20px'
+    },
+    '@media screen and (max-width: 620px)': {
+        '& .formBox': {
+            flexDirection: 'column',
+            gap: '0px'
+        }
+    },
+    '@media screen and (max-width: 450px)': {
+        h2: {
+            fontSize: '1rem',
+            marginBottom: '20px'
+        },
+        button: {
+            marginTop: '0px'
         }
     }
 }));

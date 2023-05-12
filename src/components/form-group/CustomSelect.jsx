@@ -13,6 +13,7 @@ const CustomSelect = ({ SelectOptions, label }) => {
         <CustomSelectStyle>
             <Autocomplete
                 disablePortal
+                className='select'
                 id='combo-box-demo'
                 options={SelectOptions}
                 renderInput={params => <TextField {...params} label={label} />}
