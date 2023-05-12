@@ -45,5 +45,18 @@ export const TableTemplateStyles = styled.div(props => ({
         '& .css-17o6ocu': {
             textAlign: 'center'
         }
+    },
+    '@media screen and (max-width: 450px)': {
+        th: {
+            fontSize: '.8rem'
+        },
+
+        td: {
+            fontSize: '.8rem',
+            button: {
+                padding: '0px 12px',
+                fontSize: '.8rem'
+            }
+        }
     }
 }));

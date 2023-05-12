@@ -7,12 +7,26 @@ export const AccountStyle = styled.div(props => ({
     marginTop: '20px',
 
     '& .rightBox': {
-        width: '25%'
+        width: '30%'
     },
 
     button: {
         '&:hover': {
             color: props.theme.colors.white
+        }
+    },
+    '@media screen and (max-width: 1210px)': {
+        flexDirection: 'column',
+        '& .rightBox': {
+            display: 'flex',
+            marginTop: '20px',
+            gap: '20px',
+            width: '100%'
+        }
+    },
+    '@media screen and (max-width: 700px)': {
+        '& .rightBox': {
+            flexDirection: 'column'
         }
     }
 }));

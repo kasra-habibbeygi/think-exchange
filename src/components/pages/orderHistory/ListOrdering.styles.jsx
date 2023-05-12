@@ -24,5 +24,9 @@ export const ListOrderingStyle = styled.div(props => ({
                 color: props.theme.colors.white
             }
         }
+    },
+    '@media screen and (max-width: 1210px)': {
+        width: '100%',
+        marginBottom: '20px'
     }
 }));

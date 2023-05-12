@@ -17,11 +17,11 @@ import menu from '../../assets/images/layout/more.svg';
 import LogoutModal from './LogoutModal';
 
 const SideBar = () => {
-    const [logoutModalState, setLogoutModalState] = useState(false);
+    const [logoutModalState, setLogoutModalState] = useState(true);
     const [menuState, setmenuState] = useState(false);
 
     const clickHandeler = () => {
-        setmenuState(true);
+        setmenuState(false);
     };
 
     const containerHandeler = () => {

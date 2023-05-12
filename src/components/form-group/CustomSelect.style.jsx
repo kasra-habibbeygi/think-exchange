@@ -20,7 +20,7 @@ export const CustomSelectStyle = styled.div(props => ({
         color: props.theme.colors.blue,
         fontFamily: 'main !important',
         label: {
-            padding: '0px 20px 0px 10px',
+            padding: '0px 10px 0px 10px',
             margin: '0px',
             right: '10px'
         }
@@ -46,5 +46,39 @@ export const CustomSelectStyle = styled.div(props => ({
 
     li: {
         fontFamily: 'main !important'
+    },
+    '@media screen and (max-width: 450px)': {
+        label: {
+            fontSize: '.8rem'
+        },
+        input: {
+            fontSize: '.8rem',
+            padding: '8px 15px'
+        },
+        '& .MuiFormLabel-filled': {
+            fontSize: '.9rem',
+            right: '10px',
+            top: '-4px'
+        },
+        '& .Mui-focused': {
+            fontSize: '.9rem',
+            label: {
+                top: '-4px',
+                right: '10px'
+            }
+        },
+        '& .MuiAutocomplete-endAdornment': {
+            fontSize: '.9rem',
+            top: '0px',
+            button: {
+                svg: {
+                    width: '15px'
+                }
+            }
+        },
+        li: {
+            fontSize: '.8rem',
+            minHeight: '30px !important'
+        }
     }
 }));

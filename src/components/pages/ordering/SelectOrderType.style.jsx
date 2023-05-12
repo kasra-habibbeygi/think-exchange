@@ -20,7 +20,7 @@ export const SelectOrderTypeStyle = styled.div(props => ({
     '& .container': {
         display: 'flex',
 
-        gap: '20px'
+        gap: '10px'
     },
 
     '@media screen and (max-width: 1210px)': {
@@ -30,7 +30,7 @@ export const SelectOrderTypeStyle = styled.div(props => ({
     '@media screen and (max-width: 620px)': {
         '& .container': {
             flexDirection: 'column',
-            gap: '40px'
+            gap: '30px'
         }
     },
     '@media screen and (max-width: 450px)': {

@@ -24,5 +24,11 @@ export const ChangePasswordStyle = styled.div(props => ({
         width: '100%',
         display: 'flex',
         gap: '20px'
+    },
+    '@media screen and (max-width: 450px)': {
+        h2: {
+            fontSize: '1rem',
+            marginBottom: '20px'
+        }
     }
 }));

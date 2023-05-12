@@ -3,7 +3,7 @@
 import styled from '@emotion/styled';
 
 export const PersonalInformationStyle = styled.div(props => ({
-    width: '73%',
+    width: '68%',
     minHeight: '400px',
     background: props.theme.colors.white,
     boxShadow: props.theme.boxShadow,
@@ -21,5 +21,20 @@ export const PersonalInformationStyle = styled.div(props => ({
         width: '100%',
         display: 'flex',
         gap: '20px'
+    },
+    '@media screen and (max-width: 1210px)': {
+        width: '100%'
+    },
+    '@media screen and (max-width: 620px)': {
+        '& .formBox': {
+            flexDirection: 'column',
+            gap: '0px'
+        }
+    },
+    '@media screen and (max-width: 450px)': {
+        h2: {
+            fontSize: '1rem',
+            marginBottom: '20px'
+        }
     }
 }));

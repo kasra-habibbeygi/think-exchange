@@ -14,7 +14,7 @@ export const AttachFileStyle = styled.div(props => ({
 
     h2: {
         fontSize: '1.2rem',
-        marginBottom: '20px'
+        marginBottom: '40px'
     },
 
     '& .upload': {
@@ -28,6 +28,15 @@ export const AttachFileStyle = styled.div(props => ({
         p: {
             fontSize: '1rem',
             marginTop: '20px'
+        }
+    },
+    '@media screen and (max-width: 1210px)': {
+        marginTop: '0px'
+    },
+    '@media screen and (max-width: 450px)': {
+        h2: {
+            fontSize: '1rem',
+            marginBottom: '20px'
         }
     }
 }));

@@ -30,5 +30,26 @@ export const LogoutModalStyle = styled.div(props => ({
                 background: props.theme.colors.error
             }
         }
+    },
+
+    '@media screen and (max-width: 550px)': {
+        h2: {
+            fontSize: '1.2rem'
+        }
+    },
+    '@media screen and (max-width: 450px)': {
+        '& .modalBox': {
+            padding: '20px 40px',
+            h2: {
+                fontSize: '1rem'
+            },
+            '& .btnBox': {
+                button: {
+                    marginTop: '20px',
+                    fontSize: '0.8rem',
+                    padding: '2px 0px'
+                }
+            }
+        }
     }
 }));

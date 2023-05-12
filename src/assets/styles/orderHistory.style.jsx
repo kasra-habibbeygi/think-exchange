@@ -5,5 +5,16 @@ export const OrderHistoryStyle = styled.div(props => ({
     display: 'flex',
     justifyContent: 'space-between',
     marginTop: '20px',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    '@media screen and (max-width: 1210px)': {
+        flexDirection: 'column'
+    },
+    '@media screen and (max-width: 450px)': {
+        padding: '20px 20px',
+
+        h2: {
+            fontSize: '1rem',
+            marginBottom: '20px'
+        }
+    }
 }));
