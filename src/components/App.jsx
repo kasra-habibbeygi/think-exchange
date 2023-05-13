@@ -12,6 +12,8 @@ import Account from '../pages/Account';
 import Dashboard from '../pages/Dashboard';
 import OrderHistory from '../pages/OrderHistory';
 import Ordering from '../pages/Ordering';
+import Login from '../pages/Login';
+import Register from '../pages/Register';
 
 function App() {
     const themeConfig = createTheme(getDesignTokens('light'));
@@ -25,6 +27,8 @@ function App() {
                     <Route path='/order-history' element={<OrderHistory />} />
                     <Route path='/ordering' element={<Ordering />} />
                     <Route path='/*' element={<Navigate to='/dashboard' />} />
+                    <Route path='/register' element={<Register />} />
+                    <Route path='/login' element={<Login />} />
                 </Routes>
             </LayoutProvider>
         </ThemeProvider>
