@@ -17,6 +17,8 @@ export const CustomButtonStyle = styled.div(props => ({
                 ? `${props.theme.colors.white}`
                 : props.background === 'garadient'
                 ? `${props.theme.garadient}`
+                : props.active === 'active'
+                ? `${props.theme.garadient}`
                 : '',
         color:
             props.fontcolor === 'white'
