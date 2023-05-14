@@ -25,15 +25,18 @@ export const LoginStyle = styled.div(props => ({
 
     '& .changeBtn': {
         display: 'flex',
-        justifyContent: 'space-between',
+        gap: '10px',
         alignItems: 'center',
         background: props.theme.colors.white,
         padding: '5px',
         borderRadius: '12px',
         width: '350px',
         marginBottom: '20px',
+        a: {
+            width: '100%'
+        },
         button: {
-            width: '165px'
+            width: '100%'
         }
     },
 
@@ -76,6 +79,52 @@ export const LoginStyle = styled.div(props => ({
             a: {
                 color: props.theme.colors.blue
             }
+        }
+    },
+
+    '@media screen and (max-width: 730px)': {
+        '& .changeBtn': {
+            width: '350px',
+            marginBottom: '20px',
+            button: {
+                fontSize: '.8rem',
+                width: '100%',
+                padding: '7px 0px !important'
+            }
+        },
+
+        '& .MuiFormControl-root': {
+            marginBottom: '20px !important'
+        },
+
+        '& .login': {
+            padding: '20px',
+            width: '400px',
+            img: {
+                width: '40px',
+                marginBottom: '10px'
+            },
+            h2: {
+                marginBottom: '10px',
+                fontSize: '1rem'
+            },
+            small: {
+                textAlign: 'center',
+                marginBottom: '20px',
+                fontSize: '.8rem'
+            },
+            '& .textGroup': {
+                marginBottom: '20px'
+            }
+        }
+    },
+    '@media screen and (max-width: 450px)': {
+        '& .changeBtn': {
+            width: '300px'
+        },
+
+        '& .login': {
+            width: '310px'
         }
     }
 }));
