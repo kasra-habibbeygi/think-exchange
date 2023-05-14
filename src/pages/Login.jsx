@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 //style
@@ -10,7 +10,29 @@ import logo from '../assets/images/login-register/Logo.png';
 import CustomButton from '../components/form-group/CustomButton';
 import CustomInput from '../components/form-group/CustomInput';
 
+// APIs
+import { UserLogin } from '../api-requests/auth';
+
 const Login = () => {
+    const [inputValues, setInputValue] = useState({
+        email: '',
+        password: ''
+    });
+
+    const inputValueHandler = e => {
+        setInputValue({
+            ...inputValues,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const submitHandler = () => {
+        UserLogin(inputValues).then(res => {
+            console.log(res.data);
+            localStorage.setItem('adminToken', res.data.token);
+        });
+    };
+
     return (
         <LoginStyle image={image}>
             <div className='imageBlur'></div>
@@ -36,8 +58,20 @@ const Login = () => {
                     <small>برای ورود به حساب کاربری اطلاعات خود را وارد کنید</small>
                     <form>
                         <div className='formGroup'>
-                            <CustomInput label='ایمیل' type='email' />
-                            <CustomInput label='پسورد' type='password' />
+                            <CustomInput
+                                label='ایمیل'
+                                type='email'
+                                name='email'
+                                value={inputValues.email}
+                                valuehandler={inputValueHandler}
+                            />
+                            <CustomInput
+                                label='پسورد'
+                                type='password'
+                                name='password'
+                                value={inputValues.password}
+                                valuehandler={inputValueHandler}
+                            />
                         </div>
                         <div className='textGroup'>
                             <p>کلمه عبور خود را فراموش کرده اید؟</p>
@@ -50,6 +84,7 @@ const Login = () => {
                             variant='text'
                             radius='normal'
                             fontcolor='white'
+                            clickHandeler={submitHandler}
                         />
                     </form>
                 </div>

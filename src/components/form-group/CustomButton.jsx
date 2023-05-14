@@ -10,7 +10,7 @@ import { CustomButtonStyle } from './CustomButton.style';
 const CustomButton = ({ text, variant, background, radius, fontcolor, clickHandeler, children }) => {
     return (
         <CustomButtonStyle background={background} radius={radius} fontcolor={fontcolor} variant={variant}>
-            <Button variant={variant} onClick={clickHandeler} className='btnStyle'>
+            <Button variant={variant} onClick={() => clickHandeler && clickHandeler()} className='btnStyle'>
                 {text}
                 {children}
             </Button>
