@@ -7,6 +7,7 @@ export const AttachFileStyle = styled.div(props => ({
     background: props.theme.colors.white,
     boxShadow: props.theme.boxShadow,
     borderRadius: '28px',
+    marginTop: '20px',
     padding: '20px 30px',
     display: 'flex',
     flexDirection: 'column',

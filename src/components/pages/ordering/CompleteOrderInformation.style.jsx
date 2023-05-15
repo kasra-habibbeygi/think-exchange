@@ -11,6 +11,7 @@ export const CompleteOrderInformationStyle = styled.div(props => ({
     padding: '20px 30px',
     display: 'flex',
     flexDirection: 'column',
+    marginTop: '20px',
 
     h2: {
         fontSize: '1.2rem',
