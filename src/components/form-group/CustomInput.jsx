@@ -8,12 +8,12 @@ import { CustomInputStyle } from './CustomInput.style';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-const CustomInput = ({ label, type, id }) => {
+const CustomInput = ({ label, type, id, name, value, valuehandler }) => {
     return (
         <CustomInputStyle>
             <Box component='form' noValidate autoComplete='on'>
-                <TextField label={label} variant='outlined' type={type} id={id} />
-            </Box>{' '}
+                <TextField label={label} variant='outlined' type={type} id={id} name={name} value={value} onChange={e => valuehandler(e)} />
+            </Box>
         </CustomInputStyle>
     );
 };
