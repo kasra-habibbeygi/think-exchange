@@ -1,6 +1,10 @@
 /* eslint-disable camelcase */
+
+// librerys
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
+import { validator } from 'validator';
 
 //style
 import { RegisterStyle } from '../assets/styles/register.style';
@@ -28,6 +32,32 @@ const Register = () => {
         password_confirmation: ''
     });
 
+    const validatFrom = registerForm => {
+        if (!validator.isEmail(registerForm.email)) {
+            toast.error('ایمیل را به درستی وارد کنید');
+            return false;
+        } else if (validator.isEmpty(registerForm.last_name)) {
+            toast.error('نام خانوادگی خود را وارد کنید');
+            return false;
+        } else if (validator.isEmpty(registerForm.email)) {
+            toast.error('ایمیل خود را وارد کنید');
+            return false;
+        } else if (validator.isEmpty(registerForm.first_name)) {
+            toast.error('نام  خود را وارد کنید');
+            return false;
+        } else if (validator.isEmpty(registerForm.password)) {
+            toast.error('پسورد  خود را وارد کنید');
+            return false;
+        } else if (validator.isEmpty(registerForm.password_confirmation)) {
+            toast.error('تکرار پسورد  خود را وارد کنید');
+            return false;
+        } else if (!validator.equals(registerForm.password_confirmation, registerForm.password)) {
+            toast.error('پسورد با تکرار پسورد برابر نیست');
+            return false;
+        }
+        return true;
+    };
+
     const inputValueHandler = e => {
         setRegisterForm({
             ...registerForm,
@@ -36,13 +66,16 @@ const Register = () => {
     };
 
     const submitHandler = () => {
-        UserRegister(registerForm).then(res => {
-            console.log(res.data);
-            localStorage.setItem('adminToken', res.data.token);
-        });
+        if (!validatFrom()) {
+            // validatFrom();
+            console.log(1);
+        } else {
+            // UserRegister(registerForm).then(res => {
+            //     console.log(res.data);
+            //     localStorage.setItem('adminToken', res.data.token);
+            // });
+        }
     };
-
-    console.log(registerForm);
 
     return (
         <RegisterStyle image={image}>
