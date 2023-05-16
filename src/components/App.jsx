@@ -2,6 +2,7 @@ import React from 'react';
 import { ThemeProvider, createTheme } from '@mui/material';
 import { getDesignTokens } from '../configs/theme';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 
 // Assets
 import '../assets/styles/general.css';
@@ -20,6 +21,14 @@ function App() {
 
     return (
         <ThemeProvider theme={themeConfig}>
+            <Toaster
+                position='bottom-left'
+                containerStyle={{
+                    zIndex: 9999,
+                    textAlign: 'right',
+                    direction: 'rtl'
+                }}
+            />
             <Routes>
                 <Route path='/dashboard' element={<Dashboard />} />
                 <Route path='/account' element={<Account />} />
