@@ -9,6 +9,19 @@ import LayoutProvider from '../components/layouts/LayoutProvider';
 //styles
 import { AccountStyle } from '../assets/styles/account.style';
 
+// const [formData, setFromData] = useState({
+//     name: '',
+//     family: '',
+//     email: '',
+//     phoneNumber: '',
+//     landline: '',
+//     nationalCode: '',
+//     explain: '',
+//     nationalCartFile: '',
+//     newPassword: '',
+//     confirmPassword: ''
+// });
+
 const Account = () => {
     return (
         <LayoutProvider>

@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable camelcase */
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 //style
@@ -15,7 +16,34 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
+//api
+import { UserRegister } from '../api-requests/auth';
+
 const Register = () => {
+    const [registerForm, setRegisterForm] = useState({
+        email: '',
+        last_name: '',
+        first_name: '',
+        password: '',
+        password_confirmation: ''
+    });
+
+    const inputValueHandler = e => {
+        setRegisterForm({
+            ...registerForm,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const submitHandler = () => {
+        UserRegister(registerForm).then(res => {
+            console.log(res.data);
+            localStorage.setItem('adminToken', res.data.token);
+        });
+    };
+
+    console.log(registerForm);
+
     return (
         <RegisterStyle image={image}>
             <div className='imageBlur'></div>
@@ -48,13 +76,37 @@ const Register = () => {
                     <small>برای ثبت نام در تینک اکسچنج اطلاعات خود را وارد کنید</small>
                     <form>
                         <div className='formGroup'>
-                            <CustomInput label='نام' type='text' />
-                            <CustomInput label='نام خانوادگی' type='text' />
+                            <CustomInput
+                                label='نام'
+                                type='text'
+                                valuehandler={inputValueHandler}
+                                name='first_name'
+                                value={registerForm.first_name}
+                            />
+                            <CustomInput
+                                label='نام خانوادگی'
+                                type='text'
+                                valuehandler={inputValueHandler}
+                                name='last_name'
+                                value={registerForm.last_name}
+                            />
                         </div>
-                        <CustomInput label='ایمیل' type='email' />
+                        <CustomInput label='ایمیل' type='email' valuehandler={inputValueHandler} name='email' value={registerForm.email} />
                         <div className='formGroup'>
-                            <CustomInput label='کلمه عبور' type='password' />
-                            <CustomInput label='تکرار کلمه عبور' type='password' />
+                            <CustomInput
+                                label='کلمه عبور'
+                                type='password'
+                                valuehandler={inputValueHandler}
+                                name='password'
+                                value={registerForm.password}
+                            />
+                            <CustomInput
+                                label='تکرار کلمه عبور'
+                                type='password'
+                                valuehandler={inputValueHandler}
+                                name='password_confirmation'
+                                value={registerForm.password_confirmation}
+                            />
                         </div>
                         <FormGroup>
                             <FormControlLabel required control={<Checkbox />} label='با تمامی قوانین و مقررات صرافی موافقم' />
@@ -67,6 +119,7 @@ const Register = () => {
                             variant='text'
                             radius='normal'
                             fontcolor='white'
+                            clickHandeler={submitHandler}
                         />
                     </form>
                 </div>
