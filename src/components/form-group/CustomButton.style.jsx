@@ -5,7 +5,15 @@ import styled from '@emotion/styled';
 export const CustomButtonStyle = styled.div(props => ({
     textAlign: 'left',
 
+    '& .content_field': {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '5px'
+    },
+
     button: {
+        minHeight: '45px',
         borderColor: props.variant === 'outlined' && '#bdbdbd',
         background:
             props.background === 'error'

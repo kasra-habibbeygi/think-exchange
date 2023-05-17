@@ -18,6 +18,7 @@ import { UserLogin } from '../api-requests/auth';
 const Login = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [loader, setLoader] = useState(false);
     const [inputValues, setInputValue] = useState({
         email: '',
         password: ''
@@ -31,11 +32,16 @@ const Login = () => {
     };
 
     const submitHandler = () => {
-        UserLogin(inputValues).then(res => {
-            localStorage.setItem('userToken', res.data.token);
-            dispatch(LoginStatusHandler(true));
-            navigate('/dashboard');
-        });
+        setLoader(true);
+        UserLogin(inputValues)
+            .then(res => {
+                localStorage.setItem('userToken', res.data.token);
+                dispatch(LoginStatusHandler(true));
+                navigate('/dashboard');
+            })
+            .finally(() => {
+                setLoader(false);
+            });
     };
 
     return (
@@ -90,6 +96,7 @@ const Login = () => {
                             radius='normal'
                             fontcolor='white'
                             clickHandeler={submitHandler}
+                            loader={loader}
                         />
                     </form>
                 </div>

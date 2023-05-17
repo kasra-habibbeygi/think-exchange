@@ -26,6 +26,7 @@ import { UserRegister } from '../api-requests/auth';
 const Register = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [loader, setLoader] = useState(false);
     const [registerForm, setRegisterForm] = useState({
         email: '',
         last_name: '',
@@ -72,14 +73,16 @@ const Register = () => {
 
     const submitHandler = () => {
         if (validatFrom()) {
+            setLoader(true);
             UserRegister(registerForm)
                 .then(res => {
                     localStorage.setItem('userToken', res.data.token);
                     dispatch(LoginStatusHandler(true));
                     navigate('/dashboard');
+                    toast.success('ثبت نام شما با موفقیت انجام شد');
                 })
-                .then(() => {
-                    toast.success('با موفقیت ثبت نام کردید');
+                .finally(() => {
+                    setLoader(false);
                 });
         }
     };
@@ -160,6 +163,7 @@ const Register = () => {
                             radius='normal'
                             fontcolor='white'
                             clickHandeler={submitHandler}
+                            loader={loader}
                         />
                     </form>
                 </div>
