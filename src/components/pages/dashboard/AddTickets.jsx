@@ -41,6 +41,66 @@ const row = [
         name: 'پرداختی مسکن',
         date: '1402/01/11',
         status: 'موفق'
+    },
+    {
+        id: 4,
+        name: 'پرداختی مسکن',
+        date: '1402/01/11',
+        status: 'موفق'
+    },
+    {
+        id: 4,
+        name: 'پرداختی مسکن',
+        date: '1402/01/11',
+        status: 'موفق'
+    },
+    {
+        id: 4,
+        name: 'پرداختی مسکن',
+        date: '1402/01/11',
+        status: 'موفق'
+    },
+    {
+        id: 4,
+        name: 'پرداختی مسکن',
+        date: '1402/01/11',
+        status: 'موفق'
+    },
+    {
+        id: 4,
+        name: 'پرداختی مسکن',
+        date: '1402/01/11',
+        status: 'موفق'
+    },
+    {
+        id: 4,
+        name: 'پرداختی مسکن',
+        date: '1402/01/11',
+        status: 'موفق'
+    },
+    {
+        id: 4,
+        name: 'پرداختی مسکن',
+        date: '1402/01/11',
+        status: 'موفق'
+    },
+    {
+        id: 4,
+        name: 'پرداختی مسکن',
+        date: '1402/01/11',
+        status: 'موفق'
+    },
+    {
+        id: 4,
+        name: 'پرداختی مسکن',
+        date: '1402/01/11',
+        status: 'موفق'
+    },
+    {
+        id: 4,
+        name: 'پرداختی مسکن',
+        date: '1402/01/11',
+        status: 'موفق'
     }
 ];
 
@@ -63,37 +123,46 @@ const AddTickets = () => {
         <>
             <AddTicketsStyle>
                 <h2>ثبت تیکت</h2>
-                <TableTemplate TableHeader={TableHeader}>
-                    {row.map(row => (
-                        <TableRow key={row.id}>
-                            <TableCell scope='row'>
-                                {row.status === 'مشاهده پاسخ' ? (
-                                    <div className='circleBox'>
-                                        <span className='circle'></span>
-                                        <span>{row.name}</span>
-                                    </div>
-                                ) : (
-                                    `${row.name}`
-                                )}
-                            </TableCell>
-                            <TableCell>{row.date}</TableCell>
-                            <TableCell>
-                                {row.status !== 'مشاهده پاسخ' ? (
-                                    <CustomButton text={row.status} variant='text' background='error' radius='normal' fontcolor='white' />
-                                ) : (
-                                    <CustomButton
-                                        clickHandeler={() => setSeeAnsewrState(true)}
-                                        text={row.status}
-                                        variant='text'
-                                        background='noColor'
-                                        radius='normal'
-                                        fontcolor='error'
-                                    />
-                                )}
-                            </TableCell>
-                        </TableRow>
-                    ))}
-                </TableTemplate>
+                <div className='table_field'>
+                    <TableTemplate TableHeader={TableHeader}>
+                        {row.map(row => (
+                            <TableRow key={row.id}>
+                                <TableCell scope='row'>
+                                    {row.status === 'مشاهده پاسخ' ? (
+                                        <div className='circleBox'>
+                                            <span className='circle'></span>
+                                            <span>{row.name}</span>
+                                        </div>
+                                    ) : (
+                                        `${row.name}`
+                                    )}
+                                </TableCell>
+                                <TableCell>{row.date}</TableCell>
+                                <TableCell>
+                                    {row.status !== 'مشاهده پاسخ' ? (
+                                        <CustomButton
+                                            text={row.status}
+                                            variant='text'
+                                            background='error'
+                                            radius='normal'
+                                            fontcolor='white'
+                                        />
+                                    ) : (
+                                        <CustomButton
+                                            clickHandeler={() => setSeeAnsewrState(true)}
+                                            text={row.status}
+                                            variant='text'
+                                            background='noColor'
+                                            radius='normal'
+                                            fontcolor='error'
+                                            disabled
+                                        />
+                                    )}
+                                </TableCell>
+                            </TableRow>
+                        ))}
+                    </TableTemplate>
+                </div>
                 <div className='btn'>
                     <CustomButton
                         className='btn'

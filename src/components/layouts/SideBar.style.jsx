@@ -1,6 +1,17 @@
 import styled from '@emotion/styled';
 
 export const SideBarStyle = styled.aside(props => ({
+    '& .main_field': {
+        height: '100%',
+        overflowY: 'auto',
+        overflowX: 'hidden',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexDirection: 'column',
+        padding: '0 3px'
+    },
+
     '& .SideBar': {
         position: 'fixed',
         top: '50px',
@@ -15,7 +26,8 @@ export const SideBarStyle = styled.aside(props => ({
         padding: '40px 40px 40px 20px',
         fontSize: '.9rem',
         height: 'calc(100vh - 100px)',
-        zIndex: '100'
+        zIndex: '100',
+        transition: 'all 0.8s cubic-bezier(0, 0, 0.2, 1.11) 0s'
     },
 
     '& .container': {
@@ -26,7 +38,9 @@ export const SideBarStyle = styled.aside(props => ({
         zIndex: '99',
         top: '0px',
         left: '0px',
-        display: 'none'
+        opacity: '0',
+        pointerEvents: 'none',
+        transition: 'all 0.8s cubic-bezier(0, 0, 0.2, 1.11) 0s'
     },
 
     '& .hambergureMenu': {
@@ -39,6 +53,7 @@ export const SideBarStyle = styled.aside(props => ({
         background: 'transparent',
         lineHeight: '0px',
         borderRadius: '50%',
+
         '& .icon': {
             width: '30px',
             height: '30px',
@@ -52,17 +67,26 @@ export const SideBarStyle = styled.aside(props => ({
         overflow: 'auto',
 
         li: {
-            marginBottom: '10px',
-            padding: '10px  15px',
-            borderRadius: '12px',
-            transition: 'all .1s linear',
-            '&:hover': {
-                background: props.theme.colors.gray
-            },
             a: {
                 display: 'flex',
                 alignItems: 'center',
-                color: props.theme.colors.black
+                color: props.theme.colors.black,
+                marginBottom: '10px',
+                padding: '10px  15px',
+                borderRadius: '12px',
+                transition: 'all .1s linear',
+
+                '&.active': {
+                    color: '#4A68FF',
+
+                    img: {
+                        filter: 'invert(32%) sepia(81%) saturate(1243%) hue-rotate(211deg) brightness(105%) contrast(104%)'
+                    }
+                },
+
+                '&:hover': {
+                    background: props.theme.colors.gray
+                }
             },
 
             span: {
@@ -75,6 +99,7 @@ export const SideBarStyle = styled.aside(props => ({
     '& .callBox': {
         padding: '10px  15px',
         marginTop: '20px',
+        minWidth: 'max-content',
 
         '& .call': {
             display: 'flex',
@@ -106,11 +131,6 @@ export const SideBarStyle = styled.aside(props => ({
         }
     },
 
-    '& .btn': {
-        position: 'absolute',
-        bottom: '30px'
-    },
-
     '@media screen and (max-width: 1350px)': {
         '& .SideBar': {
             height: 'calc(100vh - 40px)',
@@ -132,15 +152,16 @@ export const SideBarStyle = styled.aside(props => ({
         },
 
         '& .SideBar': {
-            display: props.menu ? 'block' : 'none',
+            right: props.menu ? '0' : '-300px',
             position: 'fixed',
             borderRadius: '20px 0px 0px 20px',
             height: '100vh',
-            top: '0px',
-            right: '0px'
+            top: '0px'
         },
+
         '& .container': {
-            display: props.menu ? 'block' : 'none'
+            opacity: props.menu ? '1' : '0',
+            pointerEvents: props.menu ? 'initial' : 'none'
         }
     },
     '@media screen and (max-width: 450px)': {

@@ -26,6 +26,61 @@ const row = [
         id: 3,
         name: 'پرداختی مسکن',
         status: 'ناموفق'
+    },
+    {
+        id: 3,
+        name: 'پرداختی مسکن',
+        status: 'ناموفق'
+    },
+    {
+        id: 3,
+        name: 'پرداختی مسکن',
+        status: 'ناموفق'
+    },
+    {
+        id: 3,
+        name: 'پرداختی مسکن',
+        status: 'ناموفق'
+    },
+    {
+        id: 3,
+        name: 'پرداختی مسکن',
+        status: 'ناموفق'
+    },
+    {
+        id: 3,
+        name: 'پرداختی مسکن',
+        status: 'ناموفق'
+    },
+    {
+        id: 3,
+        name: 'پرداختی مسکن',
+        status: 'ناموفق'
+    },
+    {
+        id: 3,
+        name: 'پرداختی مسکن',
+        status: 'ناموفق'
+    },
+    {
+        id: 3,
+        name: 'پرداختی مسکن',
+        status: 'ناموفق'
+    },
+    {
+        id: 3,
+        name: 'پرداختی مسکن',
+        status: 'ناموفق'
+    },
+    {
+        id: 3,
+        name: 'پرداختی مسکن',
+        status: 'ناموفق'
+    },
+    {
+        id: 3,
+        name: 'پرداختی مسکن',
+        status: 'ناموفق'
     }
 ];
 
@@ -35,16 +90,18 @@ const Refund = () => {
     return (
         <RefundStyles>
             <h2>لیست درخواست های ریفاند</h2>
-            <TableTemplate TableHeader={TableHeader}>
-                {row.map(row => (
-                    <TableRow key={row.id}>
-                        <TableCell scope='row'>{row.name}</TableCell>
-                        <TableCell>
-                            <CustomButton text={row.status} variant='text' background='warning' radius='normal' fontcolor='white' />
-                        </TableCell>
-                    </TableRow>
-                ))}
-            </TableTemplate>
+            <div className='table_field'>
+                <TableTemplate TableHeader={TableHeader}>
+                    {row.map(row => (
+                        <TableRow key={row.id}>
+                            <TableCell scope='row'>{row.name}</TableCell>
+                            <TableCell>
+                                <CustomButton text={row.status} variant='text' background='warning' radius='normal' fontcolor='white' />
+                            </TableCell>
+                        </TableRow>
+                    ))}
+                </TableTemplate>
+            </div>
         </RefundStyles>
     );
 };

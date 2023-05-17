@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 
 export const CustomButtonStyle = styled.div(props => ({
     textAlign: 'left',
+
     button: {
         borderColor: props.variant === 'outlined' && '#bdbdbd',
         background:
@@ -34,8 +35,20 @@ export const CustomButtonStyle = styled.div(props => ({
         '&:hover': {
             color: props.background === 'garadient' ? props.theme.colors.white : props.theme.colors.black,
             borderColor: props.variant === 'outlined' && '#bdbdbd'
+        },
+
+        '&[disabled]': {
+            color:
+                props.fontcolor === 'white'
+                    ? `${props.theme.colors.white}`
+                    : props.fontcolor === 'black'
+                    ? `${props.theme.colors.black}`
+                    : props.fontcolor === 'error'
+                    ? `${props.theme.colors.error}`
+                    : ''
         }
     },
+
     '@media screen and (max-width: 450px)': {
         button: {
             padding: props.background === 'garadient' && '5px 20px !important',

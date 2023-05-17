@@ -3,14 +3,20 @@ import styled from '@emotion/styled';
 
 export const AddTicketsStyle = styled.div(props => ({
     width: '43%',
-    minHeight: '400px',
     background: props.theme.colors.white,
     boxShadow: props.theme.boxShadow,
     borderRadius: '28px',
     padding: '20px 30px',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
+    maxHeight: '500px',
+    height: 'max-content',
+
+    '& .table_field': {
+        overflow: 'auto',
+        maxHeight: '500px',
+        padding: '0 20px'
+    },
 
     td: {
         div: {
@@ -26,6 +32,7 @@ export const AddTicketsStyle = styled.div(props => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+
         '& .circle': {
             borderRadius: '50%',
             width: '10px',

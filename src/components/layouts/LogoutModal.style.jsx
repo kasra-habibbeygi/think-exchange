@@ -13,17 +13,19 @@ export const LogoutModalStyle = styled.div(props => ({
         flexDirection: 'column',
         alignItems: 'center',
         color: 'props.theme.colors.black',
+
         button: {
             color: props.theme.colors.white,
             textAlign: 'center',
             justifyContent: 'center',
-            padding: '4px 0px',
+            padding: '5px 30px',
             marginTop: '40px',
             borderRadius: '10px',
+            fontSize: '1rem',
 
             '&:first-of-type': {
                 background: props.theme.colors.success,
-                marginLeft: '20px'
+                marginLeft: '10px'
             },
 
             '&:last-of-type': {
@@ -37,12 +39,15 @@ export const LogoutModalStyle = styled.div(props => ({
             fontSize: '1.2rem'
         }
     },
+
     '@media screen and (max-width: 450px)': {
         '& .modalBox': {
             padding: '20px 40px',
+
             h2: {
                 fontSize: '1rem'
             },
+
             '& .btnBox': {
                 button: {
                     marginTop: '20px',

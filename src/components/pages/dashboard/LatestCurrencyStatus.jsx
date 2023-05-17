@@ -33,15 +33,11 @@ const LatestCurrencyStatus = () => {
                 }}
                 className='mySwiper'
             >
-                {getCorrency.length ? (
-                    getCorrency.map(item => (
-                        <SwiperSlide className='Slide' key={item.id}>
-                            <SliderCard data={item} />
-                        </SwiperSlide>
-                    ))
-                ) : (
-                    <h1>Lodaing...</h1>
-                )}
+                {getCorrency?.map(item => (
+                    <SwiperSlide className='Slide' key={item.id}>
+                        <SliderCard data={item} />
+                    </SwiperSlide>
+                ))}
             </Swiper>
         </LatestCurrencyStatusStyle>
     );

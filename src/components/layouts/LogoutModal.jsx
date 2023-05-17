@@ -1,5 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { LoginStatusHandler } from '../../state-manager/reducer/userInfo';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 //style
 import { LogoutModalStyle } from './LogoutModal.style';
@@ -7,24 +10,30 @@ import { LogoutModalStyle } from './LogoutModal.style';
 //mui
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
-
 import Slide from '@mui/material/Slide';
+
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction='up' ref={ref} {...props} />;
 });
 
 const LogoutModal = ({ state, setState }) => {
-    const handleClose = () => {
-        setState(false);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const logoutHandler = () => {
+        localStorage.removeItem('userToken');
+        dispatch(LoginStatusHandler(false));
+        navigate('/login');
     };
+
     return (
         <LogoutModalStyle>
-            <Dialog open={state} TransitionComponent={Transition} keepMounted onClose={handleClose} disablePortal>
+            <Dialog open={state} TransitionComponent={Transition} keepMounted onClose={() => setState(false)} disablePortal>
                 <div className='modalBox'>
                     <h2>آیا میخواهید خارج شوید؟</h2>
                     <div className='btnBox'>
-                        <Button onClick={handleClose}>بله</Button>
-                        <Button onClick={handleClose}>خیر</Button>
+                        <Button onClick={logoutHandler}>بله</Button>
+                        <Button onClick={() => setState(false)}>خیر</Button>
                     </div>
                 </div>
             </Dialog>

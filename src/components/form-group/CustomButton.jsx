@@ -7,10 +7,10 @@ import Button from '@mui/material/Button';
 // styles
 import { CustomButtonStyle } from './CustomButton.style';
 
-const CustomButton = ({ text, variant, background, radius, fontcolor, clickHandeler, children, type }) => {
+const CustomButton = ({ text, variant, background, radius, fontcolor, clickHandeler, children, type, disabled = false }) => {
     return (
         <CustomButtonStyle background={background} radius={radius} fontcolor={fontcolor} variant={variant}>
-            <Button variant={variant} onClick={() => clickHandeler && clickHandeler()} className='btnStyle' type={type}>
+            <Button variant={variant} onClick={() => clickHandeler && clickHandeler()} className='btnStyle' type={type} disabled={disabled}>
                 {text}
                 {children}
             </Button>

@@ -9,7 +9,14 @@ export const ListOrderingStyle = styled.div(props => ({
     padding: '20px 30px',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
+    maxHeight: '500px',
+    height: 'max-content',
+
+    '& .table_field': {
+        overflow: 'auto',
+        maxHeight: '500px',
+        padding: '0 20px'
+    },
 
     h2: {
         fontSize: '1.2rem',

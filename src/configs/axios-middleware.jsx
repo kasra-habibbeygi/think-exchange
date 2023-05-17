@@ -15,7 +15,7 @@ instance.interceptors.request.use(async config => {
     }
 
     if (localStorage.getItem('userToken') !== null) {
-        config.headers.Authorization = `Token ${localStorage.getItem('userToken')}`;
+        config.headers.Authorization = `Bearer ${localStorage.getItem('userToken')}`;
     }
 
     return config;

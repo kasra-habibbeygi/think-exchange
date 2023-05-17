@@ -30,6 +30,78 @@ const row = [
         name: 'پرداختی مسکن',
         date: '3252',
         status: 'ناموفق'
+    },
+    {
+        id: 3,
+        name: 'پرداختی مسکن',
+        date: '3252',
+        status: 'ناموفق'
+    },
+    {
+        id: 3,
+        name: 'پرداختی مسکن',
+        date: '3252',
+        status: 'ناموفق'
+    },
+    {
+        id: 3,
+        name: 'پرداختی مسکن',
+        date: '3252',
+        status: 'ناموفق'
+    },
+    {
+        id: 3,
+        name: 'پرداختی مسکن',
+        date: '3252',
+        status: 'ناموفق'
+    },
+    {
+        id: 3,
+        name: 'پرداختی مسکن',
+        date: '3252',
+        status: 'ناموفق'
+    },
+    {
+        id: 3,
+        name: 'پرداختی مسکن',
+        date: '3252',
+        status: 'ناموفق'
+    },
+    {
+        id: 3,
+        name: 'پرداختی مسکن',
+        date: '3252',
+        status: 'ناموفق'
+    },
+    {
+        id: 3,
+        name: 'پرداختی مسکن',
+        date: '3252',
+        status: 'ناموفق'
+    },
+    {
+        id: 3,
+        name: 'پرداختی مسکن',
+        date: '3252',
+        status: 'ناموفق'
+    },
+    {
+        id: 3,
+        name: 'پرداختی مسکن',
+        date: '3252',
+        status: 'ناموفق'
+    },
+    {
+        id: 3,
+        name: 'پرداختی مسکن',
+        date: '3252',
+        status: 'ناموفق'
+    },
+    {
+        id: 3,
+        name: 'پرداختی مسکن',
+        date: '3252',
+        status: 'ناموفق'
     }
 ];
 
@@ -39,17 +111,26 @@ const ListOrdering = () => {
     return (
         <ListOrderingStyle>
             <h2>فهرست سفارش ها</h2>
-            <TableTemplate TableHeader={TableHeader}>
-                {row.map(row => (
-                    <TableRow key={row.id}>
-                        <TableCell scope='row'>{row.name}</TableCell>
-                        <TableCell>{row.date}</TableCell>
-                        <TableCell>
-                            <CustomButton text={row.status} variant='text' background='warning' radius='normal' fontcolor='white' />
-                        </TableCell>
-                    </TableRow>
-                ))}
-            </TableTemplate>
+            <div className='table_field'>
+                <TableTemplate TableHeader={TableHeader}>
+                    {row.map(row => (
+                        <TableRow key={row.id}>
+                            <TableCell scope='row'>{row.name}</TableCell>
+                            <TableCell>{row.date}</TableCell>
+                            <TableCell>
+                                <CustomButton
+                                    text={row.status}
+                                    variant='text'
+                                    background='success'
+                                    radius='normal'
+                                    fontcolor='white'
+                                    disabled
+                                />
+                            </TableCell>
+                        </TableRow>
+                    ))}
+                </TableTemplate>
+            </div>
             <Link to='/ordering'>
                 <CustomButton text='ثبت سفارش' variant='text' background='garadient' radius='normal' fontcolor='white' />
             </Link>

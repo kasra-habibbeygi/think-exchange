@@ -13,12 +13,18 @@ export const SliderCardStyle = styled.div(props => ({
     '& .currencyName': {
         display: 'flex',
         justifyContent: 'space-between',
+
         img: {
             width: '32px',
             height: '32px'
         },
 
         '& .nameBox': {
+            textAlign: 'right',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '5px',
+
             '& p:first-of-type': {
                 color: '#727A89',
                 marginBottom: '-8px'

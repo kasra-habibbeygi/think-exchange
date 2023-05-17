@@ -11,6 +11,9 @@ import { SliderCardStyle } from './SliderCard.style';
 //components
 import CustomButton from '../../form-group/CustomButton';
 
+// Tools
+import Tools from '../../../utils/tools';
+
 const SliderCard = ({ data }) => {
     return (
         <SliderCardStyle status={data.change_rate.includes('-')}>
@@ -19,7 +22,7 @@ const SliderCard = ({ data }) => {
                     <p>{data.iso_name}</p>
                     <p>{data.name}</p>
                 </div>
-                <img alt='currency' src={data.logo} />
+                <img alt='currency' src={`https://thinkexchange.net/service/storage/${data.logo}`} />
             </div>
             <div className='price'>
                 <CustomButton text='فروش' variant='text' background='white' radius='normal' fontcolor='black' />
@@ -30,7 +33,7 @@ const SliderCard = ({ data }) => {
 
                         {data.change_rate === '0' ? <span>0%</span> : <span>{data.change_rate}</span>}
                     </div>
-                    <h3>{data.price}</h3>
+                    <h3>{Tools.addCommaInNumbers(data.price)}</h3>
                 </div>
             </div>
         </SliderCardStyle>
