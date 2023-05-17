@@ -29,7 +29,7 @@ export const SliderCardStyle = styled.div(props => ({
     '& .price': {
         display: 'flex',
         justifyContent: 'space-between',
-        color: props.status === 'up' ? props.theme.colors.success : props.status === 'down' ? props.theme.colors.error : '#727A89',
+        color: !props.status ? props.theme.colors.success : props.status ? props.theme.colors.error : '#727A89',
         alignItems: 'flex-end',
 
         button: {

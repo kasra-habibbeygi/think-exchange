@@ -11,10 +11,9 @@ import { SliderCardStyle } from './SliderCard.style';
 //components
 import CustomButton from '../../form-group/CustomButton';
 
-const SliderCard = ({ data, status }) => {
-    console.log(data.logo);
+const SliderCard = ({ data }) => {
     return (
-        <SliderCardStyle status={status}>
+        <SliderCardStyle status={data.change_rate.includes('-')}>
             <div className='currencyName'>
                 <div className='nameBox'>
                     <p>{data.iso_name}</p>
@@ -27,15 +26,9 @@ const SliderCard = ({ data, status }) => {
 
                 <div className='priceBox'>
                     <div className='percentage'>
-                        {status === 'up' ? (
-                            <img alt='currency' src={upArrow} />
-                        ) : status === 'down' ? (
-                            <img alt='currency' src={DownArrow} />
-                        ) : (
-                            ''
-                        )}
+                        {!data.change_rate.includes('-') ? <img alt='currency' src={upArrow} /> : <img alt='currency' src={DownArrow} />}
 
-                        {status === 'normal' ? <span>0%</span> : <span>{data.change_rate}</span>}
+                        {data.change_rate === '0' ? <span>0%</span> : <span>{data.change_rate}</span>}
                     </div>
                     <h3>{data.price}</h3>
                 </div>

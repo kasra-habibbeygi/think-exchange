@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 //components
 import TableTemplate from '../../template/TableTemplate';
@@ -12,6 +12,9 @@ import { AddTicketsStyle } from './AddTickets.style';
 //mui
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
+
+//api
+import { GetAllTickets } from '../../../api-requests/ticket';
 
 const TableHeader = ['عنوان', 'تاریخ ثبت', 'وضعیت'];
 const row = [
@@ -44,6 +47,16 @@ const row = [
 const AddTickets = () => {
     const [AddNewTicketsModalState, setAddNewTicketsModalState] = useState(false);
     const [SeeAnsewrState, setSeeAnsewrState] = useState(false);
+    const [getTicketTabelRows, setGetTicketTabelRows] = useState([]);
+
+    console.log(getTicketTabelRows);
+
+    useEffect(() => {
+        GetAllTickets().then(res => {
+            setGetTicketTabelRows(res.data);
+        });
+    }, []);
+
     return (
         <>
             <AddTicketsStyle>
