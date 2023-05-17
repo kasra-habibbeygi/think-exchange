@@ -1,6 +1,5 @@
 import Axios from '../configs/axios-middleware';
 
-// Manager
 export const GetAllTickets = async () => {
     return Axios.get('tickets/all').then(res => res.data);
 };

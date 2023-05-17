@@ -53,11 +53,8 @@ const AddNewTicketsModal = ({ state, setState }) => {
     };
 
     const addTicketsHandeler = () => {
-        console.log(1);
         if (validatFrom()) {
-            console.log(2);
             PostNewTickets(formData).then(() => {
-                console.log(3);
                 setState(false);
                 setSuccessAddTicketState(true);
             });

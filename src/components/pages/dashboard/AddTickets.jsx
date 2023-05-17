@@ -47,14 +47,16 @@ const row = [
 const AddTickets = () => {
     const [AddNewTicketsModalState, setAddNewTicketsModalState] = useState(false);
     const [SeeAnsewrState, setSeeAnsewrState] = useState(false);
-    const [getTicketTabelRows, setGetTicketTabelRows] = useState([]);
-
-    console.log(getTicketTabelRows);
+    // const [getTicketTabelRows, setGetTicketTabelRows] = useState([]);
 
     useEffect(() => {
-        GetAllTickets().then(res => {
-            setGetTicketTabelRows(res.data);
-        });
+        GetAllTickets()
+            .then(() => {
+                // setGetTicketTabelRows(res.data);
+            })
+            .catch(() => {
+                console.log(1);
+            });
     }, []);
 
     return (

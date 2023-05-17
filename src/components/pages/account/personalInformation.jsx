@@ -14,7 +14,6 @@ import CustomButton from '../../form-group/CustomButton';
 const PersonalInformation = ({ state, seState }) => {
     const changeHandeler = e => {
         const { value, name } = e.target;
-        console.log(name);
         let formattedValue = value;
         if (name === 'landline') {
             formattedValue = value.replace(/[^0-9]/g, '');
@@ -27,9 +26,7 @@ const PersonalInformation = ({ state, seState }) => {
         seState({ ...state, [name]: formattedValue });
     };
 
-    const getFormDataHandeler = () => {
-        console.log(state);
-    };
+    const getFormDataHandeler = () => {};
     return (
         <PersonalInformationStyle>
             <h2>تکمیل اطلاعات حساب</h2>

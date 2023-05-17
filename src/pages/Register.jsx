@@ -1,10 +1,10 @@
 /* eslint-disable camelcase */
-
-// librerys
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import validator from 'validator';
+import { useDispatch } from 'react-redux';
+import { LoginStatusHandler } from '../state-manager/reducer/userInfo';
 
 //style
 import { RegisterStyle } from '../assets/styles/register.style';
@@ -24,6 +24,8 @@ import Checkbox from '@mui/material/Checkbox';
 import { UserRegister } from '../api-requests/auth';
 
 const Register = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [registerForm, setRegisterForm] = useState({
         email: '',
         last_name: '',
@@ -72,8 +74,9 @@ const Register = () => {
         if (validatFrom()) {
             UserRegister(registerForm)
                 .then(res => {
-                    console.log(res.data);
-                    localStorage.setItem('adminToken', res.data.token);
+                    localStorage.setItem('userToken', res.data.token);
+                    dispatch(LoginStatusHandler(true));
+                    navigate('/dashboard');
                 })
                 .then(() => {
                     toast.success('با موفقیت ثبت نام کردید');

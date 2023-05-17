@@ -21,7 +21,7 @@ const LatestCurrencyStatus = () => {
             setGetCorrency(res.data);
         });
     }, []);
-    console.log(getCorrency);
+
     return (
         <LatestCurrencyStatusStyle>
             <h2>آخرین وضعیت ارزها</h2>

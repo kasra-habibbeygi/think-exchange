@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { LoginStatusHandler } from '../state-manager/reducer/userInfo';
 
 //style
 import { LoginStyle } from '../assets/styles/login.style';
@@ -14,6 +16,8 @@ import CustomInput from '../components/form-group/CustomInput';
 import { UserLogin } from '../api-requests/auth';
 
 const Login = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [inputValues, setInputValue] = useState({
         email: '',
         password: ''
@@ -28,8 +32,9 @@ const Login = () => {
 
     const submitHandler = () => {
         UserLogin(inputValues).then(res => {
-            console.log(res.data);
-            localStorage.setItem('adminToken', res.data.token);
+            localStorage.setItem('userToken', res.data.token);
+            dispatch(LoginStatusHandler(true));
+            navigate('/dashboard');
         });
     };
 
