@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const UserInfo = createSlice({
-    name: 'buy-crypto-info',
+    name: 'user-info',
     initialState: {
         isLogin: localStorage.getItem('userToken') !== null ? true : false
     },

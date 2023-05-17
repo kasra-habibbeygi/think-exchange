@@ -11,6 +11,7 @@ export const LoginStyle = styled.div(props => ({
         position: 'relative',
         top: '0px'
     },
+
     '& .container': {
         width: '100%',
         height: '100vh',

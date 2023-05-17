@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { LoginStatusHandler } from '../state-manager/reducer/userInfo';
+import { AdminLoginStatusHandler } from '../../state-manager/reducer/adminInfo';
 
 //style
-import { LoginStyle } from '../assets/styles/login.style';
-import image from '../assets/images/login-register/bg.png';
-import logo from '../assets/images/login-register/Logo.png';
+import { LoginStyle } from '../../assets/styles/login.style';
+import image from '../../assets/images/login-register/bg.png';
+import logo from '../../assets/images/login-register/Logo.png';
 
 //components
-import CustomButton from '../components/form-group/CustomButton';
-import CustomInput from '../components/form-group/CustomInput';
+import CustomButton from '../../components/form-group/CustomButton';
+import CustomInput from '../../components/form-group/CustomInput';
 
 // APIs
-import { UserLogin } from '../api-requests/auth';
+import { AdminLogin } from '../../api-requests/admin/auth';
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -33,11 +33,11 @@ const Login = () => {
 
     const submitHandler = () => {
         setLoader(true);
-        UserLogin(inputValues)
+        AdminLogin(inputValues)
             .then(res => {
-                localStorage.setItem('userToken', res.data.token);
-                dispatch(LoginStatusHandler(true));
-                navigate('/dashboard');
+                localStorage.setItem('adminToken', res.data.token);
+                dispatch(AdminLoginStatusHandler(true));
+                navigate('/admin-panel/dashboard');
             })
             .finally(() => {
                 setLoader(false);
@@ -48,21 +48,6 @@ const Login = () => {
         <LoginStyle image={image}>
             <div className='imageBlur'></div>
             <div className='container'>
-                <div className='changeBtn'>
-                    <Link to='/login'>
-                        <CustomButton
-                            className='btn'
-                            background='garadient'
-                            text='ورود به حساب'
-                            variant='text'
-                            radius='normal'
-                            fontcolor='white'
-                        />
-                    </Link>
-                    <Link to='/register'>
-                        <CustomButton className='btn' background='white' text='ثبت نام' variant='text' radius='normal' fontcolor='black' />
-                    </Link>
-                </div>
                 <div className='login'>
                     <img alt='logo' src={logo} />
                     <h2>خوش آمدید</h2>
@@ -84,10 +69,10 @@ const Login = () => {
                                 valuehandler={inputValueHandler}
                             />
                         </div>
-                        <div className='textGroup'>
+                        {/* <div className='textGroup'>
                             <p>کلمه عبور خود را فراموش کرده اید؟</p>
                             <Link to='/forget-password'>فراموشی کامه عبور</Link>
-                        </div>
+                        </div> */}
                         <CustomButton
                             className='btn'
                             background='garadient'
