@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 //components
 import SliderCard from './SliderCard';
 
 //styles
 import { LatestCurrencyStatusStyle } from './LatestCurrencyStatus.style';
-import corrency from '../../../assets/images/dashboard/EU.png';
 
 //swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
+//api
+import { GetAllCurrencies } from '../../../api-requests/currencies';
+
 const LatestCurrencyStatus = () => {
+    const [getCorrency, setGetCorrency] = useState([]);
+
+    useEffect(() => {
+        GetAllCurrencies().then(res => {
+            setGetCorrency(res.data);
+        });
+    }, []);
     return (
         <LatestCurrencyStatusStyle>
             <h2>آخرین وضعیت ارزها</h2>
@@ -23,24 +32,15 @@ const LatestCurrencyStatus = () => {
                 }}
                 className='mySwiper'
             >
-                <SwiperSlide className='Slide'>
-                    <SliderCard image={corrency} status='down' />
-                </SwiperSlide>
-                <SwiperSlide className='Slide'>
-                    <SliderCard image={corrency} status='up' />
-                </SwiperSlide>
-                <SwiperSlide className='Slide'>
-                    <SliderCard image={corrency} status='normal' />
-                </SwiperSlide>
-                <SwiperSlide className='Slide'>
-                    <SliderCard image={corrency} status='up' />
-                </SwiperSlide>
-                <SwiperSlide className='Slide'>
-                    <SliderCard image={corrency} status='down' />
-                </SwiperSlide>
-                <SwiperSlide className='Slide'>
-                    <SliderCard image={corrency} status='normal' />
-                </SwiperSlide>
+                {getCorrency.length ? (
+                    getCorrency.map(item => (
+                        <SwiperSlide className='Slide' key={item.id}>
+                            <SliderCard data={item} status='down' />
+                        </SwiperSlide>
+                    ))
+                ) : (
+                    <h1>Lodaing...</h1>
+                )}
             </Swiper>
         </LatestCurrencyStatusStyle>
     );
