@@ -13,7 +13,6 @@ export const CustomButtonStyle = styled.div(props => ({
     },
 
     button: {
-        minHeight: '45px',
         borderColor: props.variant === 'outlined' && '#bdbdbd',
         background:
             props.background === 'error'

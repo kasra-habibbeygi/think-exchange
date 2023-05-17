@@ -6,12 +6,15 @@ import { LayoutProdiverStyle } from './LayoutProdiver.style';
 
 //components
 import SideBar from './SideBar';
+import { Outlet } from 'react-router-dom';
 
-const LayoutProvider = ({ children }) => {
+const LayoutProvider = () => {
     return (
         <LayoutProdiverStyle>
             <SideBar />
-            <div className='content'>{children}</div>
+            <div className='content'>
+                <Outlet />
+            </div>
         </LayoutProdiverStyle>
     );
 };
