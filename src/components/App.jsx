@@ -32,14 +32,12 @@ function RequireAuth({ children, userType = 'user' }) {
         if (localStorage.getItem('userToken') === null) {
             dispatch(LoginStatusHandler(false));
         }
-
         return UserLoginStatus ? children : <Navigate to='/login' replace state={{ path: location.pathname }} />;
     }
 
     if (localStorage.getItem('adminToken') === null) {
         dispatch(AdminLoginStatusHandler(false));
     }
-
     return AdminLoginStatus ? children : <Navigate to='/admin-panel/login' replace state={{ path: location.pathname }} />;
 }
 
@@ -51,7 +49,6 @@ function RequireNoAuth({ children, userType = 'user' }) {
     if (userType === 'user') {
         return !UserLoginStatus ? children : <Navigate to='/dashboard' replace state={{ path: location.pathname }} />;
     }
-
     return !AdminLoginStatus ? children : <Navigate to='/admin-panel/dashboard' replace state={{ path: location.pathname }} />;
 }
 
