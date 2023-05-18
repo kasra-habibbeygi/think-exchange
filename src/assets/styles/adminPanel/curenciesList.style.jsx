@@ -13,34 +13,12 @@ export const MainField = styled.div(props => ({
         marginBottom: '40px'
     },
 
-    '& .formBox': {
-        width: '100%',
-        display: 'flex',
-        gap: '20px'
-    },
-
-    '& .curency_name': {
+    '& .button_group': {
         display: 'flex',
         alignItems: 'center',
-        gap: '10px',
+        width: 'max-content',
         margin: '0 auto',
-        width: '230px',
-
-        img: {
-            width: '40px',
-            height: '40px',
-            objectFit: 'cover',
-            borderRadius: '50px'
-        }
-    },
-
-    '& .percentage': {
-        direction: 'ltr',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '10px',
-        margin: '0 auto',
-        width: 'max-content'
+        gap: '10px'
     },
 
     '& .header': {

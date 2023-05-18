@@ -31,7 +31,7 @@ const CustomButton = ({
                 className={`${extraClass ? extraClass : ''} btnStyle`}
             >
                 {loader ? (
-                    <BeatLoader color='#fff' size={10} />
+                    <BeatLoader color='#fff' size={10} style={{ height: '24px', display: 'flex', alignItems: 'center' }} />
                 ) : (
                     <div className='content_field'>
                         {text}

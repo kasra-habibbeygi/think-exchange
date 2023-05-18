@@ -1,8 +1,9 @@
+/* eslint-disable no-undef */
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 
 const instance = axios.create({
-    baseURL: 'https://thinkexchange.net/service/public/api/'
+    baseURL: process.env.REACT_APP_BASE_URL
 });
 
 instance.interceptors.request.use(async config => {

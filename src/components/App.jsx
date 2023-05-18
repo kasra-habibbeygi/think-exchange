@@ -25,6 +25,7 @@ import LayoutProvider from '../components/layouts/LayoutProvider';
 import AdminLayoutProvider from '../components/layouts/admin/LayoutProvider';
 import AdminLogin from '../pages/adminPanel/Login';
 import AdminCurenciesList from '../pages/adminPanel/curenciesList';
+import TicketList from '../pages/adminPanel/ticketList';
 
 const RequireAuth = ({ children, userType = 'user' }) => {
     const UserLoginStatus = useSelector(state => state.UserInfo.isLogin);
@@ -53,7 +54,7 @@ const RequireNoAuth = ({ children, userType = 'user' }) => {
     if (userType === 'user') {
         return !UserLoginStatus ? children : <Navigate to='/dashboard' replace state={{ path: location.pathname }} />;
     }
-    return !AdminLoginStatus ? children : <Navigate to='/admin-panel/dashboard' replace state={{ path: location.pathname }} />;
+    return !AdminLoginStatus ? children : <Navigate to='/admin-panel/curencies-list' replace state={{ path: location.pathname }} />;
 };
 
 const IndexPage = () => {
@@ -145,7 +146,7 @@ function App() {
                 >
                     <Route element={<IndexPage />} index />
                     <Route path='curencies-list' element={<AdminCurenciesList />} />
-                    <Route path='tickets-list' element={<Account />} />
+                    <Route path='tickets-list' element={<TicketList />} />
                     <Route path='orders-list' element={<OrderHistory />} />
                     <Route path='users-list' element={<Ordering />} />
                 </Route>

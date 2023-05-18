@@ -16,7 +16,8 @@ export const SliderCardStyle = styled.div(props => ({
 
         img: {
             width: '32px',
-            height: '32px'
+            height: '32px',
+            borderRadius: '50px'
         },
 
         '& .nameBox': {

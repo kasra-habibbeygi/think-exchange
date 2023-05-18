@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React from 'react';
@@ -22,7 +23,7 @@ const SliderCard = ({ data }) => {
                     <p>{data.iso_name}</p>
                     <p>{data.name}</p>
                 </div>
-                <img alt='currency' src={`https://thinkexchange.net/service/storage/${data.logo}`} />
+                <img alt='currency' src={`${process.env.REACT_APP_FILE_URL}${data.logo}`} />
             </div>
             <div className='price'>
                 <CustomButton text='فروش' variant='text' background='white' radius='normal' fontcolor='black' />
