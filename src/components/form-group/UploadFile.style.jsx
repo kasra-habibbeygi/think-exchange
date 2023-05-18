@@ -13,7 +13,12 @@ export const UploadFileStyle = styled.div(props => ({
 
         p: {
             fontSize: '1rem',
-            marginTop: '20px'
+            marginTop: '20px',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
+            width: '250px',
+            direction: 'ltr'
         }
     },
 

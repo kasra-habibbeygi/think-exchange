@@ -17,7 +17,7 @@ export const category = [
     },
     {
         id: 5,
-        label: 'پرداختی مروبط به سفارش'
+        label: 'پرداختی مروبط به سفارت'
     }
 ];
 
@@ -72,5 +72,23 @@ export const embassyPayment = [
     },
     {
         label: 'هزینه بیمه درمانی'
+    }
+];
+
+export const onlineCoursesPayment = [
+    {
+        label: 'Coursera'
+    },
+    {
+        label: 'Udacity'
+    },
+    {
+        label: 'EDX'
+    },
+    {
+        label: 'Udemy'
+    },
+    {
+        label: 'دوره های آنلاین موسسات دیگر'
     }
 ];

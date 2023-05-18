@@ -8,19 +8,13 @@ import UploadImage from '../../assets/images/ordering/Vector (1).png';
 //mui
 import IconButton from '@mui/material/IconButton';
 
-const UploadFile = ({ clickHandeler }) => {
+const UploadFile = ({ name, valueHandler, fileName }) => {
     return (
         <UploadFileStyle>
-            <IconButton
-                color='primary'
-                aria-label='upload picture'
-                component='label'
-                className='upload'
-                onClick={() => clickHandeler && clickHandeler()}
-            >
-                <input hidden accept='image/*' type='file' />
+            <IconButton color='primary' component='label' className='upload' onChange={e => valueHandler(e)}>
+                <input hidden accept='image/*' type='file' name={name} />
                 <img alt='uplpload file' src={UploadImage} />
-                <p>فایل را بکشید یا کلیک کنید</p>
+                <p>{fileName ?? 'فایل را بکشید یا کلیک کنید'}</p>
             </IconButton>
         </UploadFileStyle>
     );

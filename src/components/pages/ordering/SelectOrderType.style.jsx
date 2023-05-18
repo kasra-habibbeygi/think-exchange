@@ -11,6 +11,7 @@ export const SelectOrderTypeStyle = styled.div(props => ({
     display: 'flex',
     flexDirection: 'column',
     marginTop: '0px',
+    height: '180px',
 
     h2: {
         fontSize: '1.2rem',

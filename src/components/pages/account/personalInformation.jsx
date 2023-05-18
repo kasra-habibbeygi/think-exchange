@@ -8,7 +8,7 @@ import { PersonalInformationStyle } from './personalInformation.style';
 
 //components
 import CustomInput from '../../form-group/CustomInput.jsx';
-import TextaAria from '../../form-group/TextaAria';
+import TextArea from '../../form-group/TextArea';
 import CustomButton from '../../form-group/CustomButton';
 
 const PersonalInformation = ({ state, seState }) => {
@@ -71,7 +71,7 @@ const PersonalInformation = ({ state, seState }) => {
                 valuehandler={changeHandeler}
                 maxLength='10'
             />
-            <TextaAria label='توضیحات' name='explain' value={state.explain} type='text' rows={4} valuehandler={changeHandeler} />
+            <TextArea label='توضیحات' name='explain' value={state.explain} type='text' rows={4} valuehandler={changeHandeler} />
             <CustomButton
                 clickHandeler={getFormDataHandeler}
                 className='btn'

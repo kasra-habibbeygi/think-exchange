@@ -12,7 +12,7 @@ import Slide from '@mui/material/Slide';
 
 //components
 import CustomInput from '../../form-group/CustomInput.jsx';
-import TextaAria from '../../form-group/TextaAria';
+import TextArea from '../../form-group/TextArea';
 import CustomButton from '../../form-group/CustomButton';
 import SuccessAlert from '../../template/SuccessAlert';
 
@@ -69,7 +69,7 @@ const AddNewTicketsModal = ({ state, setState }) => {
                         <h2>ثبت تیکت جدید</h2>
                         <div className='formBox'>
                             <CustomInput label='عنوان تیکت' type='text' valuehandler={changeHandeler} name='title' value={formData.title} />
-                            <TextaAria
+                            <TextArea
                                 label='پیام خود را بنویسید'
                                 type='text'
                                 rows={5}

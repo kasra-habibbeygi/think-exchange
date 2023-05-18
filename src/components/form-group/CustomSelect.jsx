@@ -8,14 +8,20 @@ import { CustomSelectStyle } from './CustomSelect.style';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
-const CustomSelect = ({ SelectOptions, label }) => {
+const CustomSelect = ({ SelectOptions, label, setInputValues, inputValues, name }) => {
     return (
         <CustomSelectStyle>
             <Autocomplete
                 disablePortal
                 className='select'
-                id='combo-box-demo'
                 options={SelectOptions}
+                value={inputValues[name]}
+                onChange={(event, newValue) => {
+                    setInputValues({
+                        ...inputValues,
+                        [name]: newValue ? newValue?.label : ''
+                    });
+                }}
                 renderInput={params => <TextField {...params} label={label} />}
             />
         </CustomSelectStyle>

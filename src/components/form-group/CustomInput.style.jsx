@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 
 export const CustomInputStyle = styled.div(props => ({
     width: '100%',
+
     '& .MuiInputBase-root': {
         borderRadius: '12px'
     },
@@ -24,6 +25,10 @@ export const CustomInputStyle = styled.div(props => ({
         padding: '8px'
     },
 
+    textarea: {
+        height: '120px !important'
+    },
+
     legend: {
         display: 'none'
     },
@@ -32,10 +37,12 @@ export const CustomInputStyle = styled.div(props => ({
         color: props.theme.colors.blue,
         fontFamily: 'main !important'
     },
+
     '& .MuiInputLabel-shrink': {
         padding: '0px 10px 0px 10px',
         right: '10px'
     },
+
     '@media screen and (max-width: 450px)': {
         label: {
             fontSize: '.8rem'
