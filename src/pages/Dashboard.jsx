@@ -27,10 +27,10 @@ const Dashboard = () => {
     console.log(getData);
     return (
         <>
-            {Object.keys(getData).length ? <LatestCurrencyStatus currency={getData.currencies} /> : <h1>Loading...</h1>}
+            {<LatestCurrencyStatus currency={getData?.currencies} />}
             <DashboardStyle className='container'>
-                {Object.keys(getData).length ? <AddTickets tickets={getData.user.tickets} /> : <h1>Loading...</h1>}
-                {Object.keys(getData).length ? <ListOrdering orderHistory={getData.user.orders} /> : <h1>Loading...</h1>}
+                {<AddTickets tickets={getData?.user?.tickets} />}
+                {<ListOrdering orderHistory={getData?.user?.orders} />}
             </DashboardStyle>
         </>
     );

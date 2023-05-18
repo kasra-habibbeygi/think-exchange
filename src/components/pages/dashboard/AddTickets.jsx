@@ -16,62 +16,6 @@ import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 
 const TableHeader = ['عنوان', 'تاریخ ثبت', 'وضعیت'];
-// const row = [
-//     {
-//         id: 1,
-//         name: 'پرداختی مسکن',
-//         date: '1402/01/11',
-//         status: 'بررسی'
-//     },
-//     {
-//         id: 2,
-//         name: 'پرداختی مسکن',
-//         date: '1402/01/11',
-//         status: 'ناموفق'
-//     },
-//     {
-//         id: 3,
-//         name: 'پرداختی مسکن',
-//         date: '1402/01/11',
-//         status: 'مشاهده پاسخ'
-//     },
-//     {
-//         id: 4,
-//         name: 'پرداختی مسکن',
-//         date: '1402/01/11',
-//         status: 'موفق'
-//     },
-//     {
-//         id: 5,
-//         name: 'پرداختی مسکن',
-//         date: '1402/01/11',
-//         status: 'موفق'
-//     },
-//     {
-//         id: 6,
-//         name: 'پرداختی مسکن',
-//         date: '1402/01/11',
-//         status: 'موفق'
-//     },
-//     {
-//         id: 7,
-//         name: 'پرداختی مسکن',
-//         date: '1402/01/11',
-//         status: 'موفق'
-//     },
-//     {
-//         id: 8,
-//         name: 'پرداختی مسکن',
-//         date: '1402/01/11',
-//         status: 'موفق'
-//     },
-//     {
-//         id: 9,
-//         name: 'پرداختی مسکن',
-//         date: '1402/01/11',
-//         status: 'موفق'
-//     }
-// ];
 
 const AddTickets = ({ tickets }) => {
     const [AddNewTicketsModalState, setAddNewTicketsModalState] = useState(false);
@@ -102,9 +46,9 @@ const AddTickets = ({ tickets }) => {
                                             text={
                                                 row.status === 'pending'
                                                     ? 'بررسی'
-                                                    : row.status === 'sucsses'
+                                                    : row.status === 'accepted'
                                                     ? 'موفق'
-                                                    : row.status === 'failed'
+                                                    : row.status === 'rejected'
                                                     ? 'ناموفق'
                                                     : ''
                                             }

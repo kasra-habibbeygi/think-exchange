@@ -11,8 +11,7 @@ import { LatestCurrencyStatusStyle } from './LatestCurrencyStatus.style';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
-const LatestCurrencyStatus = ({ currencies }) => {
-    console.log(currencies);
+const LatestCurrencyStatus = ({ currency }) => {
     return (
         <LatestCurrencyStatusStyle>
             <h2>آخرین وضعیت ارزها</h2>
@@ -24,7 +23,7 @@ const LatestCurrencyStatus = ({ currencies }) => {
                 }}
                 className='mySwiper'
             >
-                {currencies?.map(item => (
+                {currency?.map(item => (
                     <SwiperSlide className='Slide' key={item.id}>
                         <SliderCard data={item} />
                     </SwiperSlide>

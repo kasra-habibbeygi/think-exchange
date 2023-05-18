@@ -25,7 +25,7 @@ const OrderHistory = () => {
 
     return (
         <OrderHistoryStyle>
-            {Object.keys(getData).length ? <ListOrdering orderList={getData.user.orders} /> : <h1>Loading...</h1>}
+            {<ListOrdering orderList={getData?.user?.orders} />}
             <Refund />
         </OrderHistoryStyle>
     );
