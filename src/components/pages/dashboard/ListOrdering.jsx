@@ -78,7 +78,7 @@ const ListOrdering = ({ orderHistory }) => {
             <h2>فهرست سفارش ها</h2>
             <div className='table_field'>
                 <TableTemplate TableHeader={TableHeader}>
-                    {orderHistory.map(row => (
+                    {orderHistory?.map(row => (
                         <TableRow key={row.id}>
                             <TableCell scope='row'>{row.name}</TableCell>
                             <TableCell>{row.date}</TableCell>

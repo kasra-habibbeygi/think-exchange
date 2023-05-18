@@ -83,7 +83,7 @@ const AddTickets = ({ tickets }) => {
                 <h2>ثبت تیکت</h2>
                 <div className='table_field'>
                     <TableTemplate TableHeader={TableHeader}>
-                        {tickets.map(row => (
+                        {tickets?.map(row => (
                             <TableRow key={row.id}>
                                 <TableCell scope='row'>
                                     {row.status === 'مشاهده پاسخ' ? (

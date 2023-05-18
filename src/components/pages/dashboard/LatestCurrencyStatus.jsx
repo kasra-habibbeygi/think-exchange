@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable react/prop-types */
+import React from 'react';
 
 //components
 import SliderCard from './SliderCard';
@@ -10,18 +11,8 @@ import { LatestCurrencyStatusStyle } from './LatestCurrencyStatus.style';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
-//api
-import { GetAllCurrencies } from '../../../api-requests/currencies';
-
-const LatestCurrencyStatus = () => {
-    const [getCorrency, setGetCorrency] = useState([]);
-
-    useEffect(() => {
-        GetAllCurrencies().then(res => {
-            setGetCorrency(res.data);
-        });
-    }, []);
-
+const LatestCurrencyStatus = ({ currencies }) => {
+    console.log(currencies);
     return (
         <LatestCurrencyStatusStyle>
             <h2>آخرین وضعیت ارزها</h2>
@@ -33,7 +24,7 @@ const LatestCurrencyStatus = () => {
                 }}
                 className='mySwiper'
             >
-                {getCorrency?.map(item => (
+                {currencies?.map(item => (
                     <SwiperSlide className='Slide' key={item.id}>
                         <SliderCard data={item} />
                     </SwiperSlide>

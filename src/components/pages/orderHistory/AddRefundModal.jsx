@@ -45,7 +45,6 @@ const AddRefundModal = ({ state, setState }) => {
         }
     };
 
-    console.log(formData);
     return (
         <>
             <SuccessAlert state={SuccessAddTicketState} setState={setSuccessAddTicketState} text='درخواست ریفاند شما با موفقیت ثبت شد.' />
