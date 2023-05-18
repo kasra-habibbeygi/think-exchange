@@ -98,11 +98,9 @@ const Refund = () => {
     //             setRefundsRequest(res.data);
     //         })
     //         .catch(() => {
-    //             console.log(1);
     //         });
     // }, []);
 
-    // console.log(refundsRequest);
     return (
         <RefundStyles>
             <h2>لیست درخواست های ریفاند</h2>

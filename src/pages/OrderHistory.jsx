@@ -18,9 +18,7 @@ const OrderHistory = () => {
             .then(res => {
                 setGetData(res.data);
             })
-            .catch(() => {
-                console.log(1);
-            });
+            .catch(() => {});
     }, []);
 
     return (

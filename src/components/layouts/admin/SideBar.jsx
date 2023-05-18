@@ -7,13 +7,12 @@ import Button from '@mui/material/Button';
 //style
 import { SideBarStyle } from './SideBar.style';
 import user from '../../../assets/images/layout/user.svg';
-import Phone from '../../../assets/images/layout/Phone.svg';
-import calender from '../../../assets/images/layout/calender.svg';
-import card from '../../../assets/images/layout/card.svg';
-import dashboard from '../../../assets/images/layout/dashboard.svg';
 import exit from '../../../assets/images/layout/exit.svg';
 import logo from '../../../assets/images/layout/Logo.svg';
+import card from '../../../assets/images/layout/card.svg';
 import menu from '../../../assets/images/layout/more.svg';
+import dollar from '../../../assets/images/layout/dollar.svg';
+import coupon from '../../../assets/images/layout/coupon.svg';
 
 // Component
 import LogoutModal from './LogoutModal';
@@ -45,39 +44,30 @@ const SideBar = () => {
                             </Link>
                             <ol className='menu'>
                                 <li>
-                                    <NavLink to='/dashboard'>
-                                        <img alt='user' src={dashboard} />
-                                        <span>داشبورد</span>
+                                    <NavLink to='/admin-panel/curencies-list'>
+                                        <img alt='user' src={dollar} />
+                                        <span>لیست ارز ها</span>
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to='/ordering'>
+                                    <NavLink to='/admin-panel/tickets-list'>
+                                        <img alt='user' src={coupon} />
+                                        <span>لیست تیکت ها</span>
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to='/admin-panel/orders-list'>
                                         <img alt='user' src={card} />
-                                        <span>سفارش گذاری</span>
+                                        <span>لیست سفارش‌ها</span>
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to='/order-history'>
-                                        <img alt='user' src={calender} />
-                                        <span>تاریخچه سفارش‌ها</span>
-                                    </NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to='/account'>
+                                    <NavLink to='/admin-panel/users-list'>
                                         <img alt='user' src={user} />
-                                        <span>حساب کاربری</span>
+                                        <span>لیست کاربران</span>
                                     </NavLink>
                                 </li>
                             </ol>
-                            <div className='callBox'>
-                                <div className='call'>
-                                    <img alt='user' src={Phone} />
-                                    <p>
-                                        تماس با پشتیبانی <span className='phoneCall'>219 132 112</span>
-                                    </p>
-                                </div>
-                                <p className='time'>شنبه - چهارشنبه ۱۸:۰۰ - ۱۰:۰۰</p>
-                            </div>
                         </div>
                         <div className='btn'>
                             <Button variant='text' onClick={() => setLogoutModalState(true)}>

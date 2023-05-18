@@ -18,16 +18,17 @@ const CustomButton = ({
     children,
     type,
     disabled = false,
-    loader = false
+    loader = false,
+    extraClass
 }) => {
     return (
         <CustomButtonStyle background={background} radius={radius} fontcolor={fontcolor} variant={variant}>
             <Button
                 variant={variant}
                 onClick={() => clickHandeler && clickHandeler()}
-                className='btnStyle'
                 type={type}
                 disabled={loader || disabled}
+                className={`${extraClass ? extraClass : ''} btnStyle`}
             >
                 {loader ? (
                     <BeatLoader color='#fff' size={10} />

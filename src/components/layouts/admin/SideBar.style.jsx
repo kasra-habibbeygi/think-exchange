@@ -76,6 +76,11 @@ export const SideBarStyle = styled.aside(props => ({
                 borderRadius: '12px',
                 transition: 'all .1s linear',
 
+                img: {
+                    width: '20px',
+                    height: ' auto'
+                },
+
                 '&.active': {
                     color: '#4A68FF',
 

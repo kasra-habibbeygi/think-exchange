@@ -10,5 +10,5 @@ export const getDesignTokens = mode => ({
         white: '#fff'
     },
     boxShadow: '0px 8px 24px rgba(112, 144, 176, 0.08)',
-    garadient: 'linear-gradient(45deg, rgba(205,13,49,1) 0%, rgba(55,27,193,1) 100%)'
+    garadient: 'linear-gradient(237.23deg, #0920EE -27.12%, #FF0800 129.48%)'
 });

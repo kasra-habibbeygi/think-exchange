@@ -14,8 +14,8 @@ instance.interceptors.request.use(async config => {
         }
     }
 
-    if (localStorage.getItem('userToken') !== null) {
-        config.headers.Authorization = `Bearer ${localStorage.getItem('userToken')}`;
+    if (localStorage.getItem('adminToken') !== null) {
+        config.headers.Authorization = `Bearer ${localStorage.getItem('adminToken')}`;
     }
 
     return config;
@@ -27,8 +27,8 @@ instance.interceptors.response.use(
     },
     error => {
         if (error.response.status === 401) {
-            localStorage.removeItem('userToken');
-            window.location.href = '/login';
+            localStorage.removeItem('adminToken');
+            window.location.href = '/admin-panel/login';
         } else {
             toast.error(error.response.data.message, { style: { zIndex: 2000 } });
         }

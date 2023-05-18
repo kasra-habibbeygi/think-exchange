@@ -2,17 +2,17 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-//Assets
-import upArrow from '../../../assets/images/dashboard/Vector.png';
-import DownArrow from '../../../assets/images/dashboard/Vector-red.png';
+//styles
+import upArrow from '../../../../assets/images/dashboard/Vector.png';
+import DownArrow from '../../../../assets/images/dashboard/Vector-red.png';
 
 import { SliderCardStyle } from './SliderCard.style';
 
-//Components
-import CustomButton from '../../form-group/CustomButton';
+//components
+import CustomButton from '../../../form-group/CustomButton';
 
 // Tools
-import Tools from '../../../utils/tools';
+import Tools from '../../../../utils/tools';
 
 const SliderCard = ({ data }) => {
     return (
@@ -22,11 +22,10 @@ const SliderCard = ({ data }) => {
                     <p>{data.iso_name}</p>
                     <p>{data.name}</p>
                 </div>
-                <img alt='currency' src={`https://thinkexchange.net/service/storage/${data.logo}`} />
+                <img alt='currency' src={`https://thinkexchange.net/service/public/storage/${data.logo}`} />
             </div>
             <div className='price'>
-                <CustomButton text='فروش' variant='text' background='white' radius='normal' fontcolor='black' />
-
+                <div></div>
                 <div className='priceBox'>
                     <div className='percentage'>
                         {!data.change_rate.includes('-') ? <img alt='currency' src={upArrow} /> : <img alt='currency' src={DownArrow} />}

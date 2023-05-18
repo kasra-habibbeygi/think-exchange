@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { LoginStatusHandler } from '../../../state-manager/reducer/userInfo';
+import { AdminLoginStatusHandler } from '../../../state-manager/reducer/adminInfo';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -21,9 +21,9 @@ const LogoutModal = ({ state, setState }) => {
     const navigate = useNavigate();
 
     const logoutHandler = () => {
-        localStorage.removeItem('userToken');
-        dispatch(LoginStatusHandler(false));
-        navigate('/login');
+        localStorage.removeItem('adminPanel');
+        dispatch(AdminLoginStatusHandler(false));
+        navigate('/admin-panel/login');
     };
 
     return (

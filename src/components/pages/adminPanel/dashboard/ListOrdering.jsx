@@ -4,8 +4,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 //components
-import TableTemplate from '../../template/TableTemplate';
-import CustomButton from '../../form-group/CustomButton';
+import TableTemplate from '../../../template/TableTemplate';
+import CustomButton from '../../../form-group/CustomButton';
 
 //styles
 import { ListOrderingStyle } from './ListOrdering.styles';

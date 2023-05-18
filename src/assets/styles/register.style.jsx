@@ -11,6 +11,7 @@ export const RegisterStyle = styled.div(props => ({
         position: 'relative',
         top: '0px'
     },
+
     '& .container': {
         width: '100%',
         height: '100vh',
@@ -22,6 +23,7 @@ export const RegisterStyle = styled.div(props => ({
         justifyContent: 'center',
         alignItems: 'center'
     },
+
     '& .changeBtn': {
         display: 'flex',
         gap: '10px',

@@ -20,7 +20,6 @@ const TableHeader = ['نوع', 'شماره سفارش', 'وضعیت', ''];
 const ListOrdering = ({ orderList }) => {
     const [seeRefund, setSeeRefund] = useState(false);
     const [uniqId, setUniqId] = useState('');
-    console.log(orderList);
 
     return (
         <>

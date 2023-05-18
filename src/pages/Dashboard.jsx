@@ -19,12 +19,9 @@ const Dashboard = () => {
             .then(res => {
                 setGetData(res.data);
             })
-            .catch(() => {
-                console.log(1);
-            });
+            .catch(() => {});
     }, []);
 
-    console.log(getData);
     return (
         <>
             {<LatestCurrencyStatus currency={getData?.currencies} />}

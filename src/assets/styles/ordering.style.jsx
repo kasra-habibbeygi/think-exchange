@@ -5,6 +5,7 @@ export const OrderingStyle = styled.div(props => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
+
     '@media screen and (max-width: 1210px)': {
         flexDirection: 'column'
     }
