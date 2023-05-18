@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -14,129 +15,41 @@ import { ListOrderingStyle } from './ListOrdering.styles';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 
-// const row = [
-//     {
-//         id: 1,
-//         name: 'پرداختی مسکن',
-//         date: '234235',
-//         status: 'بررسی'
-//     },
-//     {
-//         id: 2,
-//         name: 'پرداختی مسکن',
-//         date: '42534',
-//         status: 'ناموفق'
-//     },
-//     {
-//         id: 3,
-//         name: 'پرداختی مسکن',
-//         date: '32423',
-//         status: 'ناموفق'
-//     },
-//     {
-//         id: 3,
-//         name: 'پرداختی مسکن',
-//         date: '32423',
-//         status: 'ناموفق'
-//     },
-//     {
-//         id: 3,
-//         name: 'پرداختی مسکن',
-//         date: '32423',
-//         status: 'ناموفق'
-//     },
-//     {
-//         id: 3,
-//         name: 'پرداختی مسکن',
-//         date: '32423',
-//         status: 'ناموفق'
-//     },
-//     {
-//         id: 3,
-//         name: 'پرداختی مسکن',
-//         date: '32423',
-//         status: 'ناموفق'
-//     },
-//     {
-//         id: 3,
-//         name: 'پرداختی مسکن',
-//         date: '32423',
-//         status: 'ناموفق'
-//     },
-//     {
-//         id: 3,
-//         name: 'پرداختی مسکن',
-//         date: '32423',
-//         status: 'ناموفق'
-//     },
-//     {
-//         id: 3,
-//         name: 'پرداختی مسکن',
-//         date: '32423',
-//         status: 'ناموفق'
-//     },
-//     {
-//         id: 3,
-//         name: 'پرداختی مسکن',
-//         date: '32423',
-//         status: 'ناموفق'
-//     },
-//     {
-//         id: 3,
-//         name: 'پرداختی مسکن',
-//         date: '32423',
-//         status: 'ناموفق'
-//     },
-//     {
-//         id: 3,
-//         name: 'پرداختی مسکن',
-//         date: '32423',
-//         status: 'ناموفق'
-//     },
-//     {
-//         id: 3,
-//         name: 'پرداختی مسکن',
-//         date: '32423',
-//         status: 'ناموفق'
-//     },
-//     {
-//         id: 3,
-//         name: 'پرداختی مسکن',
-//         date: '32423',
-//         status: 'ناموفق'
-//     },
-//     {
-//         id: 3,
-//         name: 'پرداختی مسکن',
-//         date: '32423',
-//         status: 'ناموفق'
-//     },
-//     {
-//         id: 3,
-//         name: 'پرداختی مسکن',
-//         date: '32423',
-//         status: 'ناموفق'
-//     }
-// ];
-
 const TableHeader = ['نوع', 'شماره سفارش', 'وضعیت', ''];
 
 const ListOrdering = ({ orderList }) => {
     const [seeRefund, setSeeRefund] = useState(false);
-    console.log(`i: ${orderList}`);
+    const [uniqId, setUniqId] = useState('');
+    console.log(orderList);
+
     return (
         <>
-            <AddRefundModal state={seeRefund} setState={setSeeRefund} orderId={orderList.id} />
+            <AddRefundModal state={seeRefund} setState={setSeeRefund} orderId={uniqId} />
             <ListOrderingStyle>
                 <h2>فهرست سفارش ها</h2>
                 <div className='table_field'>
                     <TableTemplate TableHeader={TableHeader}>
                         {orderList?.map(row => (
                             <TableRow key={row.id}>
-                                <TableCell scope='row'>{row.name}</TableCell>
-                                <TableCell>{row.date}</TableCell>
+                                <TableCell scope='row'>{row.service.name}</TableCell>
+                                <TableCell>{row.service_id}</TableCell>
                                 <TableCell>
-                                    <CustomButton text={row.status} variant='text' background='warning' radius='normal' fontcolor='white' />
+                                    <CustomButton
+                                        text={
+                                            row.status === 'pending'
+                                                ? 'بررسی'
+                                                : row.status === 'accepted'
+                                                ? 'موفق'
+                                                : row.status === 'rejected'
+                                                ? 'ناموفق'
+                                                : ''
+                                        }
+                                        variant='text'
+                                        background={row.status === 'pending' ? 'warning' : 'error'}
+                                        radius='normal'
+                                        fontcolor='white'
+                                        disabled
+                                    />
                                 </TableCell>
                                 <TableCell>
                                     <CustomButton
@@ -145,7 +58,10 @@ const ListOrdering = ({ orderList }) => {
                                         background='nonColor'
                                         radius='normal'
                                         fontcolor='black'
-                                        clickHandeler={() => setSeeRefund(true)}
+                                        clickHandeler={() => {
+                                            setSeeRefund(true);
+                                            setUniqId(row.id);
+                                        }}
                                     />
                                 </TableCell>
                             </TableRow>

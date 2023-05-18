@@ -72,7 +72,7 @@ const AddRefundModal = ({ state, setState, orderId }) => {
                             <CustomButton
                                 clickHandeler={addRefundHandeler}
                                 className='btn'
-                                text='ثبت تیکت'
+                                text='ثبت ریفاند'
                                 variant='text'
                                 background='garadient'
                                 radius='normal'

@@ -41,21 +41,14 @@ const AddTickets = ({ tickets }) => {
                                 </TableCell>
                                 <TableCell>{row.created}</TableCell>
                                 <TableCell>
-                                    {row.status !== 'مشاهده پاسخ' ? (
+                                    {row.status === 'pending' ? (
                                         <CustomButton
-                                            text={
-                                                row.status === 'pending'
-                                                    ? 'بررسی'
-                                                    : row.status === 'accepted'
-                                                    ? 'موفق'
-                                                    : row.status === 'rejected'
-                                                    ? 'ناموفق'
-                                                    : ''
-                                            }
+                                            text={row.status === 'pending' ? 'بررسی' : 'مشاهده پاسخ'}
                                             variant='text'
                                             background={row.status === 'pending' ? 'warning' : 'error'}
                                             radius='normal'
                                             fontcolor='white'
+                                            disabled
                                         />
                                     ) : (
                                         <CustomButton
@@ -65,7 +58,6 @@ const AddTickets = ({ tickets }) => {
                                             background='noColor'
                                             radius='normal'
                                             fontcolor='error'
-                                            disabled
                                         />
                                     )}
                                 </TableCell>

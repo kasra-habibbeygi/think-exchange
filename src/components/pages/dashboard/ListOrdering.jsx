@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -73,6 +74,7 @@ import TableRow from '@mui/material/TableRow';
 const TableHeader = ['نوع', 'شماره سفارش', 'وضعیت'];
 
 const ListOrdering = ({ orderHistory }) => {
+    console.log(orderHistory);
     return (
         <ListOrderingStyle>
             <h2>فهرست سفارش ها</h2>
@@ -80,13 +82,21 @@ const ListOrdering = ({ orderHistory }) => {
                 <TableTemplate TableHeader={TableHeader}>
                     {orderHistory?.map(row => (
                         <TableRow key={row.id}>
-                            <TableCell scope='row'>{row.name}</TableCell>
-                            <TableCell>{row.date}</TableCell>
+                            <TableCell scope='row'>{row.service.name}</TableCell>
+                            <TableCell>{row.service_id}</TableCell>
                             <TableCell>
                                 <CustomButton
-                                    text={row.status}
+                                    text={
+                                        row.status === 'pending'
+                                            ? 'بررسی'
+                                            : row.status === 'accepted'
+                                            ? 'موفق'
+                                            : row.status === 'rejected'
+                                            ? 'ناموفق'
+                                            : ''
+                                    }
                                     variant='text'
-                                    background='success'
+                                    background={row.status === 'pending' ? 'warning' : 'error'}
                                     radius='normal'
                                     fontcolor='white'
                                     disabled
