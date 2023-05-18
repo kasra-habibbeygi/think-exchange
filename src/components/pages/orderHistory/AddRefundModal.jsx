@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
@@ -14,9 +15,12 @@ import TextArea from '../../form-group/TextArea';
 import CustomButton from '../../form-group/CustomButton';
 import SuccessAlert from '../../template/SuccessAlert';
 
-const AddRefundModal = ({ state, setState }) => {
+//api
+import { PostNewRefund } from '../../../api-requests/refund';
+
+const AddRefundModal = ({ state, setState, orderId }) => {
     const [formData, setFormData] = useState({
-        text: ''
+        description: ''
     });
     const [SuccessAddTicketState, setSuccessAddTicketState] = useState(false);
 
@@ -26,8 +30,7 @@ const AddRefundModal = ({ state, setState }) => {
 
     const validatFrom = () => {
         if (validator.isEmpty(formData.text)) {
-            toast.error('متن پیام خود را وارد کنید');
-            return false;
+            toast.error('علت درخواست خود را بیان کنید');
         }
         return true;
     };
@@ -40,8 +43,10 @@ const AddRefundModal = ({ state, setState }) => {
 
     const addRefundHandeler = () => {
         if (validatFrom()) {
-            setState(false);
-            setSuccessAddTicketState(true);
+            PostNewRefund(formData, orderId).then(() => {
+                setState(false);
+                setSuccessAddTicketState(true);
+            });
         }
     };
 
@@ -59,8 +64,8 @@ const AddRefundModal = ({ state, setState }) => {
                                 type='text'
                                 rows={5}
                                 valuehandler={changeHandeler}
-                                name='text'
-                                value={formData.text}
+                                name='description'
+                                value={formData.description}
                             />
                         </div>
                         <div className='btnBox'>

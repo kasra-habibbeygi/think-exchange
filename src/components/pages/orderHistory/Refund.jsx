@@ -11,6 +11,9 @@ import CustomButton from '../../form-group/CustomButton';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 
+//API
+// import { GetRefund } from '../../../api-requests/refund';
+
 const row = [
     {
         id: 1,
@@ -87,6 +90,19 @@ const row = [
 const TableHeader = ['نوع', 'وضعیت'];
 
 const Refund = () => {
+    // const [refundsRequest, setRefundsRequest] = useState([]);
+
+    // useEffect(() => {
+    //     GetRefund()
+    //         .then(res => {
+    //             setRefundsRequest(res.data);
+    //         })
+    //         .catch(() => {
+    //             console.log(1);
+    //         });
+    // }, []);
+
+    // console.log(refundsRequest);
     return (
         <RefundStyles>
             <h2>لیست درخواست های ریفاند</h2>
