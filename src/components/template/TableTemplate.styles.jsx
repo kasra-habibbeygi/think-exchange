@@ -32,6 +32,9 @@ export const TableTemplateStyles = styled.div(props => ({
             },
             '&:last-of-type': {
                 borderRadius: '12px 0px 0px 12px'
+            },
+            div: {
+                textAlign: 'center'
             }
         },
 

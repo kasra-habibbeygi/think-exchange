@@ -20,6 +20,7 @@ const Account = () => {
         newPassword: '',
         confirmPassword: ''
     });
+
     return (
         <AccountStyle>
             <PersonalInformation state={formData} setState={data => setFromData(data)} />
