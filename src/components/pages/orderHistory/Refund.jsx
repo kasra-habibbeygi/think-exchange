@@ -26,7 +26,7 @@ const Refund = () => {
                 setRefundsRequest(res.data);
             })
             .catch(() => {});
-    }, []);
+    }, [refundsRequest]);
 
     console.log(refundsRequest);
     return (
