@@ -20,6 +20,11 @@ const TableHeader = ['عنوان', 'تاریخ ثبت', 'وضعیت'];
 const AddTickets = ({ tickets }) => {
     const [AddNewTicketsModalState, setAddNewTicketsModalState] = useState(false);
     const [SeeAnsewrState, setSeeAnsewrState] = useState(false);
+    const [ansewr, setAnsewr] = useState({
+        ansewr: '',
+        title: '',
+        id: ''
+    });
 
     return (
         <>
@@ -41,25 +46,25 @@ const AddTickets = ({ tickets }) => {
                                 </TableCell>
                                 <TableCell>{row.created}</TableCell>
                                 <TableCell>
-                                    {row.status === 'pending' ? (
-                                        <CustomButton
-                                            text={row.status === 'pending' ? 'بررسی' : 'مشاهده پاسخ'}
-                                            variant='text'
-                                            background={row.status === 'pending' ? 'warning' : 'error'}
-                                            radius='normal'
-                                            fontcolor='white'
-                                            disabled
-                                        />
-                                    ) : (
-                                        <CustomButton
-                                            clickHandeler={() => setSeeAnsewrState(true)}
-                                            text={row.status}
-                                            variant='text'
-                                            background='noColor'
-                                            radius='normal'
-                                            fontcolor='error'
-                                        />
-                                    )}
+                                    <CustomButton
+                                        variant='text'
+                                        text={row.status === 'pending' ? 'بررسی' : 'مشاهده پاسخ'}
+                                        background={row.status === 'pending' ? 'warning' : ''}
+                                        radius='normal'
+                                        fontcolor={row.status === 'pending' ? 'white' : 'error'}
+                                        disabled={row.status === 'pending' ? true : false}
+                                        clickHandeler={
+                                            row.status !== 'pending' &&
+                                            (() => {
+                                                setSeeAnsewrState(true);
+                                                setAnsewr({
+                                                    id: row.id,
+                                                    ansewr: row.answer,
+                                                    title: row.title
+                                                });
+                                            })
+                                        }
+                                    />
                                 </TableCell>
                             </TableRow>
                         ))}
@@ -78,7 +83,7 @@ const AddTickets = ({ tickets }) => {
                 </div>
             </AddTicketsStyle>
             <AddNewTicketsModal state={AddNewTicketsModalState} setState={setAddNewTicketsModalState} />
-            <SeeAnsewr state={SeeAnsewrState} setState={setSeeAnsewrState} />
+            <SeeAnsewr state={SeeAnsewrState} setState={setSeeAnsewrState} ansewr={ansewr} />
         </>
     );
 };

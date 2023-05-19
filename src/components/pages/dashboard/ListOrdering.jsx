@@ -31,14 +31,22 @@ const ListOrdering = ({ orderHistory }) => {
                                     text={
                                         row.status === 'pending'
                                             ? 'بررسی'
-                                            : row.status === 'accepted'
+                                            : row.status === 'succeed'
                                             ? 'موفق'
-                                            : row.status === 'rejected'
+                                            : row.status === 'failed'
                                             ? 'ناموفق'
                                             : ''
                                     }
+                                    background={
+                                        row.status === 'pending'
+                                            ? 'warning'
+                                            : row.status === 'succeed'
+                                            ? 'success'
+                                            : row.status === 'failed'
+                                            ? 'error'
+                                            : ''
+                                    }
                                     variant='text'
-                                    background={row.status === 'pending' ? 'warning' : 'error'}
                                     radius='normal'
                                     fontcolor='white'
                                     disabled

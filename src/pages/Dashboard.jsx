@@ -20,7 +20,7 @@ const Dashboard = () => {
                 setGetData(res.data);
             })
             .catch(() => {});
-    }, [getData]);
+    }, []);
 
     return (
         <>

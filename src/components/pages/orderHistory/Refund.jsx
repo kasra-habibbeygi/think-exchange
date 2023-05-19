@@ -27,34 +27,37 @@ const Refund = () => {
             })
             .catch(() => {});
     }, []);
+    console.log();
     return (
         <RefundStyles>
             <h2>لیست درخواست های ریفاند</h2>
             <div className='table_field'>
                 <TableTemplate TableHeader={TableHeader}>
-                    {refundsRequest.map(row => (
-                        <TableRow key={row.id}>
-                            <TableCell scope='row'>{row.refund && row.service?.name}</TableCell>
-                            <TableCell>
-                                <CustomButton
-                                    text={
-                                        row.refund?.status === 'pending'
-                                            ? 'بررسی'
-                                            : row.refund?.status === 'accepted'
-                                            ? 'موفق'
-                                            : row.refund?.status === 'rejected'
-                                            ? 'ناموفق'
-                                            : ''
-                                    }
-                                    variant='text'
-                                    background={row.refund?.status === 'pending' ? 'warning' : 'error'}
-                                    radius='normal'
-                                    fontcolor='white'
-                                    disabled
-                                />
-                            </TableCell>
-                        </TableRow>
-                    ))}
+                    {refundsRequest.map(row => [
+                        row.refund && row.service !== null && (
+                            <TableRow key={row.id}>
+                                <TableCell scope='row'>{row.refund && row.service?.name}</TableCell>
+                                <TableCell>
+                                    <CustomButton
+                                        text={
+                                            row.refund?.status === 'pending'
+                                                ? 'بررسی'
+                                                : row.refund?.status === 'accepted'
+                                                ? 'موفق'
+                                                : row.refund?.status === 'rejected'
+                                                ? 'ناموفق'
+                                                : ''
+                                        }
+                                        variant='text'
+                                        background={row.refund?.status === 'pending' ? 'warning' : 'error'}
+                                        radius='normal'
+                                        fontcolor='white'
+                                        disabled
+                                    />
+                                </TableCell>
+                            </TableRow>
+                        )
+                    ])}
                 </TableTemplate>
             </div>
         </RefundStyles>
