@@ -18,12 +18,23 @@ import { GetUserDashboard } from '../../../api-requests/user';
 import { PutUserProfile } from '../../../api-requests/profile';
 
 const PersonalInformation = ({ state, setState }) => {
-    const [getData, setGetData] = useState([]);
+    const [getData, setGetData] = useState({
+        first_name: '',
+        last_name: '',
+        email: '',
+        phone: '',
+        home_phone: '',
+        national_code: '',
+        password: '',
+        password_confirmation: '',
+        explain: '',
+        nationalCartFile: ''
+    });
 
     useEffect(() => {
         GetUserDashboard()
             .then(res => {
-                setGetData(res.data);
+                setGetData(res.data.user);
             })
             .catch(() => {});
     }, []);
@@ -81,6 +92,7 @@ const PersonalInformation = ({ state, setState }) => {
             });
         }
     };
+
     return (
         <PersonalInformationStyle>
             <h2>تکمیل اطلاعات حساب</h2>
@@ -88,7 +100,7 @@ const PersonalInformation = ({ state, setState }) => {
                 <CustomInput
                     label='نام'
                     name='first_name'
-                    value={getData?.user?.first_name}
+                    value={getData?.first_name}
                     type='text'
                     id='outlined-basic'
                     valuehandler={changeHandeler}
@@ -96,27 +108,20 @@ const PersonalInformation = ({ state, setState }) => {
                 <CustomInput
                     label='نام خانوادگی'
                     name='last_name'
-                    value={getData?.user?.last_name}
+                    value={getData?.last_name}
                     type='text'
                     id='outlined-basic'
                     valuehandler={changeHandeler}
                 />
             </div>
 
-            <CustomInput
-                label='ایمیل'
-                name='email'
-                value={getData?.user?.email}
-                type='email'
-                id='outlined-basic'
-                valuehandler={changeHandeler}
-            />
+            <CustomInput label='ایمیل' name='email' value={getData?.email} type='email' id='outlined-basic' valuehandler={changeHandeler} />
 
             <div className='formBox'>
                 <CustomInput
                     label='شماره همراه فعال در فضای مجازی'
                     name='phone'
-                    value={getData?.user?.phone}
+                    value={getData?.phone}
                     type='text'
                     id='outlined-basic'
                     valuehandler={changeHandeler}
@@ -124,7 +129,7 @@ const PersonalInformation = ({ state, setState }) => {
                 <CustomInput
                     label='شماره ثابت'
                     name='home_phone'
-                    value={getData?.user?.home_phone}
+                    value={getData?.home_phone}
                     type='text'
                     id='outlined-basic'
                     valuehandler={changeHandeler}
@@ -133,13 +138,13 @@ const PersonalInformation = ({ state, setState }) => {
             <CustomInput
                 label='شماره ملی'
                 name='national_code'
-                value={getData?.user?.national_code}
+                value={getData?.national_code}
                 type='text'
                 id='outlined-basic'
                 valuehandler={changeHandeler}
                 maxLength='10'
             />
-            <TextArea label='توضیحات' name='explain' value={getData?.user?.explain} type='text' rows={4} valuehandler={changeHandeler} />
+            <TextArea label='توضیحات' name='explain' value={getData?.explain} type='text' rows={4} valuehandler={changeHandeler} />
             <CustomButton
                 clickHandeler={PostFormDataHandeler}
                 className='btn'
