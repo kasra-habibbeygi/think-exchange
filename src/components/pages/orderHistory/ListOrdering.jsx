@@ -17,13 +17,13 @@ import TableRow from '@mui/material/TableRow';
 
 const TableHeader = ['نوع', 'شماره سفارش', 'وضعیت', ''];
 
-const ListOrdering = ({ orderList }) => {
+const ListOrdering = ({ orderList, setReLoad, reLoad }) => {
     const [seeRefund, setSeeRefund] = useState(false);
     const [uniqId, setUniqId] = useState('');
 
     return (
         <>
-            <AddRefundModal state={seeRefund} setState={setSeeRefund} orderId={uniqId} />
+            <AddRefundModal state={seeRefund} setState={setSeeRefund} orderId={uniqId} setReLoad={setReLoad} reLoad={reLoad} />
             <ListOrderingStyle>
                 <h2>فهرست سفارش ها</h2>
                 <div className='table_field'>

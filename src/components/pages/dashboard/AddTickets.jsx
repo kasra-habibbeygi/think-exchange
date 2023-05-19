@@ -17,7 +17,7 @@ import TableRow from '@mui/material/TableRow';
 
 const TableHeader = ['عنوان', 'تاریخ ثبت', 'وضعیت'];
 
-const AddTickets = ({ tickets }) => {
+const AddTickets = ({ tickets, setReLoad, reLoad }) => {
     const [AddNewTicketsModalState, setAddNewTicketsModalState] = useState(false);
     const [SeeAnsewrState, setSeeAnsewrState] = useState(false);
     const [ansewr, setAnsewr] = useState({
@@ -82,7 +82,12 @@ const AddTickets = ({ tickets }) => {
                     />
                 </div>
             </AddTicketsStyle>
-            <AddNewTicketsModal state={AddNewTicketsModalState} setState={setAddNewTicketsModalState} />
+            <AddNewTicketsModal
+                state={AddNewTicketsModalState}
+                setState={setAddNewTicketsModalState}
+                setReLoad={setReLoad}
+                reLoad={reLoad}
+            />
             <SeeAnsewr state={SeeAnsewrState} setState={setSeeAnsewrState} ansewr={ansewr} />
         </>
     );

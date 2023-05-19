@@ -12,6 +12,7 @@ import { GetUserDashboard } from '../api-requests/user';
 
 const OrderHistory = () => {
     const [getData, setGetData] = useState([]);
+    const [reLoad, setReLoad] = useState(false);
 
     useEffect(() => {
         GetUserDashboard()
@@ -19,11 +20,11 @@ const OrderHistory = () => {
                 setGetData(res.data);
             })
             .catch(() => {});
-    }, []);
+    }, [reLoad]);
 
     return (
         <OrderHistoryStyle>
-            {<ListOrdering orderList={getData?.user?.orders} />}
+            {<ListOrdering orderList={getData?.user?.orders} setReLoad={setReLoad} reLoad={reLoad} />}
             <Refund />
         </OrderHistoryStyle>
     );
