@@ -16,9 +16,7 @@ import CustomButton from '../../form-group/CustomButton';
 //API
 import { PutUserProfile } from '../../../api-requests/profile';
 
-const PersonalInformation = ({ state, setState }) => {
-    console.log(state);
-
+const PersonalInformation = ({ state, setState, staticData }) => {
     const changeHandeler = e => {
         const { value, name } = e.target;
         let formattedValue = value;
@@ -61,6 +59,9 @@ const PersonalInformation = ({ state, setState }) => {
         } else if (state.national_code.length < 10) {
             toast.error(' شماره ملی باید 10 کاراکتر باشد');
             return false;
+        }
+        if (staticData.email === state.email) {
+            delete state.email;
         }
         return true;
     };

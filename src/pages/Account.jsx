@@ -13,6 +13,9 @@ import { AccountStyle } from '../assets/styles/account.style';
 import { GetUserDashboard } from '../api-requests/user';
 
 const Account = () => {
+    const [staticData, setStaticData] = useState({
+        email: ''
+    });
     const [getData, setGetData] = useState({
         first_name: '',
         last_name: '',
@@ -42,13 +45,16 @@ const Account = () => {
                     explain: res.data.user.explain ?? '',
                     nationalCartFile: res.data.user.nationalCartFile ?? ''
                 });
+                setStaticData({
+                    email: res.data.user.email ?? ''
+                });
             })
             .catch(() => {});
     }, []);
 
     return (
         <AccountStyle>
-            <PersonalInformation state={getData} setState={data => setGetData(data)} />
+            <PersonalInformation state={getData} setState={data => setGetData(data)} staticData={staticData} />
             <div className='rightBox'>
                 <ChangePassword state={getData} setState={data => setGetData(data)} />
                 <AttachFile state={getData} setState={data => setGetData(data)} />
