@@ -21,7 +21,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const TicketDetailModal = ({ specificTicket, status, setStatus }) => {
     const [userInfo, setUserInfo] = useState({});
-    console.log(userInfo);
 
     useEffect(() => {
         if (specificTicket) {

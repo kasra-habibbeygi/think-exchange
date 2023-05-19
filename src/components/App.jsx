@@ -20,13 +20,13 @@ import Ordering from '../pages/Ordering';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import LayoutProvider from '../components/layouts/LayoutProvider';
-import OrderList from '../pages/adminPanel/orderList';
 
 // Admin Routes
 import AdminLayoutProvider from '../components/layouts/admin/LayoutProvider';
 import AdminLogin from '../pages/adminPanel/Login';
 import AdminCurenciesList from '../pages/adminPanel/curenciesList';
 import AdminTicketList from '../pages/adminPanel/ticketList';
+import AdminOrderList from '../pages/adminPanel/orderList';
 
 const RequireAuth = ({ children, userType = 'user' }) => {
     const UserLoginStatus = useSelector(state => state.UserInfo.isLogin);
@@ -148,7 +148,7 @@ function App() {
                     <Route element={<IndexPage />} index />
                     <Route path='curencies-list' element={<AdminCurenciesList />} />
                     <Route path='tickets-list' element={<AdminTicketList />} />
-                    <Route path='orders-list' element={<OrderList />} />
+                    <Route path='orders-list' element={<AdminOrderList />} />
                     <Route path='users-list' element={<Ordering />} />
                 </Route>
             </Routes>

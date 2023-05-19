@@ -19,7 +19,7 @@ import { TableCell, TableRow } from '@mui/material';
 const TableHeader = ['ردیف', 'عنوان تیکت', 'وضعیت', 'تاریخ ارسال', 'تاریخ بروز رسانی', 'تنظیمات'];
 
 const TicketList = () => {
-    // const [reLoad, setReLoad] = useState(false);
+    const [reLoad, setReLoad] = useState(false);
     const [ticketList, setTicketList] = useState([]);
     const [specificTicket, setSpecificTicket] = useState();
     const [detailsModalStatus, setDetailsModalStatus] = useState(false);
@@ -32,7 +32,7 @@ const TicketList = () => {
                 setTicketList(res.data);
             })
             .catch(() => {});
-    }, []);
+    }, [reLoad]);
 
     const editModalHandler = data => {
         setDetailsModalStatus(true);
@@ -92,7 +92,13 @@ const TicketList = () => {
                 ))}
             </TableTemplate>
             <TicketDetailModal status={detailsModalStatus} setStatus={setDetailsModalStatus} specificTicket={specificTicket} />
-            <AnswerTicketModal status={answerModalStatus} setStatus={setAnswerModalStatus} ticketId={ticketId} />
+            <AnswerTicketModal
+                status={answerModalStatus}
+                setStatus={setAnswerModalStatus}
+                ticketId={ticketId}
+                setReLoad={setReLoad}
+                reLoad={reLoad}
+            />
         </MainField>
     );
 };

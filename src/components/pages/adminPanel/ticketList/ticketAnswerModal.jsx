@@ -14,14 +14,14 @@ import TextArea from '../../../form-group/TextArea';
 import CustomButton from '../../../form-group/CustomButton';
 
 // APIs
-import { AnswerTicket, ChangeTicketStatus } from '../../../../api-requests/admin/ticket';
+import { AnswerTicket } from '../../../../api-requests/admin/ticket';
 import { toast } from 'react-hot-toast';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction='up' ref={ref} {...props} />;
 });
 
-const AnswerTicketModal = ({ status, setStatus, ticketId }) => {
+const AnswerTicketModal = ({ status, setStatus, ticketId, reLoad, setReLoad }) => {
     const [formData, setFormData] = useState({
         answer: ''
     });
@@ -36,7 +36,7 @@ const AnswerTicketModal = ({ status, setStatus, ticketId }) => {
             toast.error('لطفا توضیحات پاسخ را پر کنید !');
         } else {
             AnswerTicket(ticketId, formData).then(() => {
-                ChangeTicketStatus(ticketId, { is_verify: 1 });
+                setReLoad(!reLoad);
             });
         }
     };

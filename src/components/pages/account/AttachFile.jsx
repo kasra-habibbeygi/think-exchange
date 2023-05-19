@@ -21,8 +21,6 @@ const AttachFile = ({ state, setState }) => {
             toast.success('فایل با موفیت بارگزاری شد');
         });
     };
-
-    console.log(state);
     return (
         <AttachFileStyle>
             <h2>عکس کارت ملی</h2>

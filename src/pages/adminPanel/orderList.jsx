@@ -14,7 +14,7 @@ import { GetAllOrders } from '../../api-requests/admin/orders';
 // MUI
 import { TableCell, TableRow } from '@mui/material';
 
-const TableHeader = ['ردیف', 'نام سرویس', 'وضعیت', 'تاریخ ایجاد درخواست', 'تاریخ بروز رسانی', 'تنظیمات'];
+const TableHeader = ['ردیف', 'نام سرویس', 'وضعیت', 'کاربر', 'ارز', 'تاریخ ایجاد درخواست', 'تنظیمات'];
 
 const OrderList = () => {
     const [orderList, setOrderList] = useState([]);
@@ -26,8 +26,6 @@ const OrderList = () => {
             })
             .catch(() => {});
     }, []);
-
-    console.log(orderList);
 
     const editModalHandler = () => {};
 
@@ -52,10 +50,14 @@ const OrderList = () => {
                             />
                         </TableCell>
                         <TableCell>
-                            {item.created_at.split('T')[0]} - {item.created_at.split('T')[1].split('.')[0]}
+                            {item.user.first_name} {item.user.last_name}
                         </TableCell>
                         <TableCell>
-                            {item.updated_at.split('T')[0]} - {item.updated_at.split('T')[1].split('.')[0]}
+                            {' '}
+                            {item.currency.name} - {item.currency.iso_name}
+                        </TableCell>
+                        <TableCell>
+                            {item.created_at.split('T')[0]} - {item.created_at.split('T')[1].split('.')[0]}
                         </TableCell>
                         <TableCell>
                             <div className='button_group'>
