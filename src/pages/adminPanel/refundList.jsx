@@ -29,8 +29,6 @@ const RefundList = () => {
 
     const editCurencyHandler = () => {};
 
-    console.log(refundList);
-
     return (
         <MainField>
             <div className='header'>

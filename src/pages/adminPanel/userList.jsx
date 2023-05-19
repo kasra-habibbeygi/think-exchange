@@ -26,8 +26,6 @@ const UserList = () => {
             .catch(() => {});
     }, []);
 
-    console.log(usersList);
-
     return (
         <MainField>
             <div className='header'>

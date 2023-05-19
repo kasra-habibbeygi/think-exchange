@@ -8,18 +8,18 @@ import { CustomSelectStyle } from './CustomSelect.style';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
-const CustomSelect = ({ SelectOptions, label, setInputValues, inputValues, name }) => {
+const CustomSelect = ({ SelectOptions, label, setInputValues, inputValues, name, objectKey }) => {
     return (
         <CustomSelectStyle>
             <Autocomplete
                 disablePortal
                 className='select'
                 options={SelectOptions}
-                value={inputValues[name]}
+                getOptionLabel={option => option[objectKey]}
                 onChange={(event, newValue) => {
                     setInputValues({
                         ...inputValues,
-                        [name]: newValue ? newValue?.label : ''
+                        [name]: newValue ? newValue?.id : ''
                     });
                 }}
                 renderInput={params => <TextField {...params} label={label} />}

@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable consistent-return */
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 //style
 import { SelectOrderTypeStyle } from './SelectOrderType.style';
@@ -8,24 +9,27 @@ import { SelectOrderTypeStyle } from './SelectOrderType.style';
 //components
 import CustomSelect from '../../form-group/CustomSelect';
 
-// Utils
-import * as options from '../../../utils/const';
+// APIs
+import { GetAllCategories, GetServicesList } from '../../../api-requests/Categories';
 
 const SelectOrderType = ({ setInputValues, inputValues }) => {
-    const serviceProvider = () => {
-        if (inputValues.category === 'پرداختی امتحان زبان') {
-            return options.englishExampayment;
-        } else if (inputValues.category === 'پرداختی دوره های آنلاین') {
-            return options.onlineCoursesPayment;
-        } else if (inputValues.category === 'پرداختی های دانشگاهی و مدرسه') {
-            return options.universityAndSchoolPayment;
-        } else if (inputValues.category === 'پرداختی هتل و بیلط هواپیما') {
-            return options.hotelAndPlanPayment;
-        } else if (inputValues.category === 'پرداختی مروبط به سفارت') {
-            return options.embassyPayment;
+    const [categoriesList, setCategoriesList] = useState([]);
+    const [categoryId, setCategoryId] = useState(0);
+    const [servicesList, setServicesList] = useState([]);
+
+    useEffect(() => {
+        GetAllCategories().then(res => {
+            setCategoriesList(res.data);
+        });
+    }, []);
+
+    useEffect(() => {
+        if (categoryId !== 0) {
+            GetServicesList(categoryId.category_id).then(res => {
+                setServicesList(res.data.services);
+            });
         }
-        return [];
-    };
+    }, [categoryId]);
 
     return (
         <SelectOrderTypeStyle>
@@ -33,17 +37,19 @@ const SelectOrderType = ({ setInputValues, inputValues }) => {
             <div className='container'>
                 <CustomSelect
                     label='انتخاب دسته سفارش'
-                    SelectOptions={options.category}
-                    setInputValues={setInputValues}
-                    inputValues={inputValues}
-                    name='category'
+                    SelectOptions={categoriesList}
+                    setInputValues={setCategoryId}
+                    inputValues={categoryId}
+                    name='category_id'
+                    objectKey='name'
                 />
                 <CustomSelect
                     label='انتخاب سرویس'
-                    SelectOptions={serviceProvider()}
+                    SelectOptions={servicesList}
                     setInputValues={setInputValues}
                     inputValues={inputValues}
-                    name='service'
+                    name='service_id'
+                    objectKey='name'
                 />
             </div>
         </SelectOrderTypeStyle>
