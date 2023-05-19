@@ -7,6 +7,9 @@ export const OrderingStyle = styled.div(props => ({
     alignItems: 'flex-start',
 
     '@media screen and (max-width: 1210px)': {
-        flexDirection: 'column'
+        flexDirection: 'column',
+        '&:last-of-type': {
+            flexDirection: 'column-reverse'
+        }
     }
 }));

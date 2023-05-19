@@ -29,7 +29,7 @@ const AddRefundModal = ({ state, setState, orderId }) => {
     };
 
     const validatFrom = () => {
-        if (validator.isEmpty(formData.text)) {
+        if (validator.isEmpty(formData.description)) {
             toast.error('علت درخواست خود را بیان کنید');
         }
         return true;

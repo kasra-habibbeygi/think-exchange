@@ -2,6 +2,8 @@
 /* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
+import { toast } from 'react-hot-toast';
+import validator from 'validator';
 
 //style
 import { PersonalInformationStyle } from './personalInformation.style';
@@ -11,31 +13,74 @@ import CustomInput from '../../form-group/CustomInput.jsx';
 import TextArea from '../../form-group/TextArea';
 import CustomButton from '../../form-group/CustomButton';
 
-const PersonalInformation = ({ state, seState }) => {
+const PersonalInformation = ({ state, setState }) => {
     const changeHandeler = e => {
         const { value, name } = e.target;
         let formattedValue = value;
-        if (name === 'landline') {
+        if (name === 'home_phone') {
             formattedValue = value.replace(/[^0-9]/g, '');
-        } else if (name === 'phoneNumber') {
+        } else if (name === 'phone') {
             formattedValue = value.replace(/[^0-9]/g, '');
-        } else if (name === 'nationalCode') {
+        } else if (name === 'national_code') {
             formattedValue = value.replace(/[^0-9]/g, '');
         }
 
-        seState({ ...state, [name]: formattedValue });
+        setState({ ...state, [name]: formattedValue });
     };
 
-    const getFormDataHandeler = () => {};
+    const validatFrom = () => {
+        if (validator.isEmpty(state.first_name)) {
+            toast.error('نام  خود را وارد کنید');
+            return false;
+        } else if (validator.isEmpty(state.last_name)) {
+            toast.error('نام خانوادگی خود را وارد کنید');
+            return false;
+        } else if (validator.isEmpty(state.email)) {
+            toast.error('ایمیل خود را وارد کنید');
+            return false;
+        } else if (!validator.isEmail(state.email)) {
+            toast.error('ایمیل را به درستی وارد کنید');
+            return false;
+        } else if (validator.isEmpty(state.phone)) {
+            toast.error('شماره تماس  خود را وارد کنید');
+            return false;
+        } else if (state.phone.length < 11) {
+            toast.error(' شماره تماس خود را به درستی وارد کنید');
+            return false;
+        } else if (validator.isEmpty(state.home_phone)) {
+            toast.error(' شماره ثابت  خود را وارد کنید');
+            return false;
+        } else if (validator.isEmpty(state.national_code)) {
+            toast.error(' شماره ملی  خود را وارد کنید');
+            return false;
+        } else if (state.national_code.length < 10) {
+            toast.error(' شماره ملی باید 10 کاراکتر باشد');
+            return false;
+        }
+        return true;
+    };
+
+    const getFormDataHandeler = () => {
+        if (validatFrom()) {
+            console.log(state);
+        }
+    };
     return (
         <PersonalInformationStyle>
             <h2>تکمیل اطلاعات حساب</h2>
             <div className='formBox'>
-                <CustomInput label='نام' name='name' value={state.name} type='text' id='outlined-basic' valuehandler={changeHandeler} />
+                <CustomInput
+                    label='نام'
+                    name='first_name'
+                    value={state.first_name}
+                    type='text'
+                    id='outlined-basic'
+                    valuehandler={changeHandeler}
+                />
                 <CustomInput
                     label='نام خانوادگی'
-                    name='family'
-                    value={state.family}
+                    name='last_name'
+                    value={state.last_name}
                     type='text'
                     id='outlined-basic'
                     valuehandler={changeHandeler}
@@ -47,16 +92,16 @@ const PersonalInformation = ({ state, seState }) => {
             <div className='formBox'>
                 <CustomInput
                     label='شماره همراه فعال در فضای مجازی'
-                    name='phoneNumber'
-                    value={state.phoneNumber}
+                    name='phone'
+                    value={state.phone}
                     type='text'
                     id='outlined-basic'
                     valuehandler={changeHandeler}
                 />
                 <CustomInput
                     label='شماره ثابت'
-                    name='landline'
-                    value={state.landline}
+                    name='home_phone'
+                    value={state.home_phone}
                     type='text'
                     id='outlined-basic'
                     valuehandler={changeHandeler}
@@ -64,8 +109,8 @@ const PersonalInformation = ({ state, seState }) => {
             </div>
             <CustomInput
                 label='شماره ملی'
-                name='nationalCode'
-                value={state.nationalCode}
+                name='national_code'
+                value={state.national_code}
                 type='text'
                 id='outlined-basic'
                 valuehandler={changeHandeler}

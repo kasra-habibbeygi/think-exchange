@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { useState } from 'react';
 
 //components
@@ -9,23 +10,23 @@ import PersonalInformation from '../components/pages/account/personalInformation
 import { AccountStyle } from '../assets/styles/account.style';
 const Account = () => {
     const [formData, setFromData] = useState({
-        name: '',
-        family: '',
+        first_name: '',
+        last_name: '',
         email: '',
-        phoneNumber: '',
-        landline: '',
-        nationalCode: '',
+        phone: '',
+        home_phone: '',
+        national_code: '',
+        password: '',
+        password_confirmation: '',
         explain: '',
-        nationalCartFile: '',
-        newPassword: '',
-        confirmPassword: ''
+        nationalCartFile: ''
     });
 
     return (
         <AccountStyle>
             <PersonalInformation state={formData} setState={data => setFromData(data)} />
             <div className='rightBox'>
-                <ChangePassword />
+                <ChangePassword state={formData} setState={data => setFromData(data)} />
                 <AttachFile state={formData} setState={data => setFromData(data)} />
             </div>
         </AccountStyle>

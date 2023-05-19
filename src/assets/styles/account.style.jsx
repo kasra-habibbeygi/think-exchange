@@ -25,7 +25,7 @@ export const AccountStyle = styled.div(props => ({
     },
     '@media screen and (max-width: 700px)': {
         '& .rightBox': {
-            flexDirection: 'column'
+            flexDirection: 'column-reverse'
         }
     }
 }));
