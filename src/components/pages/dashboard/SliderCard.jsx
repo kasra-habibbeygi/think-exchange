@@ -32,7 +32,7 @@ const SliderCard = ({ data }) => {
                     <div className='percentage'>
                         {!data.change_rate.includes('-') ? <img alt='currency' src={upArrow} /> : <img alt='currency' src={DownArrow} />}
 
-                        {data.change_rate === '0' ? <span>0%</span> : <span>{data.change_rate}</span>}
+                        <span>{data.change_rate}</span>
                     </div>
                     <h3>{Tools.addCommaInNumbers(data.price)}</h3>
                 </div>
