@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 export const AddNewTicketsModalStyle = styled.div(props => ({
     '& .MuiPaper-root': {
         borderRadius: '20px',
-        width: '700px'
+        Width: '700px'
     },
 
     '& .btnBox': {
@@ -22,7 +22,7 @@ export const AddNewTicketsModalStyle = styled.div(props => ({
     },
 
     '& .modalBox': {
-        padding: '40px 60px',
+        padding: '30px 40px',
         display: 'flex',
         justifyContent: 'center',
         flexDirection: 'column',

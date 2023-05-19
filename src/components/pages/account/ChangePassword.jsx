@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import validator from 'validator';
 
@@ -15,6 +15,8 @@ import CustomButton from '../../form-group/CustomButton';
 import { PutUserProfile } from '../../../api-requests/profile';
 
 const ChangePassword = ({ state, setState }) => {
+    const [loader, setLoader] = useState(false);
+
     const validatFrom = () => {
         if (validator.isEmpty(state.password)) {
             toast.error('پسورد را وارد کنید');
@@ -32,10 +34,18 @@ const ChangePassword = ({ state, setState }) => {
         return true;
     };
     const inputValueHandler = () => {
+        setLoader(true);
         if (validatFrom()) {
-            PutUserProfile(state).then(() => {
-                toast.success('پسورد شما با موفقیت تغییر کرد');
-            });
+            PutUserProfile({
+                password: state.password,
+                password_confirmation: state.password_confirmation
+            })
+                .then(() => {
+                    toast.success('پسورد شما با موفقیت تغییر کرد');
+                })
+                .finally(() => {
+                    setLoader(false);
+                });
         }
     };
 
@@ -66,6 +76,7 @@ const ChangePassword = ({ state, setState }) => {
                 background='garadient'
                 radius='normal'
                 fontcolor='white'
+                loader={loader}
             />
         </ChangePasswordStyle>
     );

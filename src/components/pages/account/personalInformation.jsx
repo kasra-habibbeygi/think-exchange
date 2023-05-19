@@ -17,6 +17,7 @@ import CustomButton from '../../form-group/CustomButton';
 import { PutUserProfile } from '../../../api-requests/profile';
 
 const PersonalInformation = ({ state, setState, staticData }) => {
+    const [loader, setLoader] = useState(false);
     const changeHandeler = e => {
         const { value, name } = e.target;
         let formattedValue = value;
@@ -32,6 +33,10 @@ const PersonalInformation = ({ state, setState, staticData }) => {
     };
 
     const validatFrom = () => {
+        var test = {
+            ...state
+        };
+
         if (validator.isEmpty(state.first_name)) {
             toast.error('نام  خود را وارد کنید');
             return false;
@@ -60,20 +65,25 @@ const PersonalInformation = ({ state, setState, staticData }) => {
             toast.error(' شماره ملی باید 10 کاراکتر باشد');
             return false;
         }
-        if (staticData.email === state.email) {
-            delete state.email;
+        if (staticData.email === test.email) {
+            delete test.email;
         }
-        if (staticData.phone === state.phone) {
-            delete state.phone;
+        if (staticData.phone === test.phone) {
+            delete test.phone;
         }
-        return true;
+        return test;
     };
 
     const PostFormDataHandeler = () => {
+        setLoader(true);
         if (validatFrom()) {
-            PutUserProfile(state).then(() => {
-                toast.success('اطلاعات شما با موفقیت تغییر کرد');
-            });
+            PutUserProfile(validatFrom())
+                .then(() => {
+                    toast.success('اطلاعات شما با موفقیت تغییر کرد');
+                })
+                .finally(() => {
+                    setLoader(false);
+                });
         }
     };
 
@@ -137,6 +147,7 @@ const PersonalInformation = ({ state, setState, staticData }) => {
                 background='garadient'
                 radius='normal'
                 fontcolor='white'
+                loader={loader}
             />
         </PersonalInformationStyle>
     );

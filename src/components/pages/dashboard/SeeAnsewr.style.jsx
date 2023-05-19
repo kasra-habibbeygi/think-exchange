@@ -4,7 +4,8 @@ import styled from '@emotion/styled';
 export const SeeAnsewrStyle = styled.div(props => ({
     '& .MuiPaper-root': {
         borderRadius: '20px',
-        maxWidth: '700px'
+        maxWidth: '700px',
+        width: '450px'
     },
 
     '& .formBox': {

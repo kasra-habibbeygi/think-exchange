@@ -39,7 +39,7 @@ const AddNewTicketsModal = ({ state, setState, ansewr }) => {
                             clickHandeler={handleClose}
                             className='close'
                             text='بازگشت'
-                            variant='outlined'
+                            variant='text'
                             background='error'
                             radius='normal'
                             fontcolor='white'

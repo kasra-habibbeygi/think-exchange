@@ -26,8 +26,6 @@ const Ordering = () => {
         attachment: ''
     });
 
-    console.log(inputValues);
-
     return (
         <>
             <OrderingStyle>

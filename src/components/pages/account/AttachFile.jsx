@@ -14,14 +14,14 @@ import { PutUserProfile } from '../../../api-requests/profile';
 
 const AttachFile = ({ state, setState }) => {
     const formData = new FormData();
-    const inputValueHandler = e => {
-        formData.append('national_card_photo', e.target.file[0]);
 
+    const inputValueHandler = e => {
+        formData.append('national_card_photo', e.target.files[0]);
         PutUserProfile(formData).then(() => {
             toast.success('فایل با موفیت بارگزاری شد');
         });
     };
-    console.log(formData);
+
     return (
         <AttachFileStyle>
             <h2>عکس کارت ملی</h2>
