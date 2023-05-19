@@ -27,7 +27,7 @@ const Account = () => {
         password: '',
         password_confirmation: '',
         explain: '',
-        nationalCartFile: ''
+        national_card_photo: ''
     });
 
     useEffect(() => {
@@ -44,7 +44,7 @@ const Account = () => {
                     password: res.data.user.password ?? '',
                     password_confirmation: res.data.user.password_confirmation ?? '',
                     explain: res.data.user.explain ?? '',
-                    nationalCartFile: res.data.user.nationalCartFile ?? ''
+                    national_card_photo: res.data.user.national_card_photo ?? ''
                 });
                 setStaticData({
                     email: res.data.user.email ?? '',

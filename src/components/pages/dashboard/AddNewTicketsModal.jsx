@@ -23,7 +23,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction='up' ref={ref} {...props} />;
 });
 
-const AddNewTicketsModal = ({ state, setState }) => {
+const AddNewTicketsModal = ({ state, setState, reLoad, setReLoad }) => {
     const [SuccessAddTicketState, setSuccessAddTicketState] = useState(false);
     const [formData, setFormData] = useState({
         title: '',
@@ -57,6 +57,7 @@ const AddNewTicketsModal = ({ state, setState }) => {
             PostNewTickets(formData).then(() => {
                 setState(false);
                 setSuccessAddTicketState(true);
+                setReLoad(!reLoad);
             });
         }
     };

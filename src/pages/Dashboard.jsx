@@ -12,6 +12,7 @@ import { DashboardStyle } from '../assets/styles/dashboard.style';
 import { GetUserDashboard } from '../api-requests/user';
 
 const Dashboard = () => {
+    const [reLoad, setReLoad] = useState(false);
     const [getData, setGetData] = useState([]);
 
     useEffect(() => {
@@ -20,13 +21,13 @@ const Dashboard = () => {
                 setGetData(res.data);
             })
             .catch(() => {});
-    }, []);
+    }, [reLoad]);
 
     return (
         <>
             {<LatestCurrencyStatus currency={getData?.currencies} />}
             <DashboardStyle className='container'>
-                {<AddTickets tickets={getData?.user?.tickets} />}
+                {<AddTickets tickets={getData?.user?.tickets} setReLoad={setReLoad} reLoad={reLoad} />}
                 {<ListOrdering orderHistory={getData?.user?.orders} />}
             </DashboardStyle>
         </>

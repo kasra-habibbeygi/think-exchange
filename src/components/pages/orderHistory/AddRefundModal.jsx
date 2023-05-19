@@ -18,7 +18,7 @@ import SuccessAlert from '../../template/SuccessAlert';
 //api
 import { PostNewRefund } from '../../../api-requests/refund';
 
-const AddRefundModal = ({ state, setState, orderId }) => {
+const AddRefundModal = ({ state, setState, orderId, reLoad, setReLoad }) => {
     const [formData, setFormData] = useState({
         description: ''
     });
@@ -46,6 +46,7 @@ const AddRefundModal = ({ state, setState, orderId }) => {
             PostNewRefund(formData, orderId).then(() => {
                 setState(false);
                 setSuccessAddTicketState(true);
+                setReLoad(!reLoad);
             });
         }
     };
