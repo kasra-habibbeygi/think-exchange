@@ -59,9 +59,10 @@ const PersonalInformation = ({ state, setState, staticData }) => {
         } else if (state.national_code.length < 10) {
             toast.error(' شماره ملی باید 10 کاراکتر باشد');
             return false;
-        }
-        if (staticData.email === state.email) {
+        } else if (staticData.email === state.email) {
             delete state.email;
+        } else if (staticData.phone === state.phone) {
+            delete state.phone;
         }
         return true;
     };

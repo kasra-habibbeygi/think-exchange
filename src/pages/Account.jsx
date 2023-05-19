@@ -14,7 +14,8 @@ import { GetUserDashboard } from '../api-requests/user';
 
 const Account = () => {
     const [staticData, setStaticData] = useState({
-        email: ''
+        email: '',
+        phone: ''
     });
     const [getData, setGetData] = useState({
         first_name: '',
@@ -46,7 +47,8 @@ const Account = () => {
                     nationalCartFile: res.data.user.nationalCartFile ?? ''
                 });
                 setStaticData({
-                    email: res.data.user.email ?? ''
+                    email: res.data.user.email ?? '',
+                    phone: res.data.user.phone ?? ''
                 });
             })
             .catch(() => {});
