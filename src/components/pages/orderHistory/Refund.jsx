@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React, { useEffect, useState } from 'react';
 
 //styles
@@ -20,13 +21,14 @@ const Refund = () => {
     const [refundsRequest, setRefundsRequest] = useState([]);
 
     useEffect(() => {
-        GetRefund(1)
+        GetRefund()
             .then(res => {
                 setRefundsRequest(res.data);
             })
             .catch(() => {});
     }, []);
 
+    console.log(refundsRequest);
     return (
         <RefundStyles>
             <h2>لیست درخواست های ریفاند</h2>
@@ -34,12 +36,20 @@ const Refund = () => {
                 <TableTemplate TableHeader={TableHeader}>
                     {refundsRequest.map(row => (
                         <TableRow key={row.id}>
-                            <TableCell scope='row'>{row.name}</TableCell>
+                            <TableCell scope='row'>{row.refund && row.service?.name}</TableCell>
                             <TableCell>
                                 <CustomButton
-                                    text={row.status}
+                                    text={
+                                        row.refund?.status === 'pending'
+                                            ? 'بررسی'
+                                            : row.refund?.status === 'accepted'
+                                            ? 'موفق'
+                                            : row.refund?.status === 'rejected'
+                                            ? 'ناموفق'
+                                            : ''
+                                    }
                                     variant='text'
-                                    background='warning'
+                                    background={row.refund?.status === 'pending' ? 'warning' : 'error'}
                                     radius='normal'
                                     fontcolor='white'
                                     disabled
