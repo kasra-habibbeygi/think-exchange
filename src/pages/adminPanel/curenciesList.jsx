@@ -47,47 +47,49 @@ const CurenciesList = () => {
                 <h2>لیست ارز های سایت</h2>
                 {/* <CustomButton text='مشاهده پاسخ' variant='text' background='garadient' radius='normal' fontcolor='white' /> */}
             </div>
-            <TableTemplate TableHeader={TableHeader}>
-                {curenciesList?.map((item, index) => (
-                    <TableRow key={item.id}>
-                        <TableCell scope='row'>{index + 1}</TableCell>
-                        <TableCell>
-                            <div className='curency_name'>
-                                <img src={`${process.env.REACT_APP_FILE_URL}${item.logo}`} alt='' />
-                                {item.name} - {item.iso_name}
-                            </div>
-                        </TableCell>
-                        <TableCell>{Tools.addCommaInNumbers(item.price)}</TableCell>
-                        <TableCell>
-                            <div className='percentage'>
-                                {!item.change_rate.includes('-') ? (
-                                    <img alt='currency' src={upArrow} />
-                                ) : (
-                                    <img alt='currency' src={DownArrow} />
-                                )}
-                                {item.change_rate === '0' ? <span>0%</span> : <span>{item.change_rate}</span>}
-                            </div>
-                        </TableCell>
-                        <TableCell>
-                            {item.created_at.split('T')[0]} - {item.created_at.split('T')[1].split('.')[0]}
-                        </TableCell>
-                        <TableCell>
-                            {item.updated_at.split('T')[0]} - {item.updated_at.split('T')[1].split('.')[0]}
-                        </TableCell>
-                        <TableCell>
-                            <CustomButton
-                                text='ویرایش'
-                                variant='text'
-                                background='warning'
-                                radius='normal'
-                                fontcolor='white'
-                                extraClass='table_button'
-                                clickHandeler={() => editCurencyHandler(item)}
-                            />
-                        </TableCell>
-                    </TableRow>
-                ))}
-            </TableTemplate>
+            <div className='table_field'>
+                <TableTemplate TableHeader={TableHeader}>
+                    {curenciesList?.map((item, index) => (
+                        <TableRow key={item.id}>
+                            <TableCell scope='row'>{index + 1}</TableCell>
+                            <TableCell>
+                                <div className='curency_name'>
+                                    <img src={`${process.env.REACT_APP_FILE_URL}${item.logo}`} alt='' />
+                                    {item.name} - {item.iso_name}
+                                </div>
+                            </TableCell>
+                            <TableCell>{Tools.addCommaInNumbers(item.price)}</TableCell>
+                            <TableCell>
+                                <div className='percentage'>
+                                    {!item.change_rate.includes('-') ? (
+                                        <img alt='currency' src={upArrow} />
+                                    ) : (
+                                        <img alt='currency' src={DownArrow} />
+                                    )}
+                                    {item.change_rate === '0' ? <span>0%</span> : <span>{item.change_rate}</span>}
+                                </div>
+                            </TableCell>
+                            <TableCell>
+                                {item.created_at.split('T')[0]} - {item.created_at.split('T')[1].split('.')[0]}
+                            </TableCell>
+                            <TableCell>
+                                {item.updated_at.split('T')[0]} - {item.updated_at.split('T')[1].split('.')[0]}
+                            </TableCell>
+                            <TableCell>
+                                <CustomButton
+                                    text='ویرایش'
+                                    variant='text'
+                                    background='warning'
+                                    radius='normal'
+                                    fontcolor='white'
+                                    extraClass='table_button'
+                                    clickHandeler={() => editCurencyHandler(item)}
+                                />
+                            </TableCell>
+                        </TableRow>
+                    ))}
+                </TableTemplate>
+            </div>
             <EditCurencyModal
                 specificCurency={specificCurency}
                 status={editModalStatus}

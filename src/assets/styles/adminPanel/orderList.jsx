@@ -20,6 +20,33 @@ export const MainField = styled.div(props => ({
         width: '100%'
     },
 
+    '& .table_field': {
+        width: '100%',
+        overflow: 'auto',
+        paddingBottom: '20px',
+
+        '& ::-webkit-scrollbar': {
+            width: 'unset',
+            height: '5px'
+        },
+
+        '& ::-webkit-scrollbar-track': {
+            background: '#ebebeb'
+        },
+
+        '& ::-webkit-scrollbar-thumb': {
+            background: 'rgb(197, 197, 197)'
+        },
+
+        '& ::-webkit-scrollbar-thumb:hover': {
+            background: 'rgb(85, 94, 129)'
+        },
+
+        table: {
+            minWidth: '1000px'
+        }
+    },
+
     '& .button_group': {
         display: 'flex',
         alignItems: 'center',

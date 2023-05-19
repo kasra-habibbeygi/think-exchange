@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 //Assets
 import { ModalField } from './ticketDetailsModal.style';
@@ -12,24 +12,11 @@ import Slide from '@mui/material/Slide';
 //components
 import CustomButton from '../../../form-group/CustomButton';
 
-// APIs
-import { GetUserInfo } from '../../../../api-requests/admin/user';
-
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction='up' ref={ref} {...props} />;
 });
 
 const TicketDetailModal = ({ specificTicket, status, setStatus }) => {
-    const [userInfo, setUserInfo] = useState({});
-
-    useEffect(() => {
-        if (specificTicket) {
-            GetUserInfo(specificTicket?.user_id).then(res => {
-                setUserInfo(res.data);
-            });
-        }
-    }, [specificTicket?.user_id]);
-
     return (
         <ModalField>
             <Dialog open={status} TransitionComponent={Transition} keepMounted onClose={() => setStatus(false)} disablePortal>
@@ -38,7 +25,7 @@ const TicketDetailModal = ({ specificTicket, status, setStatus }) => {
                     <div className='info_row'>
                         <p>نام کاربر : </p>
                         <span>
-                            {userInfo?.first_name} {userInfo?.last_name}
+                            {specificTicket?.user?.first_name} {specificTicket?.user?.last_name}
                         </span>
                     </div>
                     <div className='info_row'>

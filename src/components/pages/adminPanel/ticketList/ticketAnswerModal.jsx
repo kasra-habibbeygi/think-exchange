@@ -37,6 +37,7 @@ const AnswerTicketModal = ({ status, setStatus, ticketId, reLoad, setReLoad }) =
         } else {
             AnswerTicket(ticketId, formData).then(() => {
                 setReLoad(!reLoad);
+                setStatus(false);
             });
         }
     };

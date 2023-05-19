@@ -16,7 +16,7 @@ import { GetAllTickets } from '../../api-requests/admin/ticket';
 // MUI
 import { TableCell, TableRow } from '@mui/material';
 
-const TableHeader = ['ردیف', 'عنوان تیکت', 'وضعیت', 'تاریخ ارسال', 'تاریخ بروز رسانی', 'تنظیمات'];
+const TableHeader = ['ردیف', 'عنوان تیکت', 'وضعیت', 'نام کاربر', 'تاریخ ارسال', 'تنظیمات'];
 
 const TicketList = () => {
     const [reLoad, setReLoad] = useState(false);
@@ -47,50 +47,52 @@ const TicketList = () => {
     return (
         <MainField>
             <h2>لیست تیکت ها</h2>
-            <TableTemplate TableHeader={TableHeader}>
-                {ticketList?.map((item, index) => (
-                    <TableRow key={item.id}>
-                        <TableCell scope='row'>{index + 1}</TableCell>
-                        <TableCell>{item.title}</TableCell>
-                        <TableCell>
-                            <CustomButton
-                                text={item.status === 'pending' ? 'جدید' : 'پاسخ داده شده'}
-                                variant='text'
-                                background={item.status === 'pending' ? 'warning' : 'success'}
-                                radius='normal'
-                                fontcolor='white'
-                                disabled
-                            />
-                        </TableCell>
-                        <TableCell>
-                            {item.created_at.split('T')[0]} - {item.created_at.split('T')[1].split('.')[0]}
-                        </TableCell>
-                        <TableCell>
-                            {item.updated_at.split('T')[0]} - {item.updated_at.split('T')[1].split('.')[0]}
-                        </TableCell>
-                        <TableCell>
-                            <div className='button_group'>
+            <div className='table_field'>
+                <TableTemplate TableHeader={TableHeader}>
+                    {ticketList?.map((item, index) => (
+                        <TableRow key={item.id}>
+                            <TableCell scope='row'>{index + 1}</TableCell>
+                            <TableCell>{item.title}</TableCell>
+                            <TableCell>
                                 <CustomButton
-                                    text='جزئیات'
+                                    text={item.status === 'pending' ? 'جدید' : 'پاسخ داده شده'}
                                     variant='text'
+                                    background={item.status === 'pending' ? 'warning' : 'success'}
                                     radius='normal'
-                                    fontcolor='black'
-                                    extraClass='table_button'
-                                    clickHandeler={() => editModalHandler(item)}
+                                    fontcolor='white'
+                                    disabled
                                 />
-                                <CustomButton
-                                    text='پاسخ'
-                                    variant='text'
-                                    radius='normal'
-                                    fontcolor='black'
-                                    extraClass='table_button'
-                                    clickHandeler={() => answerModalhandler(item.id)}
-                                />
-                            </div>
-                        </TableCell>
-                    </TableRow>
-                ))}
-            </TableTemplate>
+                            </TableCell>
+                            <TableCell>
+                                {item?.user?.first_name} {item?.user?.last_name}
+                            </TableCell>
+                            <TableCell>
+                                {item.created_at.split('T')[0]} - {item.created_at.split('T')[1].split('.')[0]}
+                            </TableCell>
+                            <TableCell>
+                                <div className='button_group'>
+                                    <CustomButton
+                                        text='جزئیات'
+                                        variant='text'
+                                        radius='normal'
+                                        fontcolor='black'
+                                        extraClass='table_button'
+                                        clickHandeler={() => editModalHandler(item)}
+                                    />
+                                    <CustomButton
+                                        text='پاسخ'
+                                        variant='text'
+                                        radius='normal'
+                                        fontcolor='black'
+                                        extraClass='table_button'
+                                        clickHandeler={() => answerModalhandler(item.id)}
+                                    />
+                                </div>
+                            </TableCell>
+                        </TableRow>
+                    ))}
+                </TableTemplate>
+            </div>
             <TicketDetailModal status={detailsModalStatus} setStatus={setDetailsModalStatus} specificTicket={specificTicket} />
             <AnswerTicketModal
                 status={answerModalStatus}

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 //mui
 import Button from '@mui/material/Button';
@@ -18,8 +18,13 @@ import coupon from '../../../assets/images/layout/coupon.svg';
 import LogoutModal from './LogoutModal';
 
 const SideBar = () => {
+    const location = useLocation();
     const [logoutModalState, setLogoutModalState] = useState(false);
     const [menuState, setmenuState] = useState(false);
+
+    useEffect(() => {
+        setmenuState(false);
+    }, [location.pathname]);
 
     const clickHandeler = () => {
         setmenuState(true);

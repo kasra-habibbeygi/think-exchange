@@ -8,6 +8,33 @@ export const MainField = styled.div(props => ({
     borderRadius: '28px',
     padding: '20px 30px',
 
+    '& .table_field': {
+        width: '100%',
+        overflow: 'auto',
+        paddingBottom: '20px',
+
+        '& ::-webkit-scrollbar': {
+            width: 'unset',
+            height: '5px'
+        },
+
+        '& ::-webkit-scrollbar-track': {
+            background: '#ebebeb'
+        },
+
+        '& ::-webkit-scrollbar-thumb': {
+            background: 'rgb(197, 197, 197)'
+        },
+
+        '& ::-webkit-scrollbar-thumb:hover': {
+            background: 'rgb(85, 94, 129)'
+        },
+
+        table: {
+            minWidth: '1000px'
+        }
+    },
+
     h2: {
         fontSize: '1.2rem',
         marginBottom: '40px'
