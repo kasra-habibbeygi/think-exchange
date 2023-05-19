@@ -4,9 +4,11 @@ import React, { useEffect, useState } from 'react';
 //Components
 import TableTemplate from '../../components/template/TableTemplate';
 import CustomButton from '../../components/form-group/CustomButton';
+import TicketDetailModal from '../../components/pages/adminPanel/ticketList/ticketDetailsModal';
+import AnswerTicketModal from '../../components/pages/adminPanel/ticketList/ticketAnswerModal';
 
 //Assets
-import { MainField } from '../../assets/styles/adminPanel/curenciesList.style';
+import { MainField } from '../../assets/styles/adminPanel/ticketList.style';
 
 //APIs
 import { GetAllTickets } from '../../api-requests/admin/ticket';
@@ -19,8 +21,10 @@ const TableHeader = ['ردیف', 'عنوان تیکت', 'وضعیت', 'تاری�
 const TicketList = () => {
     // const [reLoad, setReLoad] = useState(false);
     const [ticketList, setTicketList] = useState([]);
-    // const [specificCurency, setSpecificCurency] = useState();
-    // const [editModalStatus, setEditModalStatus] = useState(false);
+    const [specificTicket, setSpecificTicket] = useState();
+    const [detailsModalStatus, setDetailsModalStatus] = useState(false);
+    const [answerModalStatus, setAnswerModalStatus] = useState(false);
+    const [ticketId, setTicketId] = useState(0);
 
     useEffect(() => {
         GetAllTickets()
@@ -30,17 +34,19 @@ const TicketList = () => {
             .catch(() => {});
     }, []);
 
-    const editCurencyHandler = () => {
-        // setEditModalStatus(true);
-        // setSpecificCurency(data);
+    const editModalHandler = data => {
+        setDetailsModalStatus(true);
+        setSpecificTicket(data);
+    };
+
+    const answerModalhandler = id => {
+        setAnswerModalStatus(true);
+        setTicketId(id);
     };
 
     return (
         <MainField>
-            <div className='header'>
-                <h2>لیست تیکت ها</h2>
-                {/* <CustomButton text='مشاهده پاسخ' variant='text' background='garadient' radius='normal' fontcolor='white' /> */}
-            </div>
+            <h2>لیست تیکت ها</h2>
             <TableTemplate TableHeader={TableHeader}>
                 {ticketList?.map((item, index) => (
                     <TableRow key={item.id}>
@@ -68,23 +74,25 @@ const TicketList = () => {
                                     text='جزئیات'
                                     variant='text'
                                     radius='normal'
-                                    fontcolor='white'
+                                    fontcolor='black'
                                     extraClass='table_button'
-                                    clickHandeler={() => editCurencyHandler(item)}
+                                    clickHandeler={() => editModalHandler(item)}
                                 />
                                 <CustomButton
                                     text='پاسخ'
                                     variant='text'
                                     radius='normal'
-                                    fontcolor='white'
+                                    fontcolor='black'
                                     extraClass='table_button'
-                                    clickHandeler={() => editCurencyHandler(item)}
+                                    clickHandeler={() => answerModalhandler(item.id)}
                                 />
                             </div>
                         </TableCell>
                     </TableRow>
                 ))}
             </TableTemplate>
+            <TicketDetailModal status={detailsModalStatus} setStatus={setDetailsModalStatus} specificTicket={specificTicket} />
+            <AnswerTicketModal status={answerModalStatus} setStatus={setAnswerModalStatus} ticketId={ticketId} />
         </MainField>
     );
 };

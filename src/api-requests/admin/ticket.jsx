@@ -7,3 +7,11 @@ export const GetAllTickets = async () => {
 export const TicketDetails = async id => {
     return Axios.get(`tickets/show/${id}`).then(res => res.data);
 };
+
+export const AnswerTicket = async (id, data) => {
+    return Axios.put(`tickets/answer/${id}`, data).then(res => res.data);
+};
+
+export const ChangeTicketStatus = async (id, data) => {
+    return Axios.put(`tickets/verify/${id}`, data).then(res => res.data);
+};

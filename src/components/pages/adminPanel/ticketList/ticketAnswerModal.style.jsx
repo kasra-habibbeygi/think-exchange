@@ -1,34 +1,18 @@
 /* eslint-disable no-unused-vars */
 import styled from '@emotion/styled';
 
-export const SeeAnsewrStyle = styled.div(props => ({
+export const ModalField = styled.div(props => ({
     '& .MuiPaper-root': {
         borderRadius: '20px',
-        maxWidth: '700px'
-    },
-
-    '& .formBox': {
-        width: '100%',
-
-        p: {
-            border: '1px solid #bdbdbd',
-            borderRadius: '12px',
-            padding: '20px 25px 15px',
-            marginBottom: '30px',
-            position: 'relative',
-
-            span: {
-                position: 'absolute',
-                top: '-9px',
-                right: '20px',
-                background: ' white',
-                padding: '0px 10px',
-                fontSize: '0.85rem'
-            }
-        }
+        width: '700px'
     },
 
     '& .btnBox': {
+        display: 'flex',
+        gap: '20px'
+    },
+
+    '& .formBox': {
         width: '100%'
     },
 
@@ -43,16 +27,14 @@ export const SeeAnsewrStyle = styled.div(props => ({
         justifyContent: 'center',
         flexDirection: 'column',
         alignItems: 'center',
-        color: props.theme.colors.black,
+        color: 'props.theme.colors.black',
 
         button: {
             textAlign: 'center',
             justifyContent: 'center',
-            borderRadius: '10px',
-            width: '100%'
+            borderRadius: '10px'
         }
     },
-
     '@media screen and (max-width: 992px)': {
         '& .MuiPaper-root': {
             maxWidth: '600px'
@@ -81,7 +63,8 @@ export const SeeAnsewrStyle = styled.div(props => ({
             fontSize: '0.8rem'
         },
         button: {
-            fontSize: '.8rem'
+            fontSize: '.8rem',
+            padding: '5px 20px'
         },
         '& .formBox': {
             p: {

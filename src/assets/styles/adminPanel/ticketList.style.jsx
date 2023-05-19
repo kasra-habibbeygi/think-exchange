@@ -13,30 +13,6 @@ export const MainField = styled.div(props => ({
         marginBottom: '40px'
     },
 
-    '& .curency_name': {
-        display: 'flex',
-        alignItems: 'center',
-        gap: '10px',
-        margin: '0 auto',
-        width: '230px',
-
-        img: {
-            width: '40px',
-            height: '40px',
-            objectFit: 'cover',
-            borderRadius: '50px'
-        }
-    },
-
-    '& .percentage': {
-        direction: 'ltr',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '10px',
-        margin: '0 auto',
-        width: 'max-content'
-    },
-
     '& .header': {
         display: 'flex',
         alignItems: 'center',
@@ -46,6 +22,14 @@ export const MainField = styled.div(props => ({
 
     '& .table_button': {
         padding: '3px 20px'
+    },
+
+    '& .button_group': {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px',
+        width: 'max-content',
+        margin: '0 auto'
     },
 
     '@media screen and (max-width: 450px)': {

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 //Components
 import TableTemplate from '../../components/template/TableTemplate';
 import CustomButton from '../../components/form-group/CustomButton';
-import EditCurencyModal from '../../components/pages/adminPanel/curencies-list/editCurencyModal';
+import EditCurencyModal from '../../components/pages/adminPanel/curenciesList/editCurencyModal';
 
 //Assets
 import { MainField } from '../../assets/styles/adminPanel/curenciesList.style';

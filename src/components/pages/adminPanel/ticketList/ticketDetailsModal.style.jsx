@@ -1,19 +1,25 @@
-/* eslint-disable no-unused-vars */
 import styled from '@emotion/styled';
 
-export const AddNewTicketsModalStyle = styled.div(props => ({
+export const ModalField = styled.div({
     '& .MuiPaper-root': {
         borderRadius: '20px',
         width: '700px'
     },
 
-    '& .btnBox': {
+    '& .info_row': {
         display: 'flex',
-        gap: '20px'
-    },
+        alignItems: 'center',
+        width: '100%',
+        gap: '10px',
+        marginBottom: '20px',
 
-    '& .formBox': {
-        width: '100%'
+        p: {
+            fontWeight: ' bold'
+        },
+
+        span: {
+            color: '#5a5a5a'
+        }
     },
 
     h2: {
@@ -35,41 +41,50 @@ export const AddNewTicketsModalStyle = styled.div(props => ({
             borderRadius: '10px'
         }
     },
+
     '@media screen and (max-width: 992px)': {
         '& .MuiPaper-root': {
             maxWidth: '600px'
         }
     },
+
     '@media screen and (max-width: 730px)': {
         '& .MuiPaper-root': {
             maxWidth: '500px'
         },
+
         '& .modalBox': {
             padding: '20px'
         }
     },
+
     '@media screen and (max-width: 550px)': {
         '& .MuiPaper-root': {
             margin: '10px'
         }
     },
+
     '@media screen and (max-width: 450px)': {
         fontSize: '.8re',
+
         h2: {
             fontSize: '1rem',
             marginBottom: '20px'
         },
+
         '& .modalBox': {
             fontSize: '0.8rem'
         },
+
         button: {
             fontSize: '.8rem',
             padding: '5px 20px'
         },
+
         '& .formBox': {
             p: {
                 marginBottom: '20px'
             }
         }
     }
-}));
+});

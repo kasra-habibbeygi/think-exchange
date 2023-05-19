@@ -9,7 +9,11 @@ export const SideBarStyle = styled.aside(props => ({
         alignItems: 'center',
         justifyContent: 'space-between',
         flexDirection: 'column',
-        padding: '0 3px'
+        padding: '0 3px',
+
+        div: {
+            width: '100%'
+        }
     },
 
     '& .SideBar': {
