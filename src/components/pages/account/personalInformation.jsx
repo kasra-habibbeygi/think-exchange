@@ -17,6 +17,8 @@ import CustomButton from '../../form-group/CustomButton';
 import { PutUserProfile } from '../../../api-requests/profile';
 
 const PersonalInformation = ({ state, setState }) => {
+    console.log(state);
+
     const changeHandeler = e => {
         const { value, name } = e.target;
         let formattedValue = value;

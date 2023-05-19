@@ -30,6 +30,18 @@ const Account = () => {
         GetUserDashboard()
             .then(res => {
                 setGetData(res.data.user);
+                setGetData({
+                    first_name: res.data.user.first_name ?? '',
+                    last_name: res.data.user.last_name ?? '',
+                    email: res.data.user.email ?? '',
+                    phone: res.data.user.phone ?? '',
+                    home_phone: res.data.user.home_phone ?? '',
+                    national_code: res.data.user.national_code ?? '',
+                    password: res.data.user.password ?? '',
+                    password_confirmation: res.data.user.password_confirmation ?? '',
+                    explain: res.data.user.explain ?? '',
+                    nationalCartFile: res.data.user.nationalCartFile ?? ''
+                });
             })
             .catch(() => {});
     }, []);
