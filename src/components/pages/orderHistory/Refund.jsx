@@ -27,7 +27,6 @@ const Refund = () => {
             })
             .catch(() => {});
     }, []);
-    console.log();
     return (
         <RefundStyles>
             <h2>لیست درخواست های ریفاند</h2>

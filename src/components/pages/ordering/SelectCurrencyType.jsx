@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable camelcase */
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
@@ -20,6 +21,7 @@ import Tools from '../../../utils/tools';
 const SelectCurrencyType = ({ setInputValues, inputValues }) => {
     const [currencies, setCurrencies] = useState([]);
     const [price, setPrice] = useState();
+    const [curencyImg, setCurencyImg] = useState('');
 
     useEffect(() => {
         GetAllCurrencies().then(res => {
@@ -47,37 +49,55 @@ const SelectCurrencyType = ({ setInputValues, inputValues }) => {
                     value={inputValues.currency_amount}
                     valuehandler={e => inputValueHandler(e)}
                 />
-                <Autocomplete
-                    className='select'
-                    options={currencies}
-                    autoHighlight
-                    disablePortal
-                    disableClearable
-                    onChange={(e, value) => {
-                        setInputValues({
-                            ...inputValues,
-                            currency_id: value.id
-                        });
-                        setPrice(value.price);
-                    }}
-                    getOptionLabel={option => `${option.iso_name}`}
-                    renderOption={(props, option) => (
-                        <Box component='li' sx={{ '& > img': { mr: 1, flexShrink: 0 } }} {...props}>
-                            <img loading='lazy' width='20' src={`https://thinkexchange.net/service/storage/${option.logo}`} alt='' />
-                            <span style={{ fontSize: '0.8rem' }}>{option.iso_name}</span>
-                        </Box>
-                    )}
-                    renderInput={params => (
-                        <TextField
-                            {...params}
-                            inputProps={{
-                                ...params.inputProps
-                            }}
+                <div className='select_field'>
+                    {curencyImg !== '' && (
+                        <img
+                            src={`${process.env.REACT_APP_FILE_URL}${curencyImg}`}
+                            alt=''
+                            style={{ marginRight: '10px' }}
+                            className='selected_image'
                         />
                     )}
-                />
+
+                    <Autocomplete
+                        className='select'
+                        options={currencies}
+                        autoHighlight
+                        disablePortal
+                        disableClearable
+                        onChange={(e, value) => {
+                            setInputValues({
+                                ...inputValues,
+                                currency_id: value.id
+                            });
+                            setPrice(value.price);
+                            setCurencyImg(value.logo);
+                        }}
+                        getOptionLabel={option => `${option.iso_name}`}
+                        renderOption={(props, option) => (
+                            <Box component='li' sx={{ '& > img': { mr: 1, flexShrink: 0 }, direction: 'ltr' }} {...props}>
+                                <img
+                                    loading='lazy'
+                                    width='20'
+                                    src={`${process.env.REACT_APP_FILE_URL}${option.logo}`}
+                                    alt=''
+                                    style={{ marginRight: '10px' }}
+                                />
+                                <span style={{ fontSize: '0.8rem' }}>{option.iso_name}</span>
+                            </Box>
+                        )}
+                        renderInput={params => (
+                            <TextField
+                                {...params}
+                                inputProps={{
+                                    ...params.inputProps
+                                }}
+                            />
+                        )}
+                    />
+                </div>
             </div>
-            <p className='price'>= {inputValues.exchange_amount} میلیون تومان</p>
+            <p className='price'>= {inputValues.exchange_amount || 0} میلیون تومان</p>
         </SelectCurrencyTypeStyle>
     );
 };

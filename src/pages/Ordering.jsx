@@ -12,12 +12,11 @@ import CompleteOrderInformation from '../components/pages/ordering/CompleteOrder
 
 const Ordering = () => {
     const [inputValues, setInputValues] = useState({
-        category: '',
-        service: '',
+        service_id: '',
         currency_id: '',
         currency_amount: '',
         exchange_amount: '',
-        name: '',
+        first_name: '',
         last_name: '',
         email: '',
         website: '',
@@ -26,6 +25,8 @@ const Ordering = () => {
         description: '',
         attachment: ''
     });
+
+    console.log(inputValues);
 
     return (
         <>

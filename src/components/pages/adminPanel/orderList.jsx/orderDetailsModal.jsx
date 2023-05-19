@@ -17,7 +17,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const OrderDetailModal = ({ specificOrder, status, setStatus }) => {
-    console.log(specificOrder);
     return (
         <ModalField>
             <Dialog open={status} TransitionComponent={Transition} keepMounted onClose={() => setStatus(false)} disablePortal>

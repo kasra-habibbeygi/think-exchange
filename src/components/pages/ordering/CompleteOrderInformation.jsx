@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 
@@ -10,7 +11,11 @@ import TextArea from '../../form-group/TextArea';
 import CustomButton from '../../form-group/CustomButton';
 import SuccessAlert from '../../template/SuccessAlert';
 
+// APIs
+import { SubmitNewOrder } from '../../../api-requests/order';
+
 const CompleteOrderInformation = ({ setInputValues, inputValues }) => {
+    const formData = new FormData();
     const [SuccessOrderingState, setSuccessOrderingState] = useState(false);
 
     const inputValueHandler = e => {
@@ -20,12 +25,35 @@ const CompleteOrderInformation = ({ setInputValues, inputValues }) => {
         });
     };
 
+    const submitButtonHandler = () => {
+        const newData = {
+            ...inputValues,
+            exchange_amount: inputValues.exchange_amount.replaceAll(',', '')
+        };
+
+        Object.keys(newData).forEach(item => {
+            formData.append(item, newData[item]);
+        });
+
+        setSuccessOrderingState(true);
+
+        SubmitNewOrder(formData).then(() => {
+            Object.keys(newData).forEach(item => formData.delete(item, newData[item]));
+        });
+    };
+
     return (
         <>
             <CompleteOrderInformationStyle>
                 <h2>تکمیل اطلاعات سفارش</h2>
                 <div className='formBox'>
-                    <CustomInput label='نام' type='text' name='name' value={inputValues.name} valuehandler={e => inputValueHandler(e)} />
+                    <CustomInput
+                        label='نام'
+                        type='text'
+                        name='first_name'
+                        value={inputValues.first_name}
+                        valuehandler={e => inputValueHandler(e)}
+                    />
                     <CustomInput
                         label='نام خانوادگی'
                         type='text'
@@ -74,7 +102,7 @@ const CompleteOrderInformation = ({ setInputValues, inputValues }) => {
                     valuehandler={e => inputValueHandler(e)}
                 />
                 <CustomButton
-                    clickHandeler={() => setSuccessOrderingState(true)}
+                    clickHandeler={submitButtonHandler}
                     className='btn'
                     text='ثبت سفارش'
                     variant='text'

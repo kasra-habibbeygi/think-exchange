@@ -8,7 +8,7 @@ export const SelectCurrencyTypeStyle = styled.div(props => ({
     background: props.theme.colors.white,
     boxShadow: props.theme.boxShadow,
     borderRadius: '28px',
-    padding: '20px 30px',
+    padding: '25px 30px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -29,6 +29,22 @@ export const SelectCurrencyTypeStyle = styled.div(props => ({
 
         fieldset: {
             borderRadius: '0 10px 10px 0'
+        }
+    },
+
+    '& .select_field': {
+        position: 'relative',
+        display: 'flex',
+        alignItems: 'center',
+
+        '& .selected_image': {
+            position: 'absolute',
+            left: '10px',
+            width: '25px',
+            height: '25px',
+            borderRadius: '50px',
+            zIndex: '1',
+            top: '8px'
         }
     },
 
