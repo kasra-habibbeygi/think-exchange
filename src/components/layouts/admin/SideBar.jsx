@@ -13,6 +13,7 @@ import card from '../../../assets/images/layout/card.svg';
 import menu from '../../../assets/images/layout/more.svg';
 import dollar from '../../../assets/images/layout/dollar.svg';
 import coupon from '../../../assets/images/layout/coupon.svg';
+import MoneyBack from '../../../assets/images/layout/money-back.svg';
 
 // Component
 import LogoutModal from './LogoutModal';
@@ -64,6 +65,12 @@ const SideBar = () => {
                                     <NavLink to='/admin-panel/orders-list'>
                                         <img alt='user' src={card} />
                                         <span>لیست سفارش‌ها</span>
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to='/admin-panel/refund-list'>
+                                        <img alt='user' src={MoneyBack} />
+                                        <span>لیست ریفاند ها</span>
                                     </NavLink>
                                 </li>
                                 <li>

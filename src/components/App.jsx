@@ -27,6 +27,8 @@ import AdminLogin from '../pages/adminPanel/Login';
 import AdminCurenciesList from '../pages/adminPanel/curenciesList';
 import AdminTicketList from '../pages/adminPanel/ticketList';
 import AdminOrderList from '../pages/adminPanel/orderList';
+import AdminUserList from '../pages/adminPanel/userList';
+import AdminRefundList from '../pages/adminPanel/refundList';
 
 const RequireAuth = ({ children, userType = 'user' }) => {
     const UserLoginStatus = useSelector(state => state.UserInfo.isLogin);
@@ -149,7 +151,8 @@ function App() {
                     <Route path='curencies-list' element={<AdminCurenciesList />} />
                     <Route path='tickets-list' element={<AdminTicketList />} />
                     <Route path='orders-list' element={<AdminOrderList />} />
-                    <Route path='users-list' element={<Ordering />} />
+                    <Route path='refund-list' element={<AdminRefundList />} />
+                    <Route path='users-list' element={<AdminUserList />} />
                 </Route>
             </Routes>
         </ThemeProvider>
