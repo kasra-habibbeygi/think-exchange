@@ -8,14 +8,21 @@ import { AttachFileStyle } from './AttachFile.style';
 //components
 import UploadFile from '../../form-group/UploadFile';
 
+//api
+import { PutUserProfile } from '../../../api-requests/profile';
+
 const AttachFile = ({ state, setState }) => {
     const inputValueHandler = e => {
         setState({
             ...state,
             [e.target.name]: e.target.files[0]
         });
-        toast.success('فایل با موفیت بارگزاری شد');
+        PutUserProfile(state).then(() => {
+            toast.success('فایل با موفیت بارگزاری شد');
+        });
     };
+
+    console.log(state);
     return (
         <AttachFileStyle>
             <h2>عکس کارت ملی</h2>
