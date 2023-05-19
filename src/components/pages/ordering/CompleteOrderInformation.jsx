@@ -1,6 +1,8 @@
 /* eslint-disable camelcase */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import { toast } from 'react-hot-toast';
+import validator from 'validator';
 
 //style
 import { CompleteOrderInformationStyle } from './CompleteOrderInformation.style';
@@ -25,21 +27,55 @@ const CompleteOrderInformation = ({ setInputValues, inputValues }) => {
         });
     };
 
+    const validatFrom = () => {
+        if (validator.isEmpty(inputValues.category_id)) {
+            toast.error('دسته سفارش را انتخاب کنید');
+            return false;
+        } else if (validator.isEmpty(inputValues.service_id)) {
+            toast.error('سروریس خود را انتخاب کنید');
+            return false;
+        } else if (validator.isEmpty(inputValues.currency_amount)) {
+            toast.error('نوع سفارش خود را انتخاب کنید');
+            return false;
+        } else if (validator.isEmpty(inputValues.first_name)) {
+            toast.error('نام خود را وراد کنید');
+            return false;
+        } else if (validator.isEmpty(inputValues.last_name)) {
+            toast.error('نام خانوادگی خود را وارد کنید');
+            return false;
+        } else if (validator.isEmpty(inputValues.email)) {
+            toast.error('ایمیل خود را وارد کنید');
+            return false;
+        } else if (validator.isEmpty(inputValues.website)) {
+            toast.error('لینک سایت را وارد کنید');
+            return false;
+        } else if (validator.isEmpty(inputValues.website_username)) {
+            toast.error('نام کاربری خود در سایت را وارد کنید');
+            return false;
+        } else if (validator.isEmpty(inputValues.website_password)) {
+            toast.error('پسورد خود در سایت را وارد کنید');
+            return false;
+        }
+        return true;
+    };
+
     const submitButtonHandler = () => {
-        const newData = {
-            ...inputValues,
-            exchange_amount: inputValues.exchange_amount.replaceAll(',', '')
-        };
+        if (validatFrom()) {
+            const newData = {
+                ...inputValues,
+                exchange_amount: inputValues.exchange_amount.replaceAll(',', '')
+            };
 
-        Object.keys(newData).forEach(item => {
-            formData.append(item, newData[item]);
-        });
+            Object.keys(newData).forEach(item => {
+                formData.append(item, newData[item]);
+            });
 
-        setSuccessOrderingState(true);
+            setSuccessOrderingState(true);
 
-        SubmitNewOrder(formData).then(() => {
-            Object.keys(newData).forEach(item => formData.delete(item, newData[item]));
-        });
+            SubmitNewOrder(formData).then(() => {
+                Object.keys(newData).forEach(item => formData.delete(item, newData[item]));
+            });
+        }
     };
 
     return (
