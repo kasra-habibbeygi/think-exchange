@@ -1,5 +1,4 @@
 /* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React from 'react';
 
@@ -14,6 +13,7 @@ import CustomButton from '../../form-group/CustomButton';
 
 // Tools
 import Tools from '../../../utils/tools';
+import { Link } from 'react-router-dom';
 
 const SliderCard = ({ data }) => {
     return (
@@ -26,12 +26,13 @@ const SliderCard = ({ data }) => {
                 <img alt='currency' src={`${process.env.REACT_APP_FILE_URL}${data.logo}`} />
             </div>
             <div className='price'>
-                <CustomButton text='فروش' variant='text' background='white' radius='normal' fontcolor='black' />
+                <Link to={`/ordering?curency=${data.iso_name}`}>
+                    <CustomButton text='فروش' variant='text' background='white' radius='normal' fontcolor='black' />
+                </Link>
 
                 <div className='priceBox'>
                     <div className='percentage'>
                         {!data.change_rate.includes('-') ? <img alt='currency' src={upArrow} /> : <img alt='currency' src={DownArrow} />}
-
                         <span>{data.change_rate}</span>
                     </div>
                     <h3>{Tools.addCommaInNumbers(data.price)}</h3>

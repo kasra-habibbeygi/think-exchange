@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 //mui
 import Button from '@mui/material/Button';
@@ -45,9 +45,9 @@ const SideBar = () => {
                 <div className='SideBar'>
                     <div className='main_field'>
                         <div>
-                            <Link to='/dashboard' className='logo'>
+                            <a href='https://thinkexchange.net/' className='logo'>
                                 <img alt='logo' src={logo} />
-                            </Link>
+                            </a>
                             <ol className='menu'>
                                 <li>
                                     <NavLink to='/dashboard'>

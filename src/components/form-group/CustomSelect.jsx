@@ -14,6 +14,7 @@ const CustomSelect = ({ SelectOptions, label, setInputValues, inputValues, name,
             <Autocomplete
                 disablePortal
                 className='select'
+                disableClearable
                 options={SelectOptions}
                 getOptionLabel={option => option[objectKey]}
                 onChange={(event, newValue) => {

@@ -9,6 +9,9 @@ export const SliderCardStyle = styled.div(props => ({
     width: '100%',
     height: '170px',
     padding: '20px',
+    boxShadow: '0px 8px 24px rgba(112, 144, 176, 0.08)',
+    background: props.theme.colors.gray,
+    borderRadius: '28px',
 
     '& .currencyName': {
         display: 'flex',

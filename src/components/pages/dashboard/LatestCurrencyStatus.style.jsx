@@ -3,18 +3,17 @@ import styled from '@emotion/styled';
 
 export const LatestCurrencyStatusStyle = styled.div(props => ({
     width: '100%',
-    height: '300px',
     background: props.theme.colors.white,
-    boxShadow: props.theme.boxShadow,
+    // boxShadow: props.theme.boxShadow,
     borderRadius: '28px',
-    padding: '20px 30px',
+    padding: '50px 30px 30px 0',
 
     h2: {
         fontSize: '1.2rem'
     },
 
     '& .mySwiper': {
-        margin: '40px 0px',
+        margin: '0 0px',
         cursor: 'pointer'
     },
 
@@ -25,11 +24,13 @@ export const LatestCurrencyStatusStyle = styled.div(props => ({
 
     ' & .swiper-slide ': {
         textAlign: 'center',
-        fontSize: '18px',
+        fontSize: '1.1rem',
         background: '#fff',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        padding: '26px 10px',
+        width: '30%'
     },
 
     '& .swiper-slide img': {
@@ -37,12 +38,6 @@ export const LatestCurrencyStatusStyle = styled.div(props => ({
         width: '100%',
         height: '100%',
         objectFit: 'cover'
-    },
-
-    ' & .swiper-slide': {
-        width: '30%',
-        backgroundColor: props.theme.colors.gray,
-        borderRadius: '28px'
     },
 
     '@media screen and (max-width: 1350px)': {

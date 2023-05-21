@@ -21,6 +21,10 @@ export const CustomInputStyle = styled.div(props => ({
         padding: '0px 15px'
     },
 
+    fieldset: {
+        boxShadow: '0px 8px 24px rgba(112, 144, 176, 0.08)'
+    },
+
     input: {
         padding: '8px'
     },

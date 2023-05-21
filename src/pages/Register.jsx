@@ -16,7 +16,6 @@ import CustomButton from '../components/form-group/CustomButton';
 import CustomInput from '../components/form-group/CustomInput';
 
 //mui
-import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
@@ -27,6 +26,7 @@ const Register = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [loader, setLoader] = useState(false);
+    const [rulesStatus, setRulesStatus] = useState(false);
     const [registerForm, setRegisterForm] = useState({
         email: '',
         last_name: '',
@@ -59,6 +59,9 @@ const Register = () => {
             return false;
         } else if (!validator.equals(registerForm.password_confirmation, registerForm.password)) {
             toast.error('پسورد با تکرار پسورد برابر نیست');
+            return false;
+        } else if (!rulesStatus) {
+            toast.error('شما هنوز قوانین و مقررات را قبول نکرده اید');
             return false;
         }
         return true;
@@ -151,9 +154,11 @@ const Register = () => {
                                 value={registerForm.password_confirmation}
                             />
                         </div>
-                        <FormGroup>
-                            <FormControlLabel required control={<Checkbox />} label='با تمامی قوانین و مقررات صرافی موافقم' />
-                        </FormGroup>
+                        <FormControlLabel
+                            required
+                            control={<Checkbox onChange={e => setRulesStatus(e.target.checked)} />}
+                            label='با تمامی قوانین و مقررات صرافی موافقم'
+                        />
 
                         <CustomButton
                             className='btn'

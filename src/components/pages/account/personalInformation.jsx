@@ -33,11 +33,20 @@ const PersonalInformation = ({ state, setState, staticData }) => {
     };
 
     const validatFrom = () => {
-        var test = {
+        var newData = {
             ...state
         };
-
-        if (validator.isEmpty(state.first_name)) {
+        if (
+            staticData.first_name === newData.first_name &&
+            staticData.last_name === newData.last_name &&
+            staticData.phone === newData.phone &&
+            staticData.home_phone === newData.home_phone &&
+            staticData.national_code === newData.national_code &&
+            staticData.explain === newData.explain
+        ) {
+            toast.error('هنوز مقداری تغییر نکرده است');
+            return false;
+        } else if (validator.isEmpty(state.first_name)) {
             toast.error('نام  خود را وارد کنید');
             return false;
         } else if (validator.isEmpty(state.last_name)) {
@@ -65,18 +74,18 @@ const PersonalInformation = ({ state, setState, staticData }) => {
             toast.error(' شماره ملی باید 10 کاراکتر باشد');
             return false;
         }
-        if (staticData.email === test.email) {
-            delete test.email;
+        if (staticData.email === newData.email) {
+            delete newData.email;
         }
-        if (staticData.phone === test.phone) {
-            delete test.phone;
+        if (staticData.phone === newData.phone) {
+            delete newData.phone;
         }
-        return test;
+        return newData;
     };
 
     const PostFormDataHandeler = () => {
-        setLoader(true);
         if (validatFrom()) {
+            setLoader(true);
             PutUserProfile(validatFrom())
                 .then(() => {
                     toast.success('اطلاعات شما با موفقیت تغییر کرد');

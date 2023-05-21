@@ -20,19 +20,27 @@ export const TableTemplateStyles = styled.div(props => ({
         th: {
             border: 'none',
             textAlign: 'center',
-            color: '#727A89'
+            color: '#727A89',
+
+            '&:first-of-type': {
+                textAlign: 'right'
+            }
         },
 
         td: {
             border: 'none',
             padding: '10px',
             textAlign: 'center',
+
             '&:first-of-type': {
-                borderRadius: '0px 12px 12px 0px'
+                borderRadius: '0px 12px 12px 0px',
+                textAlign: 'right'
             },
+
             '&:last-of-type': {
                 borderRadius: '12px 0px 0px 12px'
             },
+
             div: {
                 textAlign: 'center'
             }

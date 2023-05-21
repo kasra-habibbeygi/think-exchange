@@ -19,6 +19,7 @@ import { SubmitNewOrder } from '../../../api-requests/order';
 const CompleteOrderInformation = ({ setInputValues, inputValues }) => {
     const formData = new FormData();
     const [SuccessOrderingState, setSuccessOrderingState] = useState(false);
+    const [loader, setLoader] = useState(false);
 
     const inputValueHandler = e => {
         setInputValues({
@@ -27,11 +28,13 @@ const CompleteOrderInformation = ({ setInputValues, inputValues }) => {
         });
     };
 
+    console.log(inputValues);
+
     const validatFrom = () => {
-        if (validator.isEmpty(inputValues.category_id)) {
-            toast.error('دسته سفارش را انتخاب کنید');
+        if (inputValues.currency_id === '') {
+            toast.error('ارز خود را انتخاب کنید');
             return false;
-        } else if (validator.isEmpty(inputValues.service_id)) {
+        } else if (inputValues.service_id === '') {
             toast.error('سروریس خود را انتخاب کنید');
             return false;
         } else if (validator.isEmpty(inputValues.currency_amount)) {
@@ -46,7 +49,7 @@ const CompleteOrderInformation = ({ setInputValues, inputValues }) => {
         } else if (validator.isEmpty(inputValues.email)) {
             toast.error('ایمیل خود را وارد کنید');
             return false;
-        } else if (validator.isEmail(inputValues.email)) {
+        } else if (!validator.isEmail(inputValues.email)) {
             toast.error('ایمیل خود را  به درستی وارد کنید');
             return false;
         } else if (validator.isEmpty(inputValues.website)) {
@@ -64,6 +67,7 @@ const CompleteOrderInformation = ({ setInputValues, inputValues }) => {
 
     const submitButtonHandler = () => {
         if (validatFrom()) {
+            setLoader(true);
             const newData = {
                 ...inputValues,
                 exchange_amount: inputValues.exchange_amount.replaceAll(',', '')
@@ -73,11 +77,12 @@ const CompleteOrderInformation = ({ setInputValues, inputValues }) => {
                 formData.append(item, newData[item]);
             });
 
-            setSuccessOrderingState(true);
-
-            SubmitNewOrder(formData).then(() => {
-                Object.keys(newData).forEach(item => formData.delete(item, newData[item]));
-            });
+            SubmitNewOrder(formData)
+                .then(() => {
+                    Object.keys(newData).forEach(item => formData.delete(item, newData[item]));
+                    setSuccessOrderingState(true);
+                })
+                .finally(() => setLoader(false));
         }
     };
 
@@ -148,6 +153,7 @@ const CompleteOrderInformation = ({ setInputValues, inputValues }) => {
                     background='garadient'
                     radius='normal'
                     fontcolor='white'
+                    loader={loader}
                 />
             </CompleteOrderInformationStyle>
             <SuccessAlert
