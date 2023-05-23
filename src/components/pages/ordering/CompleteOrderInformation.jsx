@@ -28,8 +28,6 @@ const CompleteOrderInformation = ({ setInputValues, inputValues }) => {
         });
     };
 
-    console.log(inputValues);
-
     const validatFrom = () => {
         if (inputValues.currency_id === '') {
             toast.error('ارز خود را انتخاب کنید');

@@ -27,13 +27,14 @@ const Refund = () => {
             })
             .catch(() => {});
     }, []);
+
     return (
         <RefundStyles>
             <h2>لیست درخواست های ریفاند</h2>
             <div className='table_field'>
                 <TableTemplate TableHeader={TableHeader}>
                     {refundsRequest.map(row => [
-                        row.refund && row.service !== null && (
+                        row.refund && (
                             <TableRow key={row.id}>
                                 <TableCell scope='row'>{row.refund && row.service?.name}</TableCell>
                                 <TableCell>
@@ -41,14 +42,22 @@ const Refund = () => {
                                         text={
                                             row.refund?.status === 'pending'
                                                 ? 'بررسی'
-                                                : row.refund?.status === 'accepted'
+                                                : row.refund?.status === 'succeed'
                                                 ? 'موفق'
-                                                : row.refund?.status === 'rejected'
+                                                : row.refund?.status === 'failed'
                                                 ? 'ناموفق'
                                                 : ''
                                         }
                                         variant='text'
-                                        background={row.refund?.status === 'pending' ? 'warning' : 'error'}
+                                        background={
+                                            row.refund?.status === 'pending'
+                                                ? 'warning'
+                                                : row.refund?.status === 'succeed'
+                                                ? 'success'
+                                                : row.refund?.status === 'failed'
+                                                ? 'error'
+                                                : ''
+                                        }
                                         radius='normal'
                                         fontcolor='white'
                                         disabled

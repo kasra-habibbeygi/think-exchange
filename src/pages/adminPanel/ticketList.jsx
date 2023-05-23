@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-undef */
 import React, { useEffect, useState } from 'react';
 
@@ -6,12 +8,13 @@ import TableTemplate from '../../components/template/TableTemplate';
 import CustomButton from '../../components/form-group/CustomButton';
 import TicketDetailModal from '../../components/pages/adminPanel/ticketList/ticketDetailsModal';
 import AnswerTicketModal from '../../components/pages/adminPanel/ticketList/ticketAnswerModal';
+import Pagination from '../../components/template/pagination';
 
 //Assets
 import { MainField } from '../../assets/styles/adminPanel/ticketList.style';
 
 //APIs
-import { GetAllTickets } from '../../api-requests/admin/ticket';
+import { GetAllTickets, AuthStatusHandler } from '../../api-requests/admin/ticket';
 
 // MUI
 import { TableCell, TableRow } from '@mui/material';
@@ -25,14 +28,22 @@ const TicketList = () => {
     const [detailsModalStatus, setDetailsModalStatus] = useState(false);
     const [answerModalStatus, setAnswerModalStatus] = useState(false);
     const [ticketId, setTicketId] = useState(0);
+    const [pageState, setPageState] = useState({
+        total: 1,
+        current: 1
+    });
 
     useEffect(() => {
-        GetAllTickets()
+        GetAllTickets(pageState.current)
             .then(res => {
-                setTicketList(res.data);
+                setTicketList(res.data.data);
+                setPageState({
+                    ...pageState,
+                    total: res.data.last_page
+                });
             })
             .catch(() => {});
-    }, [reLoad]);
+    }, [reLoad, pageState.current]);
 
     const editModalHandler = data => {
         setDetailsModalStatus(true);
@@ -42,6 +53,12 @@ const TicketList = () => {
     const answerModalhandler = id => {
         setAnswerModalStatus(true);
         setTicketId(id);
+    };
+
+    const authHandler = (id, is_verify) => {
+        AuthStatusHandler(id, { is_verify }).then(() => {
+            setReLoad(!reLoad);
+        });
     };
 
     return (
@@ -75,23 +92,51 @@ const TicketList = () => {
                                         text='جزئیات'
                                         variant='text'
                                         radius='normal'
-                                        fontcolor='black'
+                                        background='warning'
+                                        fontcolor='white'
                                         extraClass='table_button'
                                         clickHandeler={() => editModalHandler(item)}
                                     />
-                                    <CustomButton
-                                        text='پاسخ'
-                                        variant='text'
-                                        radius='normal'
-                                        fontcolor='black'
-                                        extraClass='table_button'
-                                        clickHandeler={() => answerModalhandler(item.id)}
-                                    />
+                                    {item.title !== 'تایید کارت ملی' ? (
+                                        <CustomButton
+                                            text='پاسخ'
+                                            variant='text'
+                                            radius='normal'
+                                            background='warning'
+                                            fontcolor='white'
+                                            extraClass='table_button'
+                                            clickHandeler={() => answerModalhandler(item.id)}
+                                        />
+                                    ) : (
+                                        !item.answer && (
+                                            <>
+                                                <CustomButton
+                                                    text='تایید هویت'
+                                                    variant='text'
+                                                    radius='normal'
+                                                    background='success'
+                                                    fontcolor='white'
+                                                    extraClass='table_button'
+                                                    clickHandeler={() => authHandler(item.id, 1)}
+                                                />
+                                                <CustomButton
+                                                    text='عدم تایید هویت'
+                                                    variant='text'
+                                                    radius='normal'
+                                                    background='error'
+                                                    fontcolor='white'
+                                                    extraClass='table_button'
+                                                    clickHandeler={() => authHandler(item.id, 0)}
+                                                />
+                                            </>
+                                        )
+                                    )}
                                 </div>
                             </TableCell>
                         </TableRow>
                     ))}
                 </TableTemplate>
+                <Pagination pageState={pageState} setPageState={setPageState} />
             </div>
             <TicketDetailModal status={detailsModalStatus} setStatus={setDetailsModalStatus} specificTicket={specificTicket} />
             <AnswerTicketModal

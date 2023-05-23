@@ -120,46 +120,46 @@ const Register = () => {
                     <img alt='logo' src={logo} />
                     <h2>خوش آمدید</h2>
                     <small>برای ثبت نام در تینک اکسچنج اطلاعات خود را وارد کنید</small>
-                    <form>
-                        <div className='formGroup'>
-                            <CustomInput
-                                label='نام'
-                                type='text'
-                                valuehandler={inputValueHandler}
-                                name='first_name'
-                                value={registerForm.first_name}
-                            />
-                            <CustomInput
-                                label='نام خانوادگی'
-                                type='text'
-                                valuehandler={inputValueHandler}
-                                name='last_name'
-                                value={registerForm.last_name}
-                            />
-                        </div>
-                        <CustomInput label='ایمیل' type='email' valuehandler={inputValueHandler} name='email' value={registerForm.email} />
-                        <div className='formGroup'>
-                            <CustomInput
-                                label='کلمه عبور'
-                                type='password'
-                                valuehandler={inputValueHandler}
-                                name='password'
-                                value={registerForm.password}
-                            />
-                            <CustomInput
-                                label='تکرار کلمه عبور'
-                                type='password'
-                                valuehandler={inputValueHandler}
-                                name='password_confirmation'
-                                value={registerForm.password_confirmation}
-                            />
-                        </div>
-                        <FormControlLabel
-                            required
-                            control={<Checkbox onChange={e => setRulesStatus(e.target.checked)} />}
-                            label='با تمامی قوانین و مقررات صرافی موافقم'
+                    <div className='formGroup'>
+                        <CustomInput
+                            label='نام'
+                            type='text'
+                            valuehandler={inputValueHandler}
+                            name='first_name'
+                            value={registerForm.first_name}
                         />
+                        <CustomInput
+                            label='نام خانوادگی'
+                            type='text'
+                            valuehandler={inputValueHandler}
+                            name='last_name'
+                            value={registerForm.last_name}
+                        />
+                    </div>
+                    <CustomInput label='ایمیل' type='email' valuehandler={inputValueHandler} name='email' value={registerForm.email} />
+                    <div className='formGroup'>
+                        <CustomInput
+                            label='کلمه عبور'
+                            type='password'
+                            valuehandler={inputValueHandler}
+                            name='password'
+                            value={registerForm.password}
+                        />
+                        <CustomInput
+                            label='تکرار کلمه عبور'
+                            type='password'
+                            valuehandler={inputValueHandler}
+                            name='password_confirmation'
+                            value={registerForm.password_confirmation}
+                        />
+                    </div>
+                    <FormControlLabel
+                        required
+                        control={<Checkbox onChange={e => setRulesStatus(e.target.checked)} />}
+                        label='با تمامی قوانین و مقررات صرافی موافقم'
+                    />
 
+                    <div className='sub_btn'>
                         <CustomButton
                             className='btn'
                             background='garadient'
@@ -170,7 +170,7 @@ const Register = () => {
                             clickHandeler={submitHandler}
                             loader={loader}
                         />
-                    </form>
+                    </div>
                 </div>
             </div>
         </RegisterStyle>

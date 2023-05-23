@@ -16,7 +16,7 @@ import CustomButton from '../../form-group/CustomButton';
 //API
 import { PutUserProfile } from '../../../api-requests/profile';
 
-const PersonalInformation = ({ state, setState, staticData }) => {
+const PersonalInformation = ({ state, setState, staticData, isVerify }) => {
     const [loader, setLoader] = useState(false);
     const changeHandeler = e => {
         const { value, name } = e.target;
@@ -107,6 +107,7 @@ const PersonalInformation = ({ state, setState, staticData }) => {
                     type='text'
                     id='outlined-basic'
                     valuehandler={changeHandeler}
+                    disabled={isVerify}
                 />
                 <CustomInput
                     label='نام خانوادگی'
@@ -115,6 +116,7 @@ const PersonalInformation = ({ state, setState, staticData }) => {
                     type='text'
                     id='outlined-basic'
                     valuehandler={changeHandeler}
+                    disabled={isVerify}
                 />
             </div>
 
@@ -146,6 +148,7 @@ const PersonalInformation = ({ state, setState, staticData }) => {
                 id='outlined-basic'
                 valuehandler={changeHandeler}
                 maxLength='10'
+                disabled={isVerify}
             />
             <TextArea label='توضیحات' name='explain' value={state?.explain} type='text' rows={4} valuehandler={changeHandeler} />
             <CustomButton

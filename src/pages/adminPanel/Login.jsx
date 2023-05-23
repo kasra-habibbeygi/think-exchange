@@ -69,10 +69,6 @@ const Login = () => {
                                 valuehandler={inputValueHandler}
                             />
                         </div>
-                        {/* <div className='textGroup'>
-                            <p>کلمه عبور خود را فراموش کرده اید؟</p>
-                            <Link to='/forget-password'>فراموشی کامه عبور</Link>
-                        </div> */}
                         <CustomButton
                             className='btn'
                             background='garadient'

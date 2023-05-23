@@ -46,7 +46,7 @@ const SelectCurrencyType = ({ setInputValues, inputValues }) => {
                 }));
             }
         });
-    }, []);
+    }, [searchParams]);
 
     const inputValueHandler = e => {
         if (!isNaN(e.target.value)) {

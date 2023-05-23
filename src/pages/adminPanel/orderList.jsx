@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-undef */
 import React, { useEffect, useState } from 'react';
@@ -5,7 +6,8 @@ import React, { useEffect, useState } from 'react';
 //Components
 import TableTemplate from '../../components/template/TableTemplate';
 import CustomButton from '../../components/form-group/CustomButton';
-import OrderDetailModal from '../../components/pages/adminPanel/orderList.jsx/orderDetailsModal';
+import OrderDetailModal from '../../components/pages/adminPanel/orderList/orderDetailsModal';
+import Pagination from '../../components/template/pagination';
 
 //Assets
 import { MainField } from '../../assets/styles/adminPanel/orderList';
@@ -21,15 +23,23 @@ const TableHeader = ['ردیف', 'نام سرویس', 'وضعیت', 'کاربر'
 const OrderList = () => {
     const [orderList, setOrderList] = useState([]);
     const [infoModalStatus, setInfoModalStatus] = useState(false);
-    const [specificOrder, setSpecificOrder] = useState();
+    const [reLoad, setReLoad] = useState(false);
+    const [specificOrder, setSpecificOrder] = useState(); 
+    const [pageState, setPageState] = useState({
+        total: 1,
+        current: 1
+    });
 
     useEffect(() => {
-        GetAllOrders()
+        GetAllOrders(pageState.current)
             .then(res => {
-                setOrderList(res.data);
-            })
-            .catch(() => {});
-    }, []);
+                setOrderList(res.data.data);
+                setPageState({
+                    ...pageState,
+                    total: res.data.last_page
+                });
+            });
+    }, [pageState.current, reLoad]);
 
     const infoModalhandler = data => {
         setSpecificOrder(data);
@@ -37,7 +47,9 @@ const OrderList = () => {
     };
 
     const statusHandler = (id, status) => {
-        UpdateOrderStatus(id, { status }).catch(() => {});
+        UpdateOrderStatus(id, { status }).then(() => {
+            setReLoad(!reLoad);
+        });
     };
 
     return (
@@ -101,6 +113,7 @@ const OrderList = () => {
                                         fontcolor='black'
                                         extraClass='table_button'
                                         clickHandeler={() => statusHandler(item.id, 'succeed')}
+                                        disabled={item.status !== 'pending'}
                                     />
                                     <CustomButton
                                         text='عدم تایید'
@@ -109,12 +122,14 @@ const OrderList = () => {
                                         fontcolor='black'
                                         extraClass='table_button'
                                         clickHandeler={() => statusHandler(item.id, 'failed')}
+                                        disabled={item.status !== 'pending'}
                                     />
                                 </div>
                             </TableCell>
                         </TableRow>
                     ))}
                 </TableTemplate>
+                <Pagination pageState={pageState} setPageState={setPageState} />
             </div>
             <OrderDetailModal status={infoModalStatus} setStatus={setInfoModalStatus} specificOrder={specificOrder} />
         </MainField>

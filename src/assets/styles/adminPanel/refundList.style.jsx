@@ -35,6 +35,14 @@ export const MainField = styled.div(props => ({
         }
     },
 
+    '& .button_group': {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px',
+        width: 'max-content',
+        margin: '0 auto'
+    },
+
     h2: {
         fontSize: '1.2rem',
         marginBottom: '40px'

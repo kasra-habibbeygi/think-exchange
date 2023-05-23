@@ -31,7 +31,7 @@ instance.interceptors.response.use(
             localStorage.removeItem('adminToken');
             window.location.href = '/admin-panel/login';
         } else {
-            toast.error(error.response.data.message, { style: { zIndex: 2000 } });
+            typeof error.response.data.message === 'string' && toast.error(error.response.data.message, { style: { zIndex: 2000 } });
         }
         return Promise.reject(error);
     }

@@ -21,7 +21,7 @@ const LogoutModal = ({ state, setState }) => {
     const navigate = useNavigate();
 
     const logoutHandler = () => {
-        localStorage.removeItem('adminPanel');
+        localStorage.removeItem('adminToken');
         dispatch(AdminLoginStatusHandler(false));
         navigate('/admin-panel/login');
     };

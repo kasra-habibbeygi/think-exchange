@@ -51,45 +51,56 @@ export const RegisterStyle = styled.div(props => ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+
         img: {
             width: '70px',
             marginBottom: '20px'
         },
+
         h2: {
             marginBottom: '10px'
         },
+
         small: {
             color: '#727A89',
             marginBottom: '40px',
             fontSize: '.9rem'
         },
-        form: {
-            width: '100%'
-        },
+
         button: {
             width: '100%'
         },
+
         '& .formGroup': {
             display: 'flex',
             gap: '5px'
         },
+
         '& .textGroup': {
             display: 'flex',
             justifyContent: 'space-between',
             marginBottom: '40px',
             fontSize: '.85rem',
+
             p: {
                 fontWeight: 'bold'
             },
+
             a: {
                 color: props.theme.colors.blue
             }
         }
     },
 
+    '& .sub_btn': {
+        width: '100%',
+        marginTop: '10px'
+    },
+
     '& .MuiFormControlLabel-root': {
         marginRight: '0px'
     },
+
     '& .MuiFormGroup-root ': {
         marginBottom: '20px'
     },
@@ -117,19 +128,23 @@ export const RegisterStyle = styled.div(props => ({
         '& .register': {
             padding: '20px',
             width: '400px',
+
             img: {
                 width: '40px',
                 marginBottom: '10px'
             },
+
             h2: {
                 marginBottom: '10px',
                 fontSize: '1rem'
             },
+
             small: {
                 textAlign: 'center',
                 marginBottom: '20px',
                 fontSize: '.8rem'
             },
+
             '& .textGroup': {
                 marginBottom: '20px'
             }

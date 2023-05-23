@@ -1,8 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-undef */
 import React, { useEffect, useState } from 'react';
 
 //Components
 import TableTemplate from '../../components/template/TableTemplate';
+import Pagination from '../../components/template/pagination';
 
 //Assets
 import { MainField } from '../../assets/styles/adminPanel/userList.style';
@@ -17,20 +19,27 @@ const TableHeader = ['ردیف', 'نام کاربر', 'ایمیل', 'شماره 
 
 const UserList = () => {
     const [usersList, setUsersList] = useState([]);
+    const [pageState, setPageState] = useState({
+        total: 1,
+        current: 1
+    });
 
     useEffect(() => {
-        GetAllUsers()
+        GetAllUsers(pageState.current)
             .then(res => {
-                setUsersList(res.data);
+                setUsersList(res.data.data);
+                setPageState({
+                    ...pageState,
+                    total: res.data.last_page
+                });
             })
             .catch(() => {});
-    }, []);
+    }, [pageState.current]);
 
     return (
         <MainField>
             <div className='header'>
                 <h2>لیست کاربران</h2>
-                {/* <CustomButton text='مشاهده پاسخ' variant='text' background='garadient' radius='normal' fontcolor='white' /> */}
             </div>
             <div className='table_field'>
                 <TableTemplate TableHeader={TableHeader}>
@@ -53,6 +62,7 @@ const UserList = () => {
                         </TableRow>
                     ))}
                 </TableTemplate>
+                <Pagination pageState={pageState} setPageState={setPageState} />
             </div>
         </MainField>
     );

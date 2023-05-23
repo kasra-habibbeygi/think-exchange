@@ -25,6 +25,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const AddNewTicketsModal = ({ state, setState, reLoad, setReLoad }) => {
     const [SuccessAddTicketState, setSuccessAddTicketState] = useState(false);
+    const [loader, setLoader] = useState(false);
     const [formData, setFormData] = useState({
         title: '',
         text: '',
@@ -44,7 +45,6 @@ const AddNewTicketsModal = ({ state, setState, reLoad, setReLoad }) => {
 
     const changeHandeler = e => {
         const { value, name } = e.target;
-
         setFormData({ ...formData, [name]: value });
     };
 
@@ -54,11 +54,21 @@ const AddNewTicketsModal = ({ state, setState, reLoad, setReLoad }) => {
 
     const addTicketsHandeler = () => {
         if (validatFrom()) {
-            PostNewTickets(formData).then(() => {
-                setState(false);
-                setSuccessAddTicketState(true);
-                setReLoad(!reLoad);
-            });
+            setLoader(true);
+            PostNewTickets(formData)
+                .then(() => {
+                    setState(false);
+                    setSuccessAddTicketState(true);
+                    setReLoad(!reLoad);
+                    setFormData({
+                        title: '',
+                        text: '',
+                        attachment: ''
+                    });
+                })
+                .finally(() => {
+                    setLoader(false);
+                });
         }
     };
 
@@ -88,6 +98,7 @@ const AddNewTicketsModal = ({ state, setState, reLoad, setReLoad }) => {
                                 background='garadient'
                                 radius='normal'
                                 fontcolor='white'
+                                loader={loader}
                             />
 
                             <CustomButton

@@ -1,5 +1,5 @@
 class Tools {
-    addCommaInNumbers(number) {
+    addCommaInNumbers(number = 0) {
         if (typeof number === 'string') {
             number = parseFloat(number);
         }

@@ -13,6 +13,7 @@ import { AccountStyle } from '../assets/styles/account.style';
 import { GetUserDashboard } from '../api-requests/user';
 
 const Account = () => {
+    const [isVerify, setIsVerify] = useState(0);
     const [staticData, setStaticData] = useState({
         first_name: '',
         last_name: '',
@@ -39,6 +40,7 @@ const Account = () => {
     useEffect(() => {
         GetUserDashboard()
             .then(res => {
+                setIsVerify(res.data.user.is_verified);
                 setGetData({
                     first_name: res.data.user.first_name ?? '',
                     last_name: res.data.user.last_name ?? '',
@@ -65,10 +67,10 @@ const Account = () => {
 
     return (
         <AccountStyle>
-            <PersonalInformation state={getData} setState={data => setGetData(data)} staticData={staticData} />
+            <PersonalInformation state={getData} setState={data => setGetData(data)} staticData={staticData} isVerify={isVerify} />
             <div className='rightBox'>
                 <ChangePassword state={getData} setState={data => setGetData(data)} />
-                <AttachFile state={getData} setState={data => setGetData(data)} />
+                <AttachFile state={getData} setState={data => setGetData(data)} isVerify={isVerify} />
             </div>
         </AccountStyle>
     );

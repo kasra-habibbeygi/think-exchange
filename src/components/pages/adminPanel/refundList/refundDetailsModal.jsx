@@ -1,9 +1,10 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import React from 'react';
 
 //Assets
-import { ModalField } from './orderDetailsModal.style';
+import { ModalField } from './refundDetailsModal.style';
 
 //MUI
 import Dialog from '@mui/material/Dialog';
@@ -12,74 +13,85 @@ import Slide from '@mui/material/Slide';
 //components
 import CustomButton from '../../../form-group/CustomButton';
 
+// Tools
+import Tools from '../../../../utils/tools';
+
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction='up' ref={ref} {...props} />;
 });
 
-const OrderDetailModal = ({ specificOrder, status, setStatus }) => {
+const RefundDetailsModal = ({ specificRefund, status, setStatus }) => {
     return (
         <ModalField>
             <Dialog open={status} TransitionComponent={Transition} keepMounted onClose={() => setStatus(false)} disablePortal>
                 <div className='modalBox'>
-                    <h2>جزئیات تیکت</h2>
+                    <h2>جزئیات ریفاند</h2>
                     <div className='info_row'>
                         <p>نام سرویس : </p>
-                        <span>{specificOrder?.service.name}</span>
+                        <span>{specificRefund?.order?.service?.name}</span>
                     </div>
                     <div className='info_row'>
                         <p>نام کاربر : </p>
                         <span>
-                            {specificOrder?.user.first_name} {specificOrder?.user.last_name}
+                            {specificRefund?.order?.user?.first_name} {specificRefund?.order?.user?.last_name}
                         </span>
                     </div>
                     <div className='info_row'>
                         <p>نام ارز : </p>
                         <span>
-                            {specificOrder?.currency.name} - {specificOrder?.currency.iso_name}
+                            {specificRefund?.order?.currency?.name} - {specificRefund?.order?.currency?.iso_name}
                         </span>
                     </div>
                     <div className='info_row'>
                         <p>وضعیت : </p>
-                        <span>{specificOrder?.status === 'pending' ? 'جدید' : 'پاسخ داده شده'}</span>
+                        <span>
+                            {specificRefund?.status === 'pending'
+                                ? 'در حال بررسی'
+                                : specificRefund?.status === 'succeed'
+                                    ? 'تایید شده'
+                                    : specificRefund?.status === 'failed'
+                                        ? 'رد شده'
+                                        : ''}
+                        </span>
                     </div>
                     <div className='info_row'>
                         <p>مقدار ارز : </p>
-                        <span>{specificOrder?.currency_amount}</span>
+                        <span>{specificRefund?.order?.currency_amount}</span>
                     </div>
                     <div className='info_row'>
                         <p>مقدار ارز به ریال :</p>
-                        <span>{specificOrder?.exchange_amount}</span>
+                        <span>{Tools.addCommaInNumbers(specificRefund?.order?.exchange_amount ?? 0)}</span>
                     </div>
                     <div className='info_row'>
                         <p>لینک سایت :</p>
                         <span>
-                            <a href={specificOrder?.website} target='_blank' rel='noreferrer'>
-                                {specificOrder?.website}
+                            <a href={specificRefund?.order?.website} target='_blank' rel='noreferrer'>
+                                {specificRefund?.order?.website}
                             </a>
                         </span>
                     </div>
                     <div className='info_row'>
                         <p>پسورد سایت :</p>
-                        <span>{specificOrder?.website_password}</span>
+                        <span>{specificRefund?.order?.website_password}</span>
                     </div>
                     <div className='info_row'>
                         <p>نام کاربری وب سایت :</p>
-                        <span>{specificOrder?.website_username}</span>
+                        <span>{specificRefund?.order?.website_username}</span>
                     </div>
                     <div className='info_row'>
                         <p>توضیحات :</p>
-                        <span>{specificOrder?.description ?? '---'}</span>
+                        <span>{specificRefund?.description ?? '---'}</span>
                     </div>
                     <div className='info_row'>
                         <p>تاریخ درخواست :</p>
                         <span>
-                            {specificOrder?.created_at.split('T')[0]} - {specificOrder?.created_at.split('T')[1].split('.')[0]}
+                            {specificRefund?.created_at.split('T')[0]} - {specificRefund?.created_at.split('T')[1].split('.')[0]}
                         </span>
                     </div>
                     <div className='info_row'>
                         <p>تاریخ بروزرسانی :</p>
                         <span>
-                            {specificOrder?.updated_at.split('T')[0]} - {specificOrder?.updated_at.split('T')[1].split('.')[0]}
+                            {specificRefund?.updated_at.split('T')[0]} - {specificRefund?.updated_at.split('T')[1].split('.')[0]}
                         </span>
                     </div>
                     <div className='btnBox'>
@@ -99,4 +111,4 @@ const OrderDetailModal = ({ specificOrder, status, setStatus }) => {
     );
 };
 
-export default OrderDetailModal;
+export default RefundDetailsModal;
