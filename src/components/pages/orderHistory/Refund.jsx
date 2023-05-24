@@ -1,37 +1,27 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable indent */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-//styles
+//Assets
 import { RefundStyles } from './Refund.styles';
 
-//components
+//Components
 import TableTemplate from '../../template/TableTemplate';
 import CustomButton from '../../form-group/CustomButton';
 
-//mui
+//MUI
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 
-//API
-import { GetRefund } from '../../../api-requests/refund';
-
 const TableHeader = ['نوع', 'وضعیت'];
 
-const Refund = () => {
-    const [refundsRequest, setRefundsRequest] = useState([]);
-
-    useEffect(() => {
-        GetRefund().then(res => {
-            setRefundsRequest(res.data);
-        });
-    }, []);
-
+const Refund = ({ orderHistoryList }) => {
     return (
         <RefundStyles>
             <h2>لیست درخواست های ریفاند</h2>
             <div className='table_field'>
                 <TableTemplate TableHeader={TableHeader}>
-                    {refundsRequest.map(row => [
+                    {orderHistoryList.map(row => [
                         row.refund && (
                             <TableRow key={row.id}>
                                 <TableCell scope='row'>{row.refund && row.service?.name}</TableCell>

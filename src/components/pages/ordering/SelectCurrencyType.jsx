@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 /* eslint-disable camelcase */
@@ -71,6 +73,9 @@ const SelectCurrencyType = ({ setInputValues, inputValues }) => {
         });
         setPrice(value.price);
         setCurencyImg(value.logo);
+        setSelectedCurency({
+            iso_name: value.iso_name
+        });
 
         if (inputValues.currency_amount !== '') {
             setInputValues(prev => ({
@@ -79,6 +84,8 @@ const SelectCurrencyType = ({ setInputValues, inputValues }) => {
             }));
         }
     };
+
+    console.log(inputValues.exchange_amount.length);
 
     return (
         <SelectCurrencyTypeStyle>
@@ -89,6 +96,7 @@ const SelectCurrencyType = ({ setInputValues, inputValues }) => {
                     label='مبلغ سرویس شما'
                     value={inputValues.currency_amount}
                     valuehandler={e => inputValueHandler(e)}
+                    disabled={selectedCurency.iso_name === ''}
                 />
                 <div className='select_field'>
                     {curencyImg !== '' && (
@@ -124,7 +132,15 @@ const SelectCurrencyType = ({ setInputValues, inputValues }) => {
                     />
                 </div>
             </div>
-            <p className='price'>= {inputValues.exchange_amount || 0} میلیون تومان</p>
+            <p className='price'>
+                = {inputValues.exchange_amount || 0}{' '}
+                {inputValues.exchange_amount.replaceAll(',', '').length <= 6
+                    ? 'هزار'
+                    : inputValues.exchange_amount.replaceAll(',', '').length <= 9
+                        ? 'میلیون'
+                        : 'میلیارد'}{' '}
+                تومان
+            </p>
         </SelectCurrencyTypeStyle>
     );
 };

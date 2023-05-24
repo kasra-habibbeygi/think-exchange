@@ -17,7 +17,7 @@ import TableRow from '@mui/material/TableRow';
 
 const TableHeader = ['نوع', 'شماره سفارش', 'وضعیت', ''];
 
-const ListOrdering = ({ orderList, setReLoad, reLoad }) => {
+const ListOrdering = ({ orderHistoryList, setReLoad, reLoad }) => {
     const [seeRefund, setSeeRefund] = useState(false);
     const [uniqId, setUniqId] = useState('');
 
@@ -28,27 +28,27 @@ const ListOrdering = ({ orderList, setReLoad, reLoad }) => {
                 <h2>فهرست سفارش ها</h2>
                 <div className='table_field'>
                     <TableTemplate TableHeader={TableHeader}>
-                        {orderList?.map(row => (
-                            <TableRow key={row.id}>
-                                <TableCell scope='row'>{row.service.name}</TableCell>
-                                <TableCell>{row.service_id}</TableCell>
+                        {orderHistoryList?.map(item => (
+                            <TableRow key={item.id}>
+                                <TableCell scope='row'>{item.service.name}</TableCell>
+                                <TableCell>{item.service_id}</TableCell>
                                 <TableCell>
                                     <CustomButton
                                         text={
-                                            row.status === 'pending'
+                                            item.status === 'pending'
                                                 ? 'بررسی'
-                                                : row.status === 'succeed'
+                                                : item.status === 'succeed'
                                                 ? 'موفق'
-                                                : row.status === 'failed'
+                                                : item.status === 'failed'
                                                 ? 'ناموفق'
                                                 : ''
                                         }
                                         background={
-                                            row.status === 'pending'
+                                            item.status === 'pending'
                                                 ? 'warning'
-                                                : row.status === 'succeed'
+                                                : item.status === 'succeed'
                                                 ? 'success'
-                                                : row.status === 'failed'
+                                                : item.status === 'failed'
                                                 ? 'error'
                                                 : ''
                                         }
@@ -59,7 +59,7 @@ const ListOrdering = ({ orderList, setReLoad, reLoad }) => {
                                     />
                                 </TableCell>
                                 <TableCell>
-                                    {row.status === 'pending' && (
+                                    {item.status === 'pending' && item.refund === null && (
                                         <CustomButton
                                             text='درخواست ریفاند'
                                             variant='text'
@@ -68,7 +68,7 @@ const ListOrdering = ({ orderList, setReLoad, reLoad }) => {
                                             fontcolor='black'
                                             clickHandeler={() => {
                                                 setSeeRefund(true);
-                                                setUniqId(row.id);
+                                                setUniqId(item.id);
                                             }}
                                         />
                                     )}

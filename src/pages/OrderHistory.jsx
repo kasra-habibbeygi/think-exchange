@@ -1,29 +1,29 @@
 import React, { useEffect, useState } from 'react';
 
-//components
+//Components
 import ListOrdering from '../components/pages/orderHistory/ListOrdering';
 import Refund from '../components/pages/orderHistory/Refund';
 
-//styles
+//Assets
 import { OrderHistoryStyle } from '../assets/styles/orderHistory.style';
 
-//api
-import { GetUserDashboard } from '../api-requests/user';
+//API
+import { GetRefund } from '../api-requests/refund';
 
 const OrderHistory = () => {
-    const [getData, setGetData] = useState([]);
     const [reLoad, setReLoad] = useState(false);
+    const [orderHistoryList, setOrderHistoryList] = useState([]);
 
     useEffect(() => {
-        GetUserDashboard().then(res => {
-            setGetData(res.data);
+        GetRefund().then(res => {
+            setOrderHistoryList(res.data);
         });
-    }, [reLoad]);
+    }, []);
 
     return (
         <OrderHistoryStyle>
-            <ListOrdering orderList={getData?.user?.orders} setReLoad={setReLoad} reLoad={reLoad} />
-            <Refund />
+            <ListOrdering orderHistoryList={orderHistoryList} setReLoad={setReLoad} reLoad={reLoad} />
+            <Refund orderHistoryList={orderHistoryList} />
         </OrderHistoryStyle>
     );
 };

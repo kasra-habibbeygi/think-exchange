@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react';
 import TableTemplate from '../../components/template/TableTemplate';
 import CustomButton from '../../components/form-group/CustomButton';
 import RefundDetailsModal from '../../components/pages/adminPanel/refundList/refundDetailsModal';
+import PaginationComponent from '../../components/template/pagination';
 
 //Assets
 import { MainField } from '../../assets/styles/adminPanel/refundList.style';
@@ -62,11 +63,11 @@ const RefundList = () => {
                         <TableRow key={item.id}>
                             <TableCell scope='row'>{index + 1}</TableCell>
                             <TableCell>
-                                {item.order.user.first_name} {item.order.user.last_name}
+                                {item.order?.user.first_name} {item.order?.user.last_name}
                             </TableCell>
-                            <TableCell>{item.order.service.name}</TableCell>
+                            <TableCell>{item.order?.service.name}</TableCell>
                             <TableCell>
-                                {item.order.currency.name} - {item.order.currency.iso_name}
+                                {item.order?.currency.name} - {item.order?.currency.iso_name}
                             </TableCell>
                             <TableCell>
                                 <CustomButton
@@ -128,6 +129,7 @@ const RefundList = () => {
                         </TableRow>
                     ))}
                 </TableTemplate>
+                <PaginationComponent pageState={pageState} setPageState={setPageState} />
             </div>
             <RefundDetailsModal status={infoModalStatus} setStatus={setInfoModalStatus} specificRefund={specificRefund} />
         </MainField>
