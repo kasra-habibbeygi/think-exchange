@@ -11,6 +11,7 @@ import AttachFile from '../components/pages/ordering/AttachFile';
 import CompleteOrderInformation from '../components/pages/ordering/CompleteOrderInformation';
 
 const Ordering = () => {
+    const [buyCurrency, setBuyCurrency] = useState({});
     const [inputValues, setInputValues] = useState({
         service_id: '',
         currency_id: '',
@@ -29,8 +30,8 @@ const Ordering = () => {
     return (
         <>
             <OrderingStyle>
-                <SelectOrderType setInputValues={setInputValues} inputValues={inputValues} />
-                <SelectCurrencyType setInputValues={setInputValues} inputValues={inputValues} />
+                <SelectOrderType setInputValues={setInputValues} inputValues={inputValues} setBuyCurrency={setBuyCurrency} />
+                <SelectCurrencyType setInputValues={setInputValues} inputValues={inputValues} buyCurrency={buyCurrency} />
             </OrderingStyle>
             <OrderingStyle>
                 <CompleteOrderInformation setInputValues={setInputValues} inputValues={inputValues} />

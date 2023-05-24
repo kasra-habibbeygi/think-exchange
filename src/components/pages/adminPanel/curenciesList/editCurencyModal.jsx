@@ -38,9 +38,6 @@ const EditCurencyModal = ({ specificCurency, status, setStatus, reLoad, setReLoa
         } else if (isNaN(formData.price)) {
             toast.error('مقدار قیمت وارد شده باید عدد باشد !');
             return false;
-        } else if (isNaN(formData.change_rate)) {
-            toast.error('مقدار درصد نوسان باید عدد باشد !');
-            return false;
         }
         return true;
     };

@@ -36,7 +36,7 @@ const RefundList = () => {
                 setRefundList(res.data.data);
                 setPageState({
                     ...pageState,
-                    total: res.data.last_page
+                    total: res.data.total
                 });
             });
     }, [reLoad, pageState.current]);
@@ -95,7 +95,7 @@ const RefundList = () => {
                                     disabled
                                 />
                             </TableCell>
-                            <TableCell>{item?.created}</TableCell>
+                            <TableCell>{item.created_at.split('T')[0]} - {item.created_at.split('T')[1].split('.')[0]}</TableCell>
                             <TableCell>
                                 <div className='button_group'>
                                     <CustomButton

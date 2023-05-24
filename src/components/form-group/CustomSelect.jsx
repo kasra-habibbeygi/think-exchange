@@ -8,7 +8,7 @@ import { CustomSelectStyle } from './CustomSelect.style';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
-const CustomSelect = ({ SelectOptions, label, setInputValues, inputValues, name, objectKey }) => {
+const CustomSelect = ({ SelectOptions, label, setInputValues, inputValues, name, objectKey, extraSetter }) => {
     return (
         <CustomSelectStyle>
             <Autocomplete
@@ -22,6 +22,10 @@ const CustomSelect = ({ SelectOptions, label, setInputValues, inputValues, name,
                         ...inputValues,
                         [name]: newValue ? newValue?.id : ''
                     });
+
+                    if (extraSetter) {
+                        extraSetter(newValue);
+                    }
                 }}
                 renderInput={params => <TextField {...params} label={label} />}
             />

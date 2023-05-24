@@ -5,7 +5,7 @@ import { BeatLoader } from 'react-spinners';
 //button mui
 import Button from '@mui/material/Button';
 
-// styles
+// Assets
 import { CustomButtonStyle } from './CustomButton.style';
 
 const CustomButton = ({

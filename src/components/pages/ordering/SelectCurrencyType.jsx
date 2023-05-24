@@ -22,7 +22,7 @@ import { GetAllCurrencies } from '../../../api-requests/currencies';
 // Utils
 import Tools from '../../../utils/tools';
 
-const SelectCurrencyType = ({ setInputValues, inputValues }) => {
+const SelectCurrencyType = ({ setInputValues, inputValues, buyCurrency}) => {
     const [currencies, setCurrencies] = useState([]);
     const [curencyImg, setCurencyImg] = useState('');
     const [price, setPrice] = useState();
@@ -42,6 +42,9 @@ const SelectCurrencyType = ({ setInputValues, inputValues }) => {
                 setCurencyImg(() => {
                     return res.data.filter(item => item.iso_name === searchParams.get('curency'))[0]?.logo;
                 });
+                setPrice(() => {
+                    return res.data.filter(item => item.iso_name === searchParams.get('curency'))[0]?.price;
+                });
                 setInputValues(prev => ({
                     ...prev,
                     currency_id: res.data.filter(item => item.iso_name === searchParams.get('curency'))[0]?.id
@@ -49,6 +52,28 @@ const SelectCurrencyType = ({ setInputValues, inputValues }) => {
             }
         });
     }, [searchParams]);
+
+    useEffect(() => {
+        if(Object.keys(buyCurrency).length) {
+            if (!('created_at' in buyCurrency)) {
+                setSelectedCurency(() => {
+                    return currencies.filter(item => item.name === buyCurrency?.name)[0];
+                });
+                setCurencyImg(() => {
+                    return currencies.filter(item => item.name === buyCurrency?.name)[0]?.logo;
+                });
+                setPrice(() => {
+                    return currencies.filter(item => item.name === buyCurrency?.name)[0]?.price;
+                });
+                setInputValues(prev => ({
+                    ...prev,
+                    currency_id: currencies.filter(item => item.name === buyCurrency?.name)[0]?.id
+                }));
+            }
+        }
+    }, [buyCurrency]);
+    
+    console.log(inputValues);
 
     const inputValueHandler = e => {
         if (!isNaN(e.target.value)) {
@@ -67,12 +92,14 @@ const SelectCurrencyType = ({ setInputValues, inputValues }) => {
     };
 
     const selectValueHandler = value => {
+        setPrice(value.price);
+        setCurencyImg(value.logo);
+
         setInputValues({
             ...inputValues,
             currency_id: value.id
         });
-        setPrice(value.price);
-        setCurencyImg(value.logo);
+
         setSelectedCurency({
             iso_name: value.iso_name
         });
@@ -84,8 +111,6 @@ const SelectCurrencyType = ({ setInputValues, inputValues }) => {
             }));
         }
     };
-
-    console.log(inputValues.exchange_amount.length);
 
     return (
         <SelectCurrencyTypeStyle>
@@ -117,6 +142,7 @@ const SelectCurrencyType = ({ setInputValues, inputValues }) => {
                         value={selectedCurency}
                         onChange={(e, value) => selectValueHandler(value)}
                         getOptionLabel={option => option.iso_name}
+                        disabled={!('created_at' in buyCurrency) && Object.keys(buyCurrency).length ? true : false}
                         renderOption={(props, option) => (
                             <Box component='li' sx={{ '& > img': { mr: 1, flexShrink: 0 }, direction: 'ltr' }} {...props}>
                                 <img

@@ -12,7 +12,7 @@ import CustomSelect from '../../form-group/CustomSelect';
 // APIs
 import { GetAllCategories, GetServicesList } from '../../../api-requests/Categories';
 
-const SelectOrderType = ({ setInputValues, inputValues }) => {
+const SelectOrderType = ({ setInputValues, inputValues, setBuyCurrency }) => {
     const [categoriesList, setCategoriesList] = useState([]);
     const [categoryId, setCategoryId] = useState(0);
     const [servicesList, setServicesList] = useState([]);
@@ -26,7 +26,11 @@ const SelectOrderType = ({ setInputValues, inputValues }) => {
     useEffect(() => {
         if (categoryId !== 0) {
             GetServicesList(categoryId.category_id).then(res => {
-                setServicesList(res.data.services);
+                if (res.data.services) {
+                    setServicesList(res.data.services);
+                } else {
+                    setServicesList(res.data);
+                }
             });
         }
     }, [categoryId]);
@@ -50,6 +54,7 @@ const SelectOrderType = ({ setInputValues, inputValues }) => {
                     inputValues={inputValues}
                     name='service_id'
                     objectKey='name'
+                    extraSetter={setBuyCurrency}
                 />
             </div>
         </SelectOrderTypeStyle>

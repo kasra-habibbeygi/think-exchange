@@ -29,7 +29,7 @@ const UserList = () => {
             setUsersList(res.data.data);
             setPageState({
                 ...pageState,
-                total: res.data.last_page
+                total: res.data.total
             });
         });
     }, [pageState.current]);
@@ -51,8 +51,12 @@ const UserList = () => {
                             <TableCell>{item.home_phone ?? '---'}</TableCell>
                             <TableCell>{item.phone ?? '---'}</TableCell>
                             <TableCell>{item.national_code ?? '---'}</TableCell>
-                            <TableCell>{item.created_at.split('T')[0].replaceAll('-', '/')}</TableCell>
-                            <TableCell>{item.updated_at.split('T')[0].replaceAll('-', '/')}</TableCell>
+                            <TableCell>
+                                {item.created_at.split('T')[0]} - {item.created_at.split('T')[1].split('.')[0]}
+                            </TableCell>
+                            <TableCell>
+                                {item.updated_at.split('T')[0]} - {item.updated_at.split('T')[1].split('.')[0]}
+                            </TableCell>
                         </TableRow>
                     ))}
                 </TableTemplate>

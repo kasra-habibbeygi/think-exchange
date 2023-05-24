@@ -41,10 +41,7 @@ const CurenciesList = () => {
 
     return (
         <MainField>
-            <div className='header'>
-                <h2>لیست ارز های سایت</h2>
-                {/* <CustomButton text='مشاهده پاسخ' variant='text' background='garadient' radius='normal' fontcolor='white' /> */}
-            </div>
+            <h2>لیست ارز های سایت</h2>
             <div className='table_field'>
                 <TableTemplate TableHeader={TableHeader}>
                     {curenciesList?.map((item, index) => (
@@ -67,8 +64,12 @@ const CurenciesList = () => {
                                     {item.change_rate === '0' ? <span>0%</span> : <span>{item.change_rate}</span>}
                                 </div>
                             </TableCell>
-                            <TableCell>{item.created_at.split('T')[0]}</TableCell>
-                            <TableCell>{item.updated_at.split('T')[0]}</TableCell>
+                            <TableCell>
+                                {item.created_at.split('T')[0]} - {item.created_at.split('T')[1].split('.')[0]}
+                            </TableCell>
+                            <TableCell>
+                                {item.updated_at.split('T')[0]} - {item.updated_at.split('T')[1].split('.')[0]}
+                            </TableCell>
                             <TableCell>
                                 <CustomButton
                                     text='ویرایش'

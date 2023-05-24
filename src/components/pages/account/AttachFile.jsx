@@ -10,7 +10,7 @@ import { AttachFileStyle } from './AttachFile.style';
 import UploadFile from '../../form-group/UploadFile';
 
 //api
-import { PutUserProfile } from '../../../api-requests/profile';
+import { UploadFileAPI } from '../../../api-requests/profile';
 
 const AttachFile = ({ state, isVerify }) => {
     const formData = new FormData();
@@ -18,8 +18,9 @@ const AttachFile = ({ state, isVerify }) => {
 
     const inputValueHandler = e => {
         formData.append('national_card_photo', e.target.files[0]);
+        formData.append('_method', 'PUT');
         setLoader(true);
-        PutUserProfile(formData)
+        UploadFileAPI(formData)
             .then(() => {
                 toast.success('فایل با موفیت بارگزاری شد');
             })

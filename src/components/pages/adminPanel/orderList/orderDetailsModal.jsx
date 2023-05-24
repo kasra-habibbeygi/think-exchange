@@ -10,8 +10,11 @@ import { ModalField } from './orderDetailsModal.style';
 import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
 
-//components
+//Components
 import CustomButton from '../../../form-group/CustomButton';
+
+// Tools
+import Tools from '../../../../utils/tools';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction='up' ref={ref} {...props} />;
@@ -45,11 +48,11 @@ const OrderDetailModal = ({ specificOrder, status, setStatus }) => {
                     </div>
                     <div className='info_row'>
                         <p>مقدار ارز : </p>
-                        <span>{specificOrder?.currency_amount}</span>
+                        <span>{Tools.addCommaInNumbers(specificOrder?.currency_amount)}</span>
                     </div>
                     <div className='info_row'>
                         <p>مقدار ارز به ریال :</p>
-                        <span>{specificOrder?.exchange_amount}</span>
+                        <span>{Tools.addCommaInNumbers(specificOrder?.exchange_amount)}</span>
                     </div>
                     <div className='info_row'>
                         <p>لینک سایت :</p>
@@ -73,11 +76,15 @@ const OrderDetailModal = ({ specificOrder, status, setStatus }) => {
                     </div>
                     <div className='info_row'>
                         <p>تاریخ درخواست :</p>
-                        <span>{specificOrder?.created}</span>
+                        <span>
+                            {specificOrder?.created_at.split('T')[0]} - {specificOrder?.created_at.split('T')[1].split('.')[0]}
+                        </span>
                     </div>
                     <div className='info_row'>
                         <p>تاریخ بروزرسانی :</p>
-                        <span>{specificOrder?.updated_at.split('T')[0].replaceAll('-', '/')}</span>
+                        <span>
+                            {specificOrder?.updated_at.split('T')[0]} - {specificOrder?.updated_at.split('T')[1].split('.')[0]}
+                        </span>
                     </div>
                     {specificOrder?.attachment && (
                         <div className='info_row image_field'>
