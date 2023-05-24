@@ -25,15 +25,13 @@ const UserList = () => {
     });
 
     useEffect(() => {
-        GetAllUsers(pageState.current)
-            .then(res => {
-                setUsersList(res.data.data);
-                setPageState({
-                    ...pageState,
-                    total: res.data.last_page
-                });
-            })
-            .catch(() => {});
+        GetAllUsers(pageState.current).then(res => {
+            setUsersList(res.data.data);
+            setPageState({
+                ...pageState,
+                total: res.data.last_page
+            });
+        });
     }, [pageState.current]);
 
     return (

@@ -33,7 +33,7 @@ const CompleteOrderInformation = ({ setInputValues, inputValues }) => {
             toast.error('ارز خود را انتخاب کنید');
             return false;
         } else if (inputValues.service_id === '') {
-            toast.error('سروریس خود را انتخاب کنید');
+            toast.error('سرویس خود را انتخاب کنید');
             return false;
         } else if (validator.isEmpty(inputValues.currency_amount)) {
             toast.error('نوع سفارش خود را انتخاب کنید');
@@ -157,7 +157,7 @@ const CompleteOrderInformation = ({ setInputValues, inputValues }) => {
             <SuccessAlert
                 state={SuccessOrderingState}
                 setState={setSuccessOrderingState}
-                text='سفارش شما با موفقیت ثبت شد همکاران ما اطلاعات پرداختی را تا ۲۴ ساعت آینده برای شما ارسال خواهند کرد ,لطفا از آنلاین
+                text='سفارش شما با موفقیت ثبت شد همکاران ما اطلاعات پرداختی را تا 72 ساعت آینده برای شما ارسال خواهند کرد ,لطفا از آنلاین
                         بودن خود در واتساپ مطمئن باشید .'
             />
         </>

@@ -12,9 +12,18 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
 const LatestCurrencyStatus = ({ currency }) => {
+    const max = currency?.reduce(function (prev, current) {
+        return prev.updated_at > current.updated_at ? prev : current;
+    });
+
     return (
         <LatestCurrencyStatusStyle>
-            <h2>آخرین وضعیت ارزها</h2>
+            <header>
+                <h2>آخرین وضعیت ارزها</h2>
+                <span>
+                    {max?.updated_at?.split('T')[0]} - {max?.updated_at?.split('T')[1].split('.')[0]}
+                </span>
+            </header>
             <Swiper
                 slidesPerView={'auto'}
                 spaceBetween={10}

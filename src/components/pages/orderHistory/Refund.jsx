@@ -21,11 +21,9 @@ const Refund = () => {
     const [refundsRequest, setRefundsRequest] = useState([]);
 
     useEffect(() => {
-        GetRefund()
-            .then(res => {
-                setRefundsRequest(res.data);
-            })
-            .catch(() => {});
+        GetRefund().then(res => {
+            setRefundsRequest(res.data);
+        });
     }, []);
 
     return (

@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { LoginStatusHandler } from '../state-manager/reducer/userInfo';
+import { toast } from 'react-hot-toast';
+import validator from 'validator';
 
-//style
+//Assets
 import { LoginStyle } from '../assets/styles/login.style';
-import image from '../assets/images/login-register/bg.png';
+import image from '../assets/images/login-register/bg.jpg';
 import logo from '../assets/images/login-register/Logo.png';
 
-//components
+//Components
 import CustomButton from '../components/form-group/CustomButton';
 import CustomInput from '../components/form-group/CustomInput';
 
@@ -31,17 +33,33 @@ const Login = () => {
         });
     };
 
+    const validate = () => {
+        if (validator.isEmpty(inputValues.email)) {
+            toast.error('لطفا ایمیل خود را وارد کنید ');
+            return false;
+        } else if (validator.isEmpty(inputValues.password)) {
+            toast.error('لطفا پسورد خود را وارد کنید');
+            return false;
+        } else if (!validator.isEmail(inputValues.email)) {
+            toast.error('ایمیل به درستی وارد نشده است');
+            return false;
+        }
+        return true;
+    };
+
     const submitHandler = () => {
-        setLoader(true);
-        UserLogin(inputValues)
-            .then(res => {
-                localStorage.setItem('userToken', res.data.token);
-                dispatch(LoginStatusHandler(true));
-                navigate('/dashboard');
-            })
-            .finally(() => {
-                setLoader(false);
-            });
+        if (validate()) {
+            setLoader(true);
+            UserLogin(inputValues)
+                .then(res => {
+                    localStorage.setItem('userToken', res.data.token);
+                    dispatch(LoginStatusHandler(true));
+                    navigate('/dashboard');
+                })
+                .finally(() => {
+                    setLoader(false);
+                });
+        }
     };
 
     return (

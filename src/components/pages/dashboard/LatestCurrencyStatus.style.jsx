@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 export const LatestCurrencyStatusStyle = styled.div(props => ({
     width: '100%',
     background: props.theme.colors.white,
-    // boxShadow: props.theme.boxShadow,
     borderRadius: '28px',
     padding: '50px 30px 30px 0',
 
@@ -38,6 +37,17 @@ export const LatestCurrencyStatusStyle = styled.div(props => ({
         width: '100%',
         height: '100%',
         objectFit: 'cover'
+    },
+
+    header: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingLeft: '40px',
+
+        span: {
+            color: '#727A89'
+        }
     },
 
     '@media screen and (max-width: 1350px)': {

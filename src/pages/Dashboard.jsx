@@ -16,11 +16,9 @@ const Dashboard = () => {
     const [getData, setGetData] = useState([]);
 
     useEffect(() => {
-        GetUserDashboard()
-            .then(res => {
-                setGetData(res.data);
-            })
-            .catch(() => {});
+        GetUserDashboard().then(res => {
+            setGetData(res.data);
+        });
     }, [reLoad]);
 
     return (

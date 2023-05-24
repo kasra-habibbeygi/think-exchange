@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { AdminLoginStatusHandler } from '../../state-manager/reducer/adminInfo';
+import { toast } from 'react-hot-toast';
+import validator from 'validator';
 
 //style
 import { LoginStyle } from '../../assets/styles/login.style';
-import image from '../../assets/images/login-register/bg.png';
+import image from '../../assets/images/login-register/bg.jpg';
 import logo from '../../assets/images/login-register/Logo.png';
 
 //components
@@ -31,17 +33,33 @@ const Login = () => {
         });
     };
 
+    const validate = () => {
+        if (validator.isEmpty(inputValues.email)) {
+            toast.error('لطفا ایمیل خود را وارد کنید ');
+            return false;
+        } else if (validator.isEmpty(inputValues.password)) {
+            toast.error('لطفا پسورد خود را وارد کنید');
+            return false;
+        } else if (!validator.isEmail(inputValues.email)) {
+            toast.error('ایمیل به درستی وارد نشده است');
+            return false;
+        }
+        return true;
+    };
+
     const submitHandler = () => {
-        setLoader(true);
-        AdminLogin(inputValues)
-            .then(res => {
-                localStorage.setItem('adminToken', res.data.token);
-                dispatch(AdminLoginStatusHandler(true));
-                navigate('/admin-panel/dashboard');
-            })
-            .finally(() => {
-                setLoader(false);
-            });
+        if (validate()) {
+            setLoader(true);
+            AdminLogin(inputValues)
+                .then(res => {
+                    localStorage.setItem('adminToken', res.data.token);
+                    dispatch(AdminLoginStatusHandler(true));
+                    navigate('/admin-panel/dashboard');
+                })
+                .finally(() => {
+                    setLoader(false);
+                });
+        }
     };
 
     return (

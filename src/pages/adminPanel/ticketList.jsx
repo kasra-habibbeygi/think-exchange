@@ -34,15 +34,13 @@ const TicketList = () => {
     });
 
     useEffect(() => {
-        GetAllTickets(pageState.current)
-            .then(res => {
-                setTicketList(res.data.data);
-                setPageState({
-                    ...pageState,
-                    total: res.data.last_page
-                });
-            })
-            .catch(() => {});
+        GetAllTickets(pageState.current).then(res => {
+            setTicketList(res.data.data);
+            setPageState({
+                ...pageState,
+                total: res.data.last_page
+            });
+        });
     }, [reLoad, pageState.current]);
 
     const editModalHandler = data => {

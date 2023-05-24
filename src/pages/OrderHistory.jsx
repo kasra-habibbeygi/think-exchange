@@ -15,11 +15,9 @@ const OrderHistory = () => {
     const [reLoad, setReLoad] = useState(false);
 
     useEffect(() => {
-        GetUserDashboard()
-            .then(res => {
-                setGetData(res.data);
-            })
-            .catch(() => {});
+        GetUserDashboard().then(res => {
+            setGetData(res.data);
+        });
     }, [reLoad]);
 
     return (

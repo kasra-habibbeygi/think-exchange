@@ -8,7 +8,7 @@ import { LoginStatusHandler } from '../state-manager/reducer/userInfo';
 
 //style
 import { RegisterStyle } from '../assets/styles/register.style';
-import image from '../assets/images/login-register/bg.png';
+import image from '../assets/images/login-register/bg.jpg';
 import logo from '../assets/images/login-register/Logo.png';
 
 //components

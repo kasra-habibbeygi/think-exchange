@@ -38,31 +38,29 @@ const Account = () => {
     });
 
     useEffect(() => {
-        GetUserDashboard()
-            .then(res => {
-                setIsVerify(res.data.user.is_verified);
-                setGetData({
-                    first_name: res.data.user.first_name ?? '',
-                    last_name: res.data.user.last_name ?? '',
-                    email: res.data.user.email ?? '',
-                    phone: res.data.user.phone ?? '',
-                    home_phone: res.data.user.home_phone ?? '',
-                    national_code: res.data.user.national_code ?? '',
-                    explain: res.data.user.explain ?? '',
-                    national_card_photo: res.data.user.national_card_photo ?? ''
-                });
-                setStaticData({
-                    first_name: res.data.user.first_name ?? '',
-                    last_name: res.data.user.last_name ?? '',
-                    email: res.data.user.email ?? '',
-                    phone: res.data.user.phone ?? '',
-                    home_phone: res.data.user.home_phone ?? '',
-                    national_code: res.data.user.national_code ?? '',
-                    explain: res.data.user.explain ?? '',
-                    national_card_photo: res.data.user.national_card_photo ?? ''
-                });
-            })
-            .catch(() => {});
+        GetUserDashboard().then(res => {
+            setIsVerify(res.data.user.is_verified);
+            setGetData({
+                first_name: res.data.user.first_name ?? '',
+                last_name: res.data.user.last_name ?? '',
+                email: res.data.user.email ?? '',
+                phone: res.data.user.phone ?? '',
+                home_phone: res.data.user.home_phone ?? '',
+                national_code: res.data.user.national_code ?? '',
+                explain: res.data.user.explain ?? '',
+                national_card_photo: res.data.user.national_card_photo ?? ''
+            });
+            setStaticData({
+                first_name: res.data.user.first_name ?? '',
+                last_name: res.data.user.last_name ?? '',
+                email: res.data.user.email ?? '',
+                phone: res.data.user.phone ?? '',
+                home_phone: res.data.user.home_phone ?? '',
+                national_code: res.data.user.national_code ?? '',
+                explain: res.data.user.explain ?? '',
+                national_card_photo: res.data.user.national_card_photo ?? ''
+            });
+        });
     }, []);
 
     return (

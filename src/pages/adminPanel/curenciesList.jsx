@@ -29,11 +29,9 @@ const CurenciesList = () => {
     const [editModalStatus, setEditModalStatus] = useState(false);
 
     useEffect(() => {
-        GetAllCurrencies()
-            .then(res => {
-                setCurenciesList(res.data);
-            })
-            .catch(() => {});
+        GetAllCurrencies().then(res => {
+            setCurenciesList(res.data);
+        });
     }, [reLoad]);
 
     const editCurencyHandler = data => {
