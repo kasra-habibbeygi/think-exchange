@@ -73,15 +73,11 @@ const OrderDetailModal = ({ specificOrder, status, setStatus }) => {
                     </div>
                     <div className='info_row'>
                         <p>تاریخ درخواست :</p>
-                        <span>
-                            {specificOrder?.created_at.split('T')[0]} - {specificOrder?.created_at.split('T')[1].split('.')[0]}
-                        </span>
+                        <span>{specificOrder?.created}</span>
                     </div>
                     <div className='info_row'>
                         <p>تاریخ بروزرسانی :</p>
-                        <span>
-                            {specificOrder?.updated_at.split('T')[0]} - {specificOrder?.updated_at.split('T')[1].split('.')[0]}
-                        </span>
+                        <span>{specificOrder?.updated_at.split('T')[0].replaceAll('-', '/')}</span>
                     </div>
                     {specificOrder?.attachment && (
                         <div className='info_row image_field'>

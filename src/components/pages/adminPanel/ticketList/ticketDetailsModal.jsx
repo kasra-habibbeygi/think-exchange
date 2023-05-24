@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import React from 'react';
@@ -42,20 +43,22 @@ const TicketDetailModal = ({ specificTicket, status, setStatus }) => {
                     </div>
                     <div className='info_row'>
                         <p>تاریخ ارسال : </p>
-                        <span>
-                            {specificTicket?.created_at.split('T')[0]} - {specificTicket?.created_at.split('T')[1].split('.')[0]}
-                        </span>
+                        <span>{specificTicket?.created}</span>
                     </div>
                     <div className='info_row'>
                         <p>تاریخ بروز رسانی : </p>
-                        <span>
-                            {specificTicket?.updated_at.split('T')[0]} - {specificTicket?.updated_at.split('T')[1].split('.')[0]}
-                        </span>
+                        <span>{specificTicket?.updated_at.split('T')[0].replaceAll('-', '/')}</span>
                     </div>
                     <div className='info_row'>
                         <p>جواب شما : </p>
                         <span>{specificTicket?.answer}</span>
                     </div>
+                    {specificTicket?.attachment && (
+                        <div className='info_row image_field'>
+                            <p>فایل مرتبط :</p>
+                            <img src={process.env.REACT_APP_FILE_URL + specificTicket?.attachment} alt='' />
+                        </div>
+                    )}
                     <div className='btnBox'>
                         <CustomButton
                             clickHandeler={() => setStatus(false)}

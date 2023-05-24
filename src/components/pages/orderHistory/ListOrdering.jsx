@@ -59,7 +59,7 @@ const ListOrdering = ({ orderList, setReLoad, reLoad }) => {
                                     />
                                 </TableCell>
                                 <TableCell>
-                                    {row.status === 'failed' && (
+                                    {row.status === 'pending' && (
                                         <CustomButton
                                             text='درخواست ریفاند'
                                             variant='text'

@@ -93,9 +93,7 @@ const OrderList = () => {
                             <TableCell>
                                 {item.currency.name} - {item.currency.iso_name}
                             </TableCell>
-                            <TableCell>
-                                {item.created_at.split('T')[0]} - {item.created_at.split('T')[1].split('.')[0]}
-                            </TableCell>
+                            <TableCell>{item?.created}</TableCell>
                             <TableCell>
                                 <div className='button_group'>
                                     <CustomButton

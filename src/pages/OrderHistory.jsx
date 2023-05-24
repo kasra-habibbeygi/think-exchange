@@ -22,7 +22,7 @@ const OrderHistory = () => {
 
     return (
         <OrderHistoryStyle>
-            {<ListOrdering orderList={getData?.user?.orders} setReLoad={setReLoad} reLoad={reLoad} />}
+            <ListOrdering orderList={getData?.user?.orders} setReLoad={setReLoad} reLoad={reLoad} />
             <Refund />
         </OrderHistoryStyle>
     );

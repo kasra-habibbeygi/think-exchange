@@ -27,6 +27,17 @@ export const ModalField = styled.div({
         marginBottom: '40px'
     },
 
+    '& .image_field': {
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+
+        img: {
+            width: '100%',
+            borderRadius: '5px',
+            objectFit: 'contain'
+        }
+    },
+
     '& .modalBox': {
         padding: '40px 60px',
         display: 'flex',
