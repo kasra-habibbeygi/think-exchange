@@ -16,15 +16,14 @@ export const LatestCurrencyStatusStyle = styled.div(props => ({
         cursor: 'pointer'
     },
 
-    ' &.swiper': {
+    '&.swiper': {
         width: '100%',
         height: '100%'
     },
 
-    ' & .swiper-slide ': {
+    '& .swiper-slide ': {
         textAlign: 'center',
         fontSize: '1.1rem',
-        background: '#fff',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -51,7 +50,7 @@ export const LatestCurrencyStatusStyle = styled.div(props => ({
     },
 
     '@media screen and (max-width: 1350px)': {
-        ' & .swiper-slide': {
+        '& .swiper-slide': {
             width: '40%',
             marginRight: '20px',
             ':first-of-type': {
@@ -66,48 +65,56 @@ export const LatestCurrencyStatusStyle = styled.div(props => ({
             }
         }
     },
+
     '@media screen and (max-width: 1200px)': {
-        ' & .swiper-slide': {
+        '& .swiper-slide': {
             width: '45%',
             marginRight: 'unset'
         }
     },
+
     '@media screen and (max-width: 992px)': {
-        ' & .swiper-slide': {
+        '& .swiper-slide': {
             width: '40%',
             marginRight: '20px'
         }
     },
+
     '@media screen and (max-width: 730px)': {
-        ' & .swiper-slide': {
+        '& .swiper-slide': {
             width: '45%',
             marginRight: 'unset'
         }
     },
+
     '@media screen and (max-width: 620px)': {
-        ' & .swiper-slide': {
+        '& .swiper-slide': {
             width: '70%',
             marginRight: '20px'
         }
     },
+
     '@media screen and (max-width: 450px)': {
         h2: {
             fontSize: '1rem'
         },
+
         padding: '20px 20px',
         fontSize: '.8rem',
-        height: '250px',
+        height: '280px',
 
         '& .mySwiper': {
             margin: '20px 0px'
         },
-        ' & .swiper-slide': {
+
+        '& .swiper-slide': {
             width: '80%',
             marginRight: 'unset'
         }
     },
+
     '@media screen and (max-width: 350px)': {
-        ' & .swiper-slide': {
+        '& .swiper-slide': {
             width: '90%',
             marginRight: 'unset'
         }
