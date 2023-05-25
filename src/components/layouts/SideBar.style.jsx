@@ -64,6 +64,11 @@ export const SideBarStyle = styled.aside(props => ({
         }
     },
 
+    '& .phoneCall': {
+        display: 'inline-flex',
+        flexDirection: 'row-reverse'
+    },
+
     '& .menu': {
         listStyleType: 'none',
         marginTop: '60px',

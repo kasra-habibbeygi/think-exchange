@@ -17,11 +17,13 @@ import { PutUserProfile } from '../../../api-requests/profile';
 const ChangePassword = ({ state, setState }) => {
     const [loader, setLoader] = useState(false);
 
+    console.log(state);
+
     const validatFrom = () => {
-        if (validator.isEmpty(state.password)) {
+        if (state.password === '') {
             toast.error('پسورد را وارد کنید');
             return false;
-        } else if (validator.isEmpty(state.password_confirmation)) {
+        } else if (state.password_confirmation === '') {
             toast.error('تکرار پسورد را وارد کنید');
             return false;
         } else if (state.password.length < 8) {
@@ -34,8 +36,8 @@ const ChangePassword = ({ state, setState }) => {
         return true;
     };
     const inputValueHandler = () => {
-        setLoader(true);
         if (validatFrom()) {
+            setLoader(true);
             PutUserProfile({
                 password: state.password,
                 password_confirmation: state.password_confirmation

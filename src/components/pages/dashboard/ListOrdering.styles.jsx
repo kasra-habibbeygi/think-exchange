@@ -26,6 +26,8 @@ export const ListOrderingStyle = styled.div(props => ({
         button: {
             marginTop: '30px',
             padding: '8px 40px',
+            minHeight: '45px',
+
             '&:hover': {
                 color: props.theme.colors.white
             }
@@ -40,6 +42,7 @@ export const ListOrderingStyle = styled.div(props => ({
         width: '100%',
         minHeight: 'auto'
     },
+
     '@media screen and (max-width: 450px)': {
         padding: '20px 20px',
 

@@ -62,16 +62,16 @@ const PersonalInformation = ({ state, setState, staticData, isVerify }) => {
             toast.error('شماره تماس  خود را وارد کنید');
             return false;
         } else if (state.phone.length < 11) {
-            toast.error(' شماره تماس خود را به درستی وارد کنید');
+            toast.error('شماره تماس خود را به درستی وارد کنید');
             return false;
         } else if (validator.isEmpty(state.home_phone)) {
-            toast.error(' شماره ثابت  خود را وارد کنید');
+            toast.error('شماره ثابت  خود را وارد کنید');
             return false;
         } else if (validator.isEmpty(state.national_code)) {
-            toast.error(' شماره ملی  خود را وارد کنید');
+            toast.error('شماره ملی  خود را وارد کنید');
             return false;
         } else if (state.national_code.length < 10) {
-            toast.error(' شماره ملی باید 10 کاراکتر باشد');
+            toast.error('شماره ملی باید 10 کاراکتر باشد');
             return false;
         }
         if (staticData.email === newData.email) {

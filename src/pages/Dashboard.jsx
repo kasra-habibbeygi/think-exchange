@@ -23,10 +23,10 @@ const Dashboard = () => {
 
     return (
         <>
-            {<LatestCurrencyStatus currency={getData?.currencies} />}
+            <LatestCurrencyStatus currency={getData?.currencies} />
             <DashboardStyle className='container'>
-                {<AddTickets tickets={getData?.user?.tickets} setReLoad={setReLoad} reLoad={reLoad} />}
-                {<ListOrdering orderHistory={getData?.user?.orders} />}
+                <AddTickets tickets={getData?.user?.tickets} setReLoad={setReLoad} reLoad={reLoad} />
+                <ListOrdering orderHistory={getData?.user?.orders} />
             </DashboardStyle>
         </>
     );

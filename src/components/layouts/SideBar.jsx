@@ -78,7 +78,7 @@ const SideBar = () => {
                                 <div className='call'>
                                     <img alt='user' src={Phone} />
                                     <p>
-                                        تماس با پشتیبانی <span className='phoneCall'>219 132 112</span>
+                                        تماس با پشتیبانی <span className='phoneCall'>219-132-112</span>
                                     </p>
                                 </div>
                                 <p className='time'>شنبه - چهارشنبه ۱۸:۰۰ - ۱۰:۰۰</p>

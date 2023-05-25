@@ -43,7 +43,16 @@ export const AddTicketsStyle = styled.div(props => ({
     },
 
     '& .btn': {
-        marginTop: '30px'
+        marginTop: '30px',
+
+        button: {
+            padding: '8px 40px',
+            minHeight: '45px',
+
+            '&:hover': {
+                color: props.theme.colors.white
+            }
+        }
     },
 
     '@media screen and (max-width: 1350px)': {
