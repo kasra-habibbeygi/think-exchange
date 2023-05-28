@@ -22,6 +22,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const AnswerTicketModal = ({ status, setStatus, ticketId, reLoad, setReLoad }) => {
+    const [loader, setLoader] = useState(false);
     const [formData, setFormData] = useState({
         answer: ''
     });
@@ -35,10 +36,18 @@ const AnswerTicketModal = ({ status, setStatus, ticketId, reLoad, setReLoad }) =
         if (formData.answer === '') {
             toast.error('لطفا توضیحات پاسخ را پر کنید !');
         } else {
-            AnswerTicket(ticketId, formData).then(() => {
-                setReLoad(!reLoad);
-                setStatus(false);
-            });
+            setLoader(true);
+            AnswerTicket(ticketId, formData)
+                .then(() => {
+                    setStatus(false);
+                    setFormData({
+                        answer: ''
+                    });
+                    setReLoad(!reLoad);
+                })
+                .finally(() => {
+                    setLoader(false);
+                });
         }
     };
 
@@ -66,6 +75,7 @@ const AnswerTicketModal = ({ status, setStatus, ticketId, reLoad, setReLoad }) =
                             background='garadient'
                             radius='normal'
                             fontcolor='white'
+                            loader={loader}
                         />
                         <CustomButton
                             clickHandeler={() => setStatus(false)}

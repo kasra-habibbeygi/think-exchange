@@ -85,7 +85,7 @@ const SelectCurrencyType = ({ setInputValues, inputValues, buyCurrency}) => {
             if (inputValues.currency_id !== '' && inputValues.currency_amount !== '') {
                 setInputValues(prev => ({
                     ...prev,
-                    exchange_amount: Tools.addCommaInNumbers(e.target.value * price)
+                    exchange_amount: Tools.addCommaInNumbers(Math.abs(e.target.value * price))
                 }));
             }
         }
@@ -107,7 +107,7 @@ const SelectCurrencyType = ({ setInputValues, inputValues, buyCurrency}) => {
         if (inputValues.currency_amount !== '') {
             setInputValues(prev => ({
                 ...prev,
-                exchange_amount: Tools.addCommaInNumbers(inputValues.currency_amount * value.price)
+                exchange_amount: Tools.addCommaInNumbers(Math.abs(inputValues.currency_amount * value.price))
             }));
         }
     };

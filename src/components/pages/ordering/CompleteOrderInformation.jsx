@@ -50,15 +50,6 @@ const CompleteOrderInformation = ({ setInputValues, inputValues }) => {
         } else if (!validator.isEmail(inputValues.email)) {
             toast.error('ایمیل خود را  به درستی وارد کنید');
             return false;
-        } else if (validator.isEmpty(inputValues.website)) {
-            toast.error('لینک سایت را وارد کنید');
-            return false;
-        } else if (validator.isEmpty(inputValues.website_username)) {
-            toast.error('نام کاربری خود در سایت را وارد کنید');
-            return false;
-        } else if (validator.isEmpty(inputValues.website_password)) {
-            toast.error('پسورد خود در سایت را وارد کنید');
-            return false;
         }
         return true;
     };

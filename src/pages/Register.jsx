@@ -84,6 +84,9 @@ const Register = () => {
                     navigate('/dashboard');
                     toast.success('ثبت نام شما با موفقیت انجام شد');
                 })
+                .catch(() => {
+                    toast.error('پست الکترونیکی قبلا ثبت شده است یا مشکلی در فرایند ثبت نام پیش آمده است !');
+                })
                 .finally(() => {
                     setLoader(false);
                 });

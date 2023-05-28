@@ -7,10 +7,10 @@ import { CustomInputStyle } from './CustomInput.style';
 //mui
 import TextField from '@mui/material/TextField';
 
-const TextArea = ({ label, valuehandler, name }) => {
+const TextArea = ({ label, valuehandler, name, value }) => {
     return (
         <CustomInputStyle>
-            <TextField label={label} name={name} multiline onChange={e => valuehandler(e)} />
+            <TextField label={label} name={name} value={value} multiline onChange={e => valuehandler(e)} />
         </CustomInputStyle>
     );
 };

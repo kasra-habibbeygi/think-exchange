@@ -72,6 +72,8 @@ const AddNewTicketsModal = ({ state, setState, reLoad, setReLoad }) => {
         }
     };
 
+    console.log(formData);
+
     return (
         <>
             <AddNewTicketsModalStyle>
@@ -80,14 +82,7 @@ const AddNewTicketsModal = ({ state, setState, reLoad, setReLoad }) => {
                         <h2>ثبت تیکت جدید</h2>
                         <div className='formBox'>
                             <CustomInput label='عنوان تیکت' type='text' valuehandler={changeHandeler} name='title' value={formData.title} />
-                            <TextArea
-                                label='پیام خود را بنویسید'
-                                type='text'
-                                rows={5}
-                                valuehandler={changeHandeler}
-                                name='text'
-                                value={formData.title}
-                            />
+                            <TextArea label='پیام خود را بنویسید' valuehandler={changeHandeler} name='text' value={formData.text} />
                         </div>
                         <div className='btnBox'>
                             <CustomButton
