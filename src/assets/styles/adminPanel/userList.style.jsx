@@ -58,3 +58,34 @@ export const MainField = styled.div(props => ({
         }
     }
 }));
+
+export const ModalField = styled.div({
+    '& .MuiPaper-root': {
+        borderRadius: '20px',
+        width: '700px'
+    },
+
+    '& .empty_field': {
+        width: '100%',
+        textAlign: 'center',
+        padding: '120px 20px'
+    },
+
+    '@media screen and (max-width: 992px)': {
+        '& .MuiPaper-root': {
+            maxWidth: '600px'
+        }
+    },
+
+    '@media screen and (max-width: 730px)': {
+        '& .MuiPaper-root': {
+            maxWidth: '500px'
+        }
+    },
+
+    '@media screen and (max-width: 550px)': {
+        '& .MuiPaper-root': {
+            margin: '10px'
+        }
+    }
+});

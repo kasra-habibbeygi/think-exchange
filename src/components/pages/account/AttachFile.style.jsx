@@ -12,14 +12,14 @@ export const AttachFileStyle = styled.div(props => ({
     flexDirection: 'column',
     marginTop: '20px',
 
-    '& .is_verify_text': {
-        color: '#727A89',
-        display: 'flex',
-        flexDirection: 'column',
-        background: props.theme.colors.gray,
-        borderRadius: '20px',
-        padding: '40px 15px',
-        textAlign: 'center'
+    '& .national_img_field': {
+        width: '100%',
+
+        img: {
+            width: '100%',
+            borderRadius: '8px',
+            height: 'auto'
+        }
     },
 
     h2: {

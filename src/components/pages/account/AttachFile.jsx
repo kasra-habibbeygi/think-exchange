@@ -1,46 +1,32 @@
+/* eslint-disable no-undef */
+/* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import { toast } from 'react-hot-toast';
 
-//style
+//Assets
 import { AttachFileStyle } from './AttachFile.style';
 
-//components
+//Components
 import UploadFile from '../../form-group/UploadFile';
 
-//api
-import { UploadFileAPI } from '../../../api-requests/profile';
-
-const AttachFile = ({ state, isVerify }) => {
-    const formData = new FormData();
-    const [loader, setLoader] = useState(false);
-
+const AttachFile = ({ state, isVerify, setState, img }) => {
     const inputValueHandler = e => {
-        formData.append('national_card_photo', e.target.files[0]);
-        formData.append('_method', 'PUT');
-        setLoader(true);
-        UploadFileAPI(formData)
-            .then(() => {
-                toast.success('فایل با موفیت بارگزاری شد');
-            })
-            .finally(() => {
-                setLoader(false);
-            });
+        setState({
+            ...state,
+            national_card_photo: e.target.files[0]
+        });
     };
 
     return (
         <AttachFileStyle>
             <h2>عکس کارت ملی</h2>
             {isVerify ? (
-                <p className='is_verify_text'>عکس کارت ملی شما تایید شده است</p>
+                <div className='national_img_field'>
+                    <img alt='currency' src={`${process.env.REACT_APP_FILE_URL}${img}`} />
+                </div>
             ) : (
-                <UploadFile
-                    name='national_card_photo'
-                    valueHandler={inputValueHandler}
-                    fileName={state?.attachment?.name}
-                    loader={loader}
-                />
+                <UploadFile name='national_card_photo' valueHandler={inputValueHandler} fileName={state?.attachment?.name} />
             )}
         </AttachFileStyle>
     );

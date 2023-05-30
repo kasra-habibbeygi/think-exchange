@@ -24,6 +24,7 @@ const Account = () => {
         explain: '',
         national_card_photo: ''
     });
+
     const [getData, setGetData] = useState({
         first_name: '',
         last_name: '',
@@ -65,10 +66,10 @@ const Account = () => {
 
     return (
         <AccountStyle>
-            <PersonalInformation state={getData} setState={data => setGetData(data)} staticData={staticData} isVerify={isVerify} />
+            <PersonalInformation state={getData} setState={setGetData} staticData={staticData} isVerify={isVerify} />
             <div className='rightBox'>
-                <ChangePassword state={getData} setState={data => setGetData(data)} />
-                <AttachFile state={getData} setState={data => setGetData(data)} isVerify={isVerify} />
+                <ChangePassword state={getData} setState={setGetData} />
+                <AttachFile state={getData} setState={setGetData} isVerify={isVerify} img={staticData.national_card_photo} />
             </div>
         </AccountStyle>
     );

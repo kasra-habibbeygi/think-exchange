@@ -5,20 +5,37 @@ import React, { useEffect, useState } from 'react';
 //Components
 import TableTemplate from '../../components/template/TableTemplate';
 import Pagination from '../../components/template/pagination';
+import CustomButton from '../../components/form-group/CustomButton';
 
 //Assets
-import { MainField } from '../../assets/styles/adminPanel/userList.style';
+import { MainField, ModalField } from '../../assets/styles/adminPanel/userList.style';
 
 //APIs
 import { GetAllUsers } from '../../api-requests/admin/user';
 
 // MUI
-import { TableCell, TableRow } from '@mui/material';
+import { Dialog, Slide, TableCell, TableRow } from '@mui/material';
 
-const TableHeader = ['ردیف', 'نام کاربر', 'ایمیل', 'شماره ثابت', 'شماره موبایل', 'کد ملی', 'تاریخ ساخت', 'تاریخ بروز رسانی'];
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction='up' ref={ref} {...props} />;
+});
+
+const TableHeader = [
+    'ردیف',
+    'نام کاربر',
+    'ایمیل',
+    'شماره ثابت',
+    'شماره موبایل',
+    'کد ملی',
+    'تاریخ ساخت',
+    'تاریخ بروز رسانی',
+    'عکس کارت ملی'
+];
 
 const UserList = () => {
     const [usersList, setUsersList] = useState([]);
+    const [modalStatus, setModalStatus] = useState(false);
+    const [nationalCardPhoto, setNationalCardPhoto] = useState();
     const [pageState, setPageState] = useState({
         total: 1,
         current: 1
@@ -33,6 +50,11 @@ const UserList = () => {
             });
         });
     }, [pageState.current]);
+
+    const modalStatusHandler = img => {
+        setNationalCardPhoto(img);
+        setModalStatus(true);
+    };
 
     return (
         <MainField>
@@ -57,11 +79,31 @@ const UserList = () => {
                             <TableCell>
                                 {item.updated_at.split('T')[0]} - {item.updated_at.split('T')[1].split('.')[0]}
                             </TableCell>
+                            <TableCell>
+                                <CustomButton
+                                    clickHandeler={() => modalStatusHandler(item.national_card_photo)}
+                                    className='btn'
+                                    text='مشاهده'
+                                    variant='text'
+                                    background='warning'
+                                    radius='normal'
+                                    fontcolor='white'
+                                />
+                            </TableCell>
                         </TableRow>
                     ))}
                 </TableTemplate>
                 <Pagination pageState={pageState} setPageState={setPageState} />
             </div>
+            <ModalField>
+                <Dialog open={modalStatus} TransitionComponent={Transition} keepMounted onClose={() => setModalStatus(false)} disablePortal>
+                    {nationalCardPhoto ? (
+                        <img src={`${process.env.REACT_APP_FILE_URL}${nationalCardPhoto}`} alt='' />
+                    ) : (
+                        <div className='empty_field'>عکس کارت ملی این کاربر هنوز بارگذاری نشده است !</div>
+                    )}
+                </Dialog>
+            </ModalField>
         </MainField>
     );
 };

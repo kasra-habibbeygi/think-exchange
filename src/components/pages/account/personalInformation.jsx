@@ -18,6 +18,7 @@ import { PutUserProfile } from '../../../api-requests/profile';
 
 const PersonalInformation = ({ state, setState, staticData, isVerify }) => {
     const [loader, setLoader] = useState(false);
+    const formData = new FormData();
     const changeHandeler = e => {
         const { value, name } = e.target;
         let formattedValue = value;
@@ -86,7 +87,13 @@ const PersonalInformation = ({ state, setState, staticData, isVerify }) => {
     const PostFormDataHandeler = () => {
         if (validatFrom()) {
             setLoader(true);
-            PutUserProfile(validatFrom())
+            const newData = validatFrom();
+
+            Object.keys(newData).forEach(item => {
+                formData.append(item, newData[item]);
+            });
+
+            PutUserProfile(formData)
                 .then(() => {
                     toast.success('اطلاعات شما با موفقیت تغییر کرد');
                 })
