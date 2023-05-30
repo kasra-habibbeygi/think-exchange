@@ -21,7 +21,7 @@ const AttachFile = ({ state, isVerify, setState, img }) => {
     return (
         <AttachFileStyle>
             <h2>عکس کارت ملی</h2>
-            {isVerify ? (
+            {state.national_card_photo ? (
                 <div className='national_img_field'>
                     <img alt='currency' src={`${process.env.REACT_APP_FILE_URL}${img}`} />
                 </div>

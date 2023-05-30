@@ -89,6 +89,7 @@ const PersonalInformation = ({ state, setState, staticData, isVerify }) => {
             setLoader(true);
             const newData = validatFrom();
 
+            formData.append('_method', 'PUT');
             Object.keys(newData).forEach(item => {
                 formData.append(item, newData[item]);
             });
