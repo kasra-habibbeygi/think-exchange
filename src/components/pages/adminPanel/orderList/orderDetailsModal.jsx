@@ -33,8 +33,12 @@ const OrderDetailModal = ({ specificOrder, status, setStatus }) => {
                     <div className='info_row'>
                         <p>نام کاربر : </p>
                         <span>
-                            {specificOrder?.user.first_name} {specificOrder?.user.last_name}
+                            {specificOrder?.first_name} {specificOrder?.last_name}
                         </span>
+                    </div>
+                    <div className='info_row'>
+                        <p>ایمیل : </p>
+                        <span>{specificOrder?.email}</span>
                     </div>
                     <div className='info_row'>
                         <p>نام ارز : </p>

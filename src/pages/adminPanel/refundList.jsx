@@ -63,7 +63,7 @@ const RefundList = () => {
                         <TableRow key={item.id}>
                             <TableCell scope='row'>{index + 1}</TableCell>
                             <TableCell>
-                                {item.order?.user.first_name} {item.order?.user.last_name}
+                                {item.order?.first_name} {item.order?.last_name}
                             </TableCell>
                             <TableCell>{item.order?.service.name}</TableCell>
                             <TableCell>

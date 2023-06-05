@@ -18,7 +18,7 @@ const OrderHistory = () => {
         GetRefund().then(res => {
             setOrderHistoryList(res.data);
         });
-    }, []);
+    }, [reLoad]);
 
     return (
         <OrderHistoryStyle>

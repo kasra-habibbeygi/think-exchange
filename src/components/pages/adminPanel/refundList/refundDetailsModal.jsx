@@ -33,7 +33,13 @@ const RefundDetailsModal = ({ specificRefund, status, setStatus }) => {
                     <div className='info_row'>
                         <p>نام کاربر : </p>
                         <span>
-                            {specificRefund?.order?.user?.first_name} {specificRefund?.order?.user?.last_name}
+                            {specificRefund?.order?.first_name} {specificRefund?.order?.last_name}
+                        </span>
+                    </div>
+                    <div className='info_row'>
+                        <p>ایمیل : </p>
+                        <span>
+                            {specificRefund?.order?.email}
                         </span>
                     </div>
                     <div className='info_row'>

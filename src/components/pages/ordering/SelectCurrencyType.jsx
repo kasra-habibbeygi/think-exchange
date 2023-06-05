@@ -130,7 +130,6 @@ const SelectCurrencyType = ({ setInputValues, inputValues, buyCurrency}) => {
                             className='selected_image'
                         />
                     )}
-
                     <Autocomplete
                         className='select'
                         options={currencies}

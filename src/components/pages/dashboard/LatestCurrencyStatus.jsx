@@ -21,7 +21,7 @@ const LatestCurrencyStatus = ({ currency }) => {
             <header>
                 <h2>آخرین وضعیت ارزها</h2>
                 <span>
-                    {max?.updated_at?.split('T')[0]} - {max?.updated_at?.split('T')[1].split('.')[0]}
+                    {new Date(max?.updated_at?.split('T')[0]).toLocaleDateString('fa-IR')} - {max?.updated_at?.split('T')[1].split('.')[0]}
                 </span>
             </header>
             <Swiper

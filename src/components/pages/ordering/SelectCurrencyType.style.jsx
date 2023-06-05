@@ -78,5 +78,13 @@ export const SelectCurrencyTypeStyle = styled.div(props => ({
 
     '@media screen and (max-width: 1210px)': {
         width: '100%'
+    },
+
+    '@media screen and (max-width: 450px)': {
+        '& .select': {
+            '& .MuiInputBase-root': {
+                padding: '1px'
+            }
+        }
     }
 }));

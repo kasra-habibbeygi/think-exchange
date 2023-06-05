@@ -88,7 +88,7 @@ const OrderList = () => {
                                 />
                             </TableCell>
                             <TableCell>
-                                {item.user.first_name} {item.user.last_name}
+                                {item.first_name} {item.last_name}
                             </TableCell>
                             <TableCell>
                                 {item.currency.name} - {item.currency.iso_name}
