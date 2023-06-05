@@ -27,7 +27,7 @@ const AddNewTicketsModal = ({ state, setState, ansewr }) => {
                     <div className='formBox'>
                         <p className='title'>
                             {ansewr.title}
-                            <span>عنوان پاسخ</span>
+                            <span>عنوان تیکت</span>
                         </p>
                         <p className='title'>
                             {ansewr.ansewr}

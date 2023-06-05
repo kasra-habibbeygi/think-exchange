@@ -25,7 +25,7 @@ const ListOrdering = ({ orderHistory }) => {
                     {orderHistory?.map(row => (
                         <TableRow key={row.id}>
                             <TableCell scope='row'>{row.service.name}</TableCell>
-                            <TableCell>{row.service_id}</TableCell>
+                            <TableCell>{row.id}</TableCell>
                             <TableCell>
                                 <CustomButton
                                     text={

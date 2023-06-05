@@ -31,7 +31,13 @@ instance.interceptors.response.use(
             localStorage.removeItem('adminToken');
             window.location.href = '/admin-panel/login';
         } else {
-            typeof error.response.data.message === 'string' && toast.error(error.response.data.message, { style: { zIndex: 2000 } });
+            if (typeof error.response.data.message === 'string') {
+                if (error.response.data.message === 'کاربری با این مشخصات یافت نشد') {
+                    toast.error('ایمیل یا پسورد اشتباه است', { style: { zIndex: 2000 } });
+                } else {
+                    toast.error(error.response.data.message, { style: { zIndex: 2000 } });
+                }
+            }
         }
         return Promise.reject(error);
     }

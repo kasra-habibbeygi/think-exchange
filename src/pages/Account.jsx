@@ -42,6 +42,7 @@ const Account = () => {
         GetUserDashboard().then(res => {
             setIsVerify(res.data.user.is_verified);
             setGetData({
+                ...getData,
                 first_name: res.data.user.first_name ?? '',
                 last_name: res.data.user.last_name ?? '',
                 email: res.data.user.email ?? '',
@@ -69,7 +70,7 @@ const Account = () => {
             <PersonalInformation state={getData} setState={setGetData} staticData={staticData} isVerify={isVerify} />
             <div className='rightBox'>
                 <ChangePassword state={getData} setState={setGetData} />
-                <AttachFile state={getData} setState={setGetData} isVerify={isVerify} img={staticData.national_card_photo} />
+                <AttachFile state={getData} setState={setGetData} img={staticData.national_card_photo} />
             </div>
         </AccountStyle>
     );

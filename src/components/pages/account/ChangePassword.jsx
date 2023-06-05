@@ -2,7 +2,6 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
-import validator from 'validator';
 
 //style
 import { ChangePasswordStyle } from './ChangePassword.style';
@@ -17,8 +16,6 @@ import { PutUserProfile } from '../../../api-requests/profile';
 const ChangePassword = ({ state, setState }) => {
     const [loader, setLoader] = useState(false);
 
-    console.log(state);
-
     const validatFrom = () => {
         if (state.password === '') {
             toast.error('پسورد را وارد کنید');
@@ -26,10 +23,10 @@ const ChangePassword = ({ state, setState }) => {
         } else if (state.password_confirmation === '') {
             toast.error('تکرار پسورد را وارد کنید');
             return false;
-        } else if (state.password.length < 8) {
+        } else if (state.password?.length < 8) {
             toast.error('پسورد باید حداقل 8 کارکتر باشد');
             return false;
-        } else if (!validator.equals(state.password_confirmation, state.password)) {
+        } else if (state.password_confirmation !== state.password) {
             toast.error('تکرار پسورد و پسورد با هم برابر نیست');
             return false;
         }

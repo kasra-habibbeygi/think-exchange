@@ -72,8 +72,6 @@ const AddNewTicketsModal = ({ state, setState, reLoad, setReLoad }) => {
         }
     };
 
-    console.log(formData);
-
     return (
         <>
             <AddNewTicketsModalStyle>

@@ -72,8 +72,6 @@ const SelectCurrencyType = ({ setInputValues, inputValues, buyCurrency}) => {
             }
         }
     }, [buyCurrency]);
-    
-    console.log(inputValues);
 
     const inputValueHandler = e => {
         if (!isNaN(e.target.value)) {

@@ -18,7 +18,15 @@ import { PutUserProfile } from '../../../api-requests/profile';
 
 const PersonalInformation = ({ state, setState, staticData, isVerify }) => {
     const [loader, setLoader] = useState(false);
+    const [dataChecker, setDataChecker] = useState(false);
     const formData = new FormData();
+
+    useEffect(() => {
+        if (staticData.national_card_photo !== '' && !isVerify) {
+            setDataChecker(true);
+        }
+    }, [staticData]);
+
     const changeHandeler = e => {
         const { value, name } = e.target;
         let formattedValue = value;
@@ -37,17 +45,7 @@ const PersonalInformation = ({ state, setState, staticData, isVerify }) => {
         var newData = {
             ...state
         };
-        if (
-            staticData.first_name === newData.first_name &&
-            staticData.last_name === newData.last_name &&
-            staticData.phone === newData.phone &&
-            staticData.home_phone === newData.home_phone &&
-            staticData.national_code === newData.national_code &&
-            staticData.explain === newData.explain
-        ) {
-            toast.error('هنوز مقداری تغییر نکرده است');
-            return false;
-        } else if (validator.isEmpty(state.first_name)) {
+        if (validator.isEmpty(state.first_name)) {
             toast.error('نام  خود را وارد کنید');
             return false;
         } else if (validator.isEmpty(state.last_name)) {
@@ -62,7 +60,7 @@ const PersonalInformation = ({ state, setState, staticData, isVerify }) => {
         } else if (validator.isEmpty(state.phone)) {
             toast.error('شماره تماس  خود را وارد کنید');
             return false;
-        } else if (state.phone.length < 11) {
+        } else if (state?.phone?.length < 11) {
             toast.error('شماره تماس خود را به درستی وارد کنید');
             return false;
         } else if (validator.isEmpty(state.home_phone)) {
@@ -71,7 +69,7 @@ const PersonalInformation = ({ state, setState, staticData, isVerify }) => {
         } else if (validator.isEmpty(state.national_code)) {
             toast.error('شماره ملی  خود را وارد کنید');
             return false;
-        } else if (state.national_code.length < 10) {
+        } else if (state.national_code?.length < 10) {
             toast.error('شماره ملی باید 10 کاراکتر باشد');
             return false;
         }
@@ -91,12 +89,21 @@ const PersonalInformation = ({ state, setState, staticData, isVerify }) => {
 
             formData.append('_method', 'PUT');
             Object.keys(newData).forEach(item => {
-                formData.append(item, newData[item]);
+                if (newData[item] !== '') {
+                    formData.append(item, newData[item]);
+                }
             });
+
+            if (typeof newData.national_card_photo === 'string') {
+                formData.delete('national_card_photo');
+            }
 
             PutUserProfile(formData)
                 .then(() => {
                     toast.success('اطلاعات شما با موفقیت تغییر کرد');
+                })
+                .catch(e => {
+                    toast.error('شماره موبایل وارد شده قبلا انتخاب شده است');
                 })
                 .finally(() => {
                     setLoader(false);
@@ -168,6 +175,7 @@ const PersonalInformation = ({ state, setState, staticData, isVerify }) => {
                 radius='normal'
                 fontcolor='white'
                 loader={loader}
+                disabled={dataChecker}
             />
         </PersonalInformationStyle>
     );
