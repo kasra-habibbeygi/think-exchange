@@ -63,7 +63,9 @@ const CompleteOrderInformation = ({ setInputValues, inputValues }) => {
             };
 
             Object.keys(newData).forEach(item => {
-                formData.append(item, newData[item]);
+                if (newData[item] !== '') {
+                    formData.append(item, newData[item]);
+                }
             });
 
             SubmitNewOrder(formData)

@@ -45,7 +45,17 @@ const PersonalInformation = ({ state, setState, staticData, isVerify }) => {
         var newData = {
             ...state
         };
-        if (validator.isEmpty(state.first_name)) {
+        if (
+            staticData.first_name === newData.first_name &&
+            staticData.last_name === newData.last_name &&
+            staticData.phone === newData.phone &&
+            staticData.home_phone === newData.home_phone &&
+            staticData.national_code === newData.national_code &&
+            staticData.explain === newData.explain
+        ) {
+            toast.error('هنوز مقداری تغییر نکرده است');
+            return false;
+        } else if (validator.isEmpty(state.first_name)) {
             toast.error('نام  خود را وارد کنید');
             return false;
         } else if (validator.isEmpty(state.last_name)) {
@@ -96,6 +106,12 @@ const PersonalInformation = ({ state, setState, staticData, isVerify }) => {
 
             if (typeof newData.national_card_photo === 'string') {
                 formData.delete('national_card_photo');
+            }
+
+            if (isVerify) {
+                formData.delete('first_name');
+                formData.delete('last_name');
+                formData.delete('national_code');
             }
 
             PutUserProfile(formData)
