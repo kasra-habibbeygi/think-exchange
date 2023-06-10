@@ -90,12 +90,12 @@ const RefundDetailsModal = ({ specificRefund, status, setStatus }) => {
                     </div>
                     <div className='info_row'>
                         <p>تاریخ درخواست :</p>
-                        <span>{specificRefund?.created_at.split('T')[0]} - {specificRefund?.created_at.split('T')[1].split('.')[0]}</span>
+                        <span>{specificRefund?.created}</span>
                     </div>
                     <div className='info_row'>
                         <p>تاریخ بروزرسانی :</p>
                         <span>
-                            {specificRefund?.updated_at.split('T')[0]} - {specificRefund?.updated_at.split('T')[1].split('.')[0]}
+                            {specificRefund?.updated}
                         </span>
                     </div>
                     <div className='btnBox'>

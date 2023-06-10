@@ -3,8 +3,8 @@
 import React from 'react';
 
 //Assets
-import upArrow from '../../../assets/images/dashboard/Vector.png';
-import DownArrow from '../../../assets/images/dashboard/Vector-red.png';
+// import upArrow from '../../../assets/images/dashboard/Vector.png';
+// import DownArrow from '../../../assets/images/dashboard/Vector-red.png';
 
 import { SliderCardStyle } from './SliderCard.style';
 
@@ -32,7 +32,8 @@ const SliderCard = ({ data }) => {
 
                 <div className='priceBox'>
                     <div className='percentage'>
-                        {!data.change_rate.includes('-') ? <img alt='currency' src={upArrow} /> : <img alt='currency' src={DownArrow} />}
+                        {/* {!data.change_rate.includes('-') ? <img alt='currency' src={upArrow} /> : 
+                        <img alt='currency' src={DownArrow} />} */}
                         <span>{data.change_rate}</span>
                     </div>
                     <h3>{Tools.addCommaInNumbers(data.price)}</h3>

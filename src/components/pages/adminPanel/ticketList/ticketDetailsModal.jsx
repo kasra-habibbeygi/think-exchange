@@ -43,15 +43,11 @@ const TicketDetailModal = ({ specificTicket, status, setStatus }) => {
                     </div>
                     <div className='info_row'>
                         <p>تاریخ ارسال : </p>
-                        <span>
-                            {specificTicket?.created_at.split('T')[0]} - {specificTicket?.created_at.split('T')[1].split('.')[0]}
-                        </span>
+                        <span>{specificTicket?.created}</span>
                     </div>
                     <div className='info_row'>
                         <p>تاریخ بروز رسانی : </p>
-                        <span>
-                            {specificTicket?.updated_at.split('T')[0]} - {specificTicket?.updated_at.split('T')[1].split('.')[0]}
-                        </span>
+                        <span>{specificTicket?.updated}</span>
                     </div>
                     <div className='info_row'>
                         <p>جواب شما : </p>

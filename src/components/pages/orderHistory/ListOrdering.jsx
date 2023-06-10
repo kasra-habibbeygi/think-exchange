@@ -59,7 +59,7 @@ const ListOrdering = ({ orderHistoryList, setReLoad, reLoad }) => {
                                     />
                                 </TableCell>
                                 <TableCell>
-                                    {item.status === 'pending' && item.refund === null && (
+                                    {item.status === 'succeed' && item.refund === null && (
                                         <CustomButton
                                             text='درخواست ریفاند'
                                             variant='text'

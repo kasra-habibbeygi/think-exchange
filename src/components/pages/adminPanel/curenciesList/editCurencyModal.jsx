@@ -46,7 +46,7 @@ const EditCurencyModal = ({ specificCurency, status, setStatus, reLoad, setReLoa
         setFormData({
             price: specificCurency?.price,
             change_rate: specificCurency?.change_rate,
-            iso_name: specificCurency?.iso_name,
+            iso_name: '',
             name: specificCurency?.name
         });
     }, [specificCurency]);

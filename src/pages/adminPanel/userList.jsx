@@ -73,12 +73,8 @@ const UserList = () => {
                             <TableCell>{item.home_phone ?? '---'}</TableCell>
                             <TableCell>{item.phone ?? '---'}</TableCell>
                             <TableCell>{item.national_code ?? '---'}</TableCell>
-                            <TableCell>
-                                {item.created_at.split('T')[0]} - {item.created_at.split('T')[1].split('.')[0]}
-                            </TableCell>
-                            <TableCell>
-                                {item.updated_at.split('T')[0]} - {item.updated_at.split('T')[1].split('.')[0]}
-                            </TableCell>
+                            <TableCell>{item.created}</TableCell>
+                            <TableCell>{item.updated}</TableCell>
                             <TableCell>
                                 <CustomButton
                                     clickHandeler={() => modalStatusHandler(item.national_card_photo)}

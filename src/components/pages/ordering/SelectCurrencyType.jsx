@@ -75,12 +75,13 @@ const SelectCurrencyType = ({ setInputValues, inputValues, buyCurrency}) => {
 
     const inputValueHandler = e => {
         if (!isNaN(e.target.value)) {
+            console.log(1);
             setInputValues(prev => ({
                 ...prev,
                 [e.target.name]: e.target.value
             }));
 
-            if (inputValues.currency_id !== '' && inputValues.currency_amount !== '') {
+            if (inputValues.currency_id !== '') {
                 setInputValues(prev => ({
                     ...prev,
                     exchange_amount: Tools.addCommaInNumbers(Math.abs(e.target.value * price))

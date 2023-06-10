@@ -21,6 +21,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const OrderDetailModal = ({ specificOrder, status, setStatus }) => {
+    console.log(specificOrder);
     return (
         <ModalField>
             <Dialog open={status} TransitionComponent={Transition} keepMounted onClose={() => setStatus(false)} disablePortal>
@@ -39,6 +40,16 @@ const OrderDetailModal = ({ specificOrder, status, setStatus }) => {
                     <div className='info_row'>
                         <p>ایمیل : </p>
                         <span>{specificOrder?.email}</span>
+                    </div>
+                    <div className='info_row'>
+                        <p>موبایل : </p>
+                        <span>{specificOrder?.user?.phone}</span>
+                    </div>
+                    <div className='info_row'>
+                        <p>نام کاربر : </p>
+                        <span>
+                            {specificOrder?.user?.first_name} {specificOrder?.user?.last_name}
+                        </span>
                     </div>
                     <div className='info_row'>
                         <p>نام ارز : </p>
@@ -80,15 +91,11 @@ const OrderDetailModal = ({ specificOrder, status, setStatus }) => {
                     </div>
                     <div className='info_row'>
                         <p>تاریخ درخواست :</p>
-                        <span>
-                            {specificOrder?.created_at.split('T')[0]} - {specificOrder?.created_at.split('T')[1].split('.')[0]}
-                        </span>
+                        <span>{specificOrder?.created}</span>
                     </div>
                     <div className='info_row'>
                         <p>تاریخ بروزرسانی :</p>
-                        <span>
-                            {specificOrder?.updated_at.split('T')[0]} - {specificOrder?.updated_at.split('T')[1].split('.')[0]}
-                        </span>
+                        <span>{specificOrder?.updated}</span>
                     </div>
                     {specificOrder?.attachment && (
                         <div className='info_row image_field'>

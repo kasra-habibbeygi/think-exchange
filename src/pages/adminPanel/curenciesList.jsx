@@ -64,12 +64,8 @@ const CurenciesList = () => {
                                     {item.change_rate === '0' ? <span>0%</span> : <span>{item.change_rate}</span>}
                                 </div>
                             </TableCell>
-                            <TableCell>
-                                {item.created_at.split('T')[0]} - {item.created_at.split('T')[1].split('.')[0]}
-                            </TableCell>
-                            <TableCell>
-                                {item.updated_at.split('T')[0]} - {item.updated_at.split('T')[1].split('.')[0]}
-                            </TableCell>
+                            <TableCell>{item.created}</TableCell>
+                            <TableCell>{item.updated}</TableCell>
                             <TableCell>
                                 <CustomButton
                                     text='ویرایش'

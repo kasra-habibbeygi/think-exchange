@@ -31,7 +31,7 @@ export const MainField = styled.div(props => ({
         },
 
         table: {
-            minWidth: '1000px'
+            minWidth: '1050px'
         }
     },
 
