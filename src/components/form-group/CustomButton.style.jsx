@@ -12,10 +12,6 @@ export const CustomButtonStyle = styled.div(props => ({
         gap: '5px'
     },
 
-    '& [disabled]': {
-        opacity: '0.5'
-    },
-
     button: {
         borderColor: props.variant === 'outlined' && '#bdbdbd',
         background:

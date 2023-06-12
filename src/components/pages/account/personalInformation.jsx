@@ -41,6 +41,8 @@ const PersonalInformation = ({ state, setState, staticData, isVerify }) => {
         setState({ ...state, [name]: formattedValue });
     };
 
+    console.log(state);
+
     const validatFrom = () => {
         var newData = {
             ...state
@@ -81,6 +83,9 @@ const PersonalInformation = ({ state, setState, staticData, isVerify }) => {
             return false;
         } else if (state.national_code?.length < 10) {
             toast.error('شماره ملی باید 10 کاراکتر باشد');
+            return false;
+        } else if (state.national_card_photo === '') {
+            toast.error('عکس کارت ملی خود را انتخاب کنی');
             return false;
         }
         if (staticData.email === newData.email) {

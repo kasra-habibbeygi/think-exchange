@@ -8,6 +8,12 @@ export const MainField = styled.div(props => ({
     borderRadius: '28px',
     padding: '20px 30px',
 
+    '& .button_group': {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px'
+    },
+
     '& .table_field': {
         width: '100%',
         overflow: 'auto',

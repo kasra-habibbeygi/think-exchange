@@ -7,3 +7,7 @@ export const GetUserInfo = async id => {
 export const GetAllUsers = async page => {
     return Axios.get(`users/all?page=${page}`).then(res => res.data);
 };
+
+export const DeleteUser = async id => {
+    return Axios.delete(`users/delete/${id}`).then(res => res.data);
+};

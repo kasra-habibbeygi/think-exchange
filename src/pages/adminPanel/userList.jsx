@@ -11,7 +11,7 @@ import CustomButton from '../../components/form-group/CustomButton';
 import { MainField, ModalField } from '../../assets/styles/adminPanel/userList.style';
 
 //APIs
-import { GetAllUsers } from '../../api-requests/admin/user';
+import { GetAllUsers, DeleteUser } from '../../api-requests/admin/user';
 
 // MUI
 import { Dialog, Slide, TableCell, TableRow } from '@mui/material';
@@ -20,20 +20,11 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction='up' ref={ref} {...props} />;
 });
 
-const TableHeader = [
-    'ردیف',
-    'نام کاربر',
-    'ایمیل',
-    'شماره ثابت',
-    'شماره موبایل',
-    'کد ملی',
-    'تاریخ ساخت',
-    'تاریخ بروز رسانی',
-    'عکس کارت ملی'
-];
+const TableHeader = ['ردیف', 'نام کاربر', 'ایمیل', 'شماره ثابت', 'شماره موبایل', 'کد ملی', 'تاریخ ساخت', 'تاریخ بروز رسانی', 'تنظیمات'];
 
 const UserList = () => {
     const [usersList, setUsersList] = useState([]);
+    const [reLoad, setReLoad] = useState(false);
     const [modalStatus, setModalStatus] = useState(false);
     const [nationalCardPhoto, setNationalCardPhoto] = useState();
     const [pageState, setPageState] = useState({
@@ -49,11 +40,17 @@ const UserList = () => {
                 total: res.data.total
             });
         });
-    }, [pageState.current]);
+    }, [pageState.current, reLoad]);
 
     const modalStatusHandler = img => {
         setNationalCardPhoto(img);
         setModalStatus(true);
+    };
+
+    const deleteUserHandler = id => {
+        DeleteUser(id).then(() => {
+            setReLoad(!reLoad);
+        });
     };
 
     return (
@@ -76,15 +73,26 @@ const UserList = () => {
                             <TableCell>{item.created}</TableCell>
                             <TableCell>{item.updated}</TableCell>
                             <TableCell>
-                                <CustomButton
-                                    clickHandeler={() => modalStatusHandler(item.national_card_photo)}
-                                    className='btn'
-                                    text='مشاهده'
-                                    variant='text'
-                                    background='warning'
-                                    radius='normal'
-                                    fontcolor='white'
-                                />
+                                <div className='button_group'>
+                                    <CustomButton
+                                        clickHandeler={() => modalStatusHandler(item.national_card_photo)}
+                                        className='btn'
+                                        text='عکس کارت ملی'
+                                        variant='text'
+                                        background='warning'
+                                        radius='normal'
+                                        fontcolor='white'
+                                    />
+                                    <CustomButton
+                                        clickHandeler={() => deleteUserHandler(item.id)}
+                                        className='btn'
+                                        text='حذف'
+                                        variant='text'
+                                        background='error'
+                                        radius='normal'
+                                        fontcolor='white'
+                                    />
+                                </div>
                             </TableCell>
                         </TableRow>
                     ))}
