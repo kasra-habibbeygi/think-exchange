@@ -1,24 +1,23 @@
 /* eslint-disable camelcase */
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 //Assets
-import { OrderingStyle, AlertField } from '../assets/styles/ordering.style';
-import Alert from '../assets/images/ordering/warning.svg';
+import { OrderingStyle } from '../assets/styles/ordering.style';
+// import Alert from '../assets/images/ordering/warning.svg';
 
 //Components
 import SelectCurrencyType from '../components/pages/ordering/SelectCurrencyType';
 import SelectOrderType from '../components/pages/ordering/SelectOrderType';
 import AttachFile from '../components/pages/ordering/AttachFile';
 import CompleteOrderInformation from '../components/pages/ordering/CompleteOrderInformation';
-import CustomButton from '../components/form-group/CustomButton';
+// import CustomButton from '../components/form-group/CustomButton';
 
 // APIs
 import { GetUserDashboard } from '../api-requests/user';
 
 const Ordering = () => {
     const [buyCurrency, setBuyCurrency] = useState({});
-    const [isVerify, setIsVerify] = useState(1);
+    // const [isVerify, setIsVerify] = useState(1);
     const [inputValues, setInputValues] = useState({
         service_id: '',
         currency_id: '',
@@ -35,23 +34,24 @@ const Ordering = () => {
     });
 
     useEffect(() => {
-        GetUserDashboard().then(res => {
-            setIsVerify(res.data.user.is_verified);
+        GetUserDashboard().then(() => {
+            // setIsVerify(res.data.user.is_verified);
         });
     }, []);
 
     return (
         <>
-            {isVerify ? (
+            <OrderingStyle>
+                <SelectOrderType setInputValues={setInputValues} inputValues={inputValues} setBuyCurrency={setBuyCurrency} />
+                <SelectCurrencyType setInputValues={setInputValues} inputValues={inputValues} buyCurrency={buyCurrency} />
+            </OrderingStyle>
+            <OrderingStyle>
+                <CompleteOrderInformation setInputValues={setInputValues} inputValues={inputValues} />
+                <AttachFile setInputValues={setInputValues} inputValues={inputValues} />
+            </OrderingStyle>
+            {/* {isVerify ? (
                 <>
-                    <OrderingStyle>
-                        <SelectOrderType setInputValues={setInputValues} inputValues={inputValues} setBuyCurrency={setBuyCurrency} />
-                        <SelectCurrencyType setInputValues={setInputValues} inputValues={inputValues} buyCurrency={buyCurrency} />
-                    </OrderingStyle>
-                    <OrderingStyle>
-                        <CompleteOrderInformation setInputValues={setInputValues} inputValues={inputValues} />
-                        <AttachFile setInputValues={setInputValues} inputValues={inputValues} />
-                    </OrderingStyle>
+                    
                 </>
             ) : (
                 <AlertField>
@@ -64,7 +64,7 @@ const Ordering = () => {
                         <CustomButton text='تکمیل اطلاعات' variant='text' background='garadient' radius='normal' fontcolor='white' />
                     </Link>
                 </AlertField>
-            )}
+            )} */}
         </>
     );
 };

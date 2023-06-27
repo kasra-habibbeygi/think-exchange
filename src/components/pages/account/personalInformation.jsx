@@ -32,8 +32,6 @@ const PersonalInformation = ({ state, setState, staticData, isVerify }) => {
         let formattedValue = value;
         if (name === 'home_phone') {
             formattedValue = value.replace(/[^0-9]/g, '');
-        } else if (name === 'phone') {
-            formattedValue = value.replace(/[^0-9]/g, '');
         } else if (name === 'national_code') {
             formattedValue = value.replace(/[^0-9]/g, '');
         }
@@ -72,9 +70,6 @@ const PersonalInformation = ({ state, setState, staticData, isVerify }) => {
         } else if (validator.isEmpty(state.phone)) {
             toast.error('شماره تماس  خود را وارد کنید');
             return false;
-        } else if (state?.phone?.length < 11) {
-            toast.error('شماره تماس خود را به درستی وارد کنید');
-            return false;
         } else if (validator.isEmpty(state.home_phone)) {
             toast.error('شماره ثابت  خود را وارد کنید');
             return false;
@@ -83,9 +78,6 @@ const PersonalInformation = ({ state, setState, staticData, isVerify }) => {
             return false;
         } else if (state.national_code?.length < 10) {
             toast.error('شماره ملی باید 10 کاراکتر باشد');
-            return false;
-        } else if (state.national_card_photo === '') {
-            toast.error('عکس کارت ملی خود را انتخاب کنی');
             return false;
         }
         if (staticData.email === newData.email) {
